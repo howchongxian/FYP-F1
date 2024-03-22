@@ -23,7 +23,7 @@ CREATE TABLE `ticket` (
     `raceID` int (4) NOT NULL,
     `stand` varchar(100) NOT NULL,
     `ticket_price` decimal(5,2) NOT NULL,
-    FOREIGN KEY (`raceID`) REFERENCES `race` (`raceID`)
+    FOREIGN KEY (`raceID`) REFERENCES `race` (`id`)
 );
 
 CREATE TABLE `order` (
