@@ -7,7 +7,7 @@ CREATE TABLE `user` (
   `username` varchar(25) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 CREATE TABLE `product` (
   `product_code` int(4) NOT NULL,
