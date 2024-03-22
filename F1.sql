@@ -22,7 +22,7 @@ CREATE TABLE `ticket` (
     `ticketID` int(4) PRIMARY KEY AUTO_INCREMENT,
     `raceID` int (4) NOT NULL,
     `stand` varchar(100) NOT NULL,
-    `ticket_price` decimal(5,2) NOT NULL,
+    `ticket_price` decimal(5,2) NOT NULL
 );
 
 CREATE TABLE `order` (
