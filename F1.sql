@@ -7,7 +7,7 @@ CREATE TABLE `user` (
   `username` varchar(25) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL
-);
+)ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 CREATE TABLE `product` (
   `product_code` int(4) NOT NULL,
@@ -23,7 +23,6 @@ CREATE TABLE `ticket` (
     `raceID` int (4) NOT NULL,
     `stand` varchar(100) NOT NULL,
     `ticket_price` decimal(5,2) NOT NULL,
-    FOREIGN KEY (`raceID`) REFERENCES `race` (`id`)
 );
 
 CREATE TABLE `order` (
