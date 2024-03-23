@@ -1,7 +1,7 @@
 <?php
 
 
-$connect = mysqli_connect("localhost", "root", "", "F1");
+$connect = mysqli_connect("localhost", "root", "", "f1");
 
 if(!$connect)
 {
@@ -15,7 +15,7 @@ if(!$connect)
   $uname = "root";
   $password = "";
 
-  $db_name = "F1";
+  $db_name = "f1";
 
   $connect = mysqli_connect($sname,$uname,$password,$db_name);
 
