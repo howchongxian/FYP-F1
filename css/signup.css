@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600&display=swap');
+    *{
+        font-family: 'Poppins', sans-serif;
+        margin: 0; padding:0;
+        box-sizing: border-box;
+        outline:none; border:none;
+        text-decoration: none;
+        transition:all .2s linear;
+    }
+    
+    html{
+        font-size: 62.5%;
+        overflow-x: hidden;
+        scroll-padding-top: 7rem;
+        scroll-behavior: smooth;
+    }
+    
+    .header{
+        position: fixed;
+        top: 0; left: 0; right:0;
+        z-index:999;
+        background: red;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    
+    
+    .header .navbar a{
+        font-size: 1.7rem;
+        margin:0 1rem ;
+        color:white;
+    }
+    
+    .header .navbar a :hover{
+        background:black;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        background: url("CSS/background.jpg");
+        background-size: cover;
+        font-family: sans-serif;
+    }
+      
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #f44336;
+        color: #ffffff;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+    }
+      
+    .btn:hover {
+        background-color: #d32f2f;
+    }
+      
+    .btn:active {
+        background-color: #b71c1c;
+    }
+      
+    .loginbox {
+        width: 320px;
+        height: 650px;
+        background: #000;
+        color: #fff;
+        top: 70%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+    
+    .signup{
+        text-align: center;
+    }
+    
+    .avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        top: -40px;
+        left: calc(50% - 50px);
+    }
+    
+    h1 {
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 22px;
+    }
+    
+    .loginbox p {
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+    }
+    
+    .loginbox input {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .loginbox input[type="text"],
+    input[type="password"] {
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: #fff;
+        font-size: 16px;
+    }
+    
+    .password-container {
+        position: relative;
+    }
+    
+    .password-container input[type="password"] {
+        width: calc(100% - 30px); /* Adjusted width to accommodate icon */
+    }
+    
+    .toggle-password {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+    
+    .toggle-password i {
+        font-size: 20px;
+        color: #ccc; /* Adjust icon color as needed */
+    }
+    
+    .loginbox input[type="email"],
+    input[type="password"] {
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: #fff;
+        font-size: 16px;
+    }
+    
+    .loginbox input[type="submit"] {
+        border: none;
+        outline: none;
+        height: 40px;
+        background: #fb2525;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 20px;
+    }
+    
+    .loginbox input[type="submit"]:hover {
+        cursor: pointer;
+        background: #ffc107;
+        color: #000;
+    }
+    
+    .loginbox a {
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 20px;
+        color: darkgray;
+    }
+    
+    .loginbox a:hover {
+        color: #ffc107;
+    }
+    
+    h1 {
+        margin-top: 100px;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 30px;
+        color: #fff;
+      }
