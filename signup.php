@@ -13,7 +13,7 @@ if(isset($_POST["submit"]))
     }
     else{
         if($password == $confirmpassword){
-            $query = "INSERT INTO user (username, email, password, role) VALUES ('$username', '$email', '$password', '$role')";
+            $query = "INSERT INTO user (username, email, password) VALUES ('$username', '$email', '$password')";
             mysqli_query($connect, $query);
             echo "<script>alert('Registration Successful');</script>";
             // Redirect to home page after 2 seconds
