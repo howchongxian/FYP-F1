@@ -34,44 +34,54 @@
 <ol id="menu">
   <li class="active_menu_item"><a href="index.html" style="color:#FFF">Home</a>
     <!-- sub menu -->
-    <ol>
-      <li><a href="nivo.html">Nivo Slider</a></li>
-      <li><a href="ei-slider.html">EI Slider</a></li>
-      <li><a href="fullscreen-gallery.html">Fullscreen Slider</a></li>
-      <li><a href="image-frontpage.html">Static Image</a></li>
-    </ol>
   </li>
   <!-- end sub menu -->
-  <li><a href="#">Pages</a>
+  <li><a href="#">Latest</a>
     <!-- sub menu -->
     <ol>
-      <li><a href="magazine.html">Magazine</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="full-width.html">Full Width Page</a></li>
-      <li><a href="columns.html">Columns</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="videos.html">Videos</a></li>
     </ol>
   </li>
   <!-- end sub menu -->
-  <li><a href="elements.html">Elements</a></li>
-  <li><a href="#">Galleries</a>
+  <li><a href="#">Schedule & Results</a>
     <!-- sub menu -->
     <ol>
-      <li><a href="gallery-simple.html">Simple</a></li>
-      <li><a href="portfolio.html">Filterable</a></li>
-      <li><a href="gallery-fader.html">Fade Scroll</a></li>
-      <li><a href="video.html">Video</a></li>
-      <li class="last"><a href="photogrid.html">PhotoGrid</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="results.html">Results</a></li>
+    </ol>
+  </li>
+  <li><a href="#">Drivers & Teams</a>
+    <!-- sub menu -->
+    <ol>
+      <li><a href="driver.html">Drivers</a></li>
+      <li><a href="team.html">Teams</a></li>
     </ol>
   </li>
   <!-- end sub menu -->
-  <li><a href="contact.html">Contact</a></li>
+  <li><a href="product.php">Products</a>
+    <!-- sub menu -->
+    <ol>
+      <li><a href="product.php">Products</a></li>
+      <li><a href="shopping_cart.php">Shopping Cart</a></li>
+    </ol>
+  </li>
+  <li><a href="#">About Us</a>
+  <ol>
+    <li><a href="about_us.html">About Us</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ol>
+  </li>
+
+  <div id="login_button">
+  <a href="login.html"><button>Login</button></a>
+</div>
 </ol>
 <div id="container">
-  <div id="site_title"><a href="index.html"><img src="img/logo.png" alt=""></a></div>
   <h1>Feedback</h1>
 
   <div class="feedback-form">
-    <form action="comment.php" method="post">
+    <form action="feedback.php" method="post">
         <label for="feedback"><br><br>Your Feedback:</label>
         <textarea id="feedback" name="feedback" required></textarea>
 
