@@ -1,0 +1,137 @@
+.about-us{
+    margin: 70px;
+    padding: 20px;
+    margin-top: 100px; 
+    background: rgba(255, 255, 255, 0.689);  
+    border-radius: 30px;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: auto;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex{
+    flex: 1;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-us h2{
+    font-size: 45px;
+    color: #292525; 
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.about-us h3{
+    font-size: 22px;
+    color: #747474;
+    margin-top: 8px;
+}
+
+.about-us p{
+    font-size: 18px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.about-us img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.our h2{
+    font-size: 45px;
+    color: #333; 
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.team{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 70px;
+}
+
+.team .card{
+    width: 250px;
+    height: 350px;
+    padding: 40px 20px;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.689);  ;
+    box-shadow: 0.6em 0.6em 0.9em #9c4e4e;
+    border-radius: 20px;
+}
+
+.team .card .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.team .card .content .imgBx{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.team .card .content .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team .card .content .contentBx h4{
+    color: #16164b;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.team .card .content .contentBx h5{
+    color: #283251;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.line{
+    margin-bottom: 20px;
+    width: 90%;
+    margin-left: 60px;
+    opacity: 0.7;
+}
+
+.team .card .content .sci a{
+    text-decoration: none;
+    color: #6e2171;
+    font-size: 30px;
+    margin: 10px;
+    transition: color 0.4s;
+}
+
+.team .card .content .sci a:hover{
+    color: #0196e3;
+}
