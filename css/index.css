@@ -1,0 +1,25 @@
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.news-card {
+    width: 300px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #333;
+}
+
+.news-card h3,
+.news-card p{
+    color: white;
+    font-size: 16px;
+}
+
+.news-card a{
+    color: #eee;
+    font-size: 12px;
+}
