@@ -14,12 +14,12 @@
 }
 
 .news-card h3,
-.news-card p{
+.news-card p {
     color: white;
     font-size: 16px;
 }
 
-.news-card a{
+.read-more a {
     color: #eee;
     font-size: 12px;
 }
@@ -127,4 +127,12 @@ ul {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 50px;
+    font-size: 32px;
+    font-weight: bold; /* Add this line to make it bold */
 }
