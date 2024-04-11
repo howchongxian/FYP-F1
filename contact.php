@@ -52,7 +52,13 @@ if(isset($_POST["submit"]))
       <li><a href="team.html">Teams</a></li>
     </ol>
   </li>
-  <li><a href="product.php">Products</a></li>
+  <li><a href="#">Shop</a>
+    <ol>
+      <li><a href="product.php">Products</a></li>
+      <li><a href="shopping_cart.php">Shopping Cart</a></li>
+      <li><a href="feedback.php">Feedback</a></li>
+    </ol>
+  </li>
   <li><a href="#">About Us</a>
   <ol>
     <li><a href="about_us.html">About Us</a></li>
