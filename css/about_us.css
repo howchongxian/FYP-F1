@@ -135,3 +135,61 @@
 .team .card .content .sci a:hover{
     color: #0196e3;
 }
+
+.help {
+    text-align: center;
+    margin-top: 50px;
+    color: #333;
+    font-size: 20px;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.form-container {
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.form-container h3 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contactfrm input,
+.contactfrm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.contactfrm textarea {
+    resize: vertical;
+}
+
+.send-button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.map {
+    width: 600px;
+    height: 450px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
