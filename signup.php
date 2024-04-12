@@ -60,6 +60,48 @@ $(document).ready(function () {
 </script>
 </head>
 <body>
+<ol id="menu">
+  <li class="active_menu_item"><a href="index.html" style="color:#FFF">Home</a>
+    <!-- sub menu -->
+  </li>
+  <!-- end sub menu -->
+  <li><a href="#">Latest</a>
+    <!-- sub menu -->
+    <ol>
+      <li><a href="news.html">News</a></li>
+      <li><a href="videos.html">Videos</a></li>
+    </ol>
+  </li>
+  <!-- end sub menu -->
+  <li><a href="schedule_result.html">Schedule & Result</a></li>
+  <li><a href="#">Drivers & Teams</a>
+    <!-- sub menu -->
+    <ol>
+      <li><a href="driver.html">Drivers</a></li>
+      <li><a href="team.html">Teams</a></li>
+    </ol>
+  </li>
+  <!-- end sub menu -->
+  <li><a href="#">Shop</a>
+    <!-- sub menu -->
+    <ol>
+      <li><a href="product.php">Products</a></li>
+      <li><a href="shopping_cart.php">Shopping Cart</a></li>
+      <li><a href="feedback.php">Feedback</a></li>
+    </ol>
+  </li>
+  <li><a href="#">About Us</a>
+  <ol>
+    <li><a href="about_us.html">About Us</a></li>
+    <li><a href="contact.php">Contact Us</a></li>
+  </ol>
+  </li>
+
+  <div id="login_button">
+  <a href="login.html"><button>Login</button></a>
+</div>
+</ol>
+
     <div class="loginbox">
         <img src="images/avatar.png" class="avatar" style="margin-top:90px">
         <h1>Sign Up</h1>
