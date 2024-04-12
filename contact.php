@@ -40,12 +40,7 @@ if(isset($_POST["submit"]))
       <li><a href="videos.html">Videos</a></li>
     </ol>
   </li>
-  <li><a href="#">Schedule & Results</a>
-    <ol>
-      <li><a href="schedule.html">Schedule</a></li>
-      <li><a href="results.html">Results</a></li>
-    </ol>
-  </li>
+  <li><a href="schedule_result.html">Schedule & Result</a></li>
   <li><a href="#">Drivers & Teams</a>
     <ol>
       <li><a href="driver.html">Drivers</a></li>
