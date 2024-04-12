@@ -2,14 +2,14 @@
 
 <!DOCTYPE HTML>
 <head>
-<title>Concept | Elements</title>
+<title>Feedback</title>
 <meta charset="utf-8">
 <!-- Google Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 <!-- CSS Files -->
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
 <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
-<link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen">
+<link rel="stylesheet" type="text/css" media="screen" href="css\feedback.css">
 <!-- JS Files -->
 <script src="js/jquery.min.js"></script>
 <script src="js/custom.js"></script>
@@ -59,17 +59,18 @@
     </ol>
   </li>
   <!-- end sub menu -->
-  <li><a href="product.php">Products</a>
+  <li><a href="#">Shop</a>
     <!-- sub menu -->
     <ol>
       <li><a href="product.php">Products</a></li>
       <li><a href="shopping_cart.php">Shopping Cart</a></li>
+      <li><a href="feedback.php">Feedback</a></li>
     </ol>
   </li>
   <li><a href="#">About Us</a>
   <ol>
     <li><a href="about_us.html">About Us</a></li>
-    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="contact.php">Contact Us</a></li>
   </ol>
   </li>
 
