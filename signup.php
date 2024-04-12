@@ -23,11 +23,6 @@ if(isset($_POST["submit"]))
             echo "<script>alert('Password Does Not Match!');</script>";
         }
     }
-    // After successful login
-    if ($login_successful) {
-    header("Location: profile.php");
-    exit();
-    }
 }
 ?>
 
