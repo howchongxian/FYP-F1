@@ -12,7 +12,7 @@
 <body>
 <!-- Main Menu -->
 <ol id="menu">
-  <li class="active_menu_item"><a href="index.html" style="color:#FFF">Home</a>
+  <li class="active_menu_item"><a href="index.php" style="color:#FFF">Home</a>
   </li>
   <li><a href="#">Latest</a>
     <ol>
@@ -42,7 +42,7 @@
   </li>
 
   <div id="login_button">
-  <a href="login.html"><button>Login</button></a>
+  <a href="login.php"><button>Login</button></a>
 </div>
 </ol>
 <div class="help">
