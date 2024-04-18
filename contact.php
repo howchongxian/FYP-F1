@@ -1,23 +1,3 @@
-<?php
-include("dataconnection.php");
-if(isset($_POST["submit"]))
-{
-    $username = $_POST["UName"];
-    $email = $_POST["Email"];
-    $tel = $_POST["tel"];
-    $Msg = $_POST["msg"];
-    
-	mysqli_query($connect,"insert into contact(contact_name,contact_email,contact_tel,contact_message) values
-	('$username','$email','$tel','$Msg')");
-?>
-<!--Alert user that was saved-->
-<script type="text/javascript">
-    alert("<?php echo ' Contact saved' ?>");
-</script>
-
-<?php
-}
-?>
 <!DOCTYPE HTML>
 <head>
 <title>Contact Us</title>
@@ -32,7 +12,7 @@ if(isset($_POST["submit"]))
 <body>
 <!-- Main Menu -->
 <ol id="menu">
-  <li class="active_menu_item"><a href="index.html" style="color:#FFF">Home</a>
+  <li class="active_menu_item"><a href="index.php" style="color:#FFF">Home</a>
   </li>
   <li><a href="#">Latest</a>
     <ol>
@@ -57,12 +37,12 @@ if(isset($_POST["submit"]))
   <li><a href="#">About Us</a>
   <ol>
     <li><a href="about_us.html">About Us</a></li>
-    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="contact.php">Contact Us</a></li>
   </ol>
   </li>
 
   <div id="login_button">
-  <a href="login.html"><button>Login</button></a>
+  <a href="login.php"><button>Login</button></a>
 </div>
 </ol>
 <div class="help">
@@ -134,3 +114,23 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 </script>
 </body>
 </html>
+<?php
+include("dataconnection.php");
+if(isset($_POST["submit"]))
+{
+    $username = $_POST["UName"];
+    $email = $_POST["Email"];
+    $tel = $_POST["tel"];
+    $Msg = $_POST["msg"];
+    
+	mysqli_query($connect,"insert into contact(contact_name,contact_email,contact_tel,contact_message) values
+	('$username','$email','$tel','$Msg')");
+?>
+<!--Alert user that was saved-->
+<script type="text/javascript">
+    alert("<?php echo ' Contact saved' ?>");
+</script>
+
+<?php
+}
+?>

@@ -17,7 +17,7 @@ if(isset($_POST["submit"]))
             mysqli_query($connect, $query);
             echo "<script>alert('Registration Successful');</script>";
             // Redirect to home page after 2 seconds
-            echo "<script>setTimeout(function(){ window.location.href = 'home.php'; }, 1000);</script>";
+            echo "<script>setTimeout(function(){ window.location.href = 'index.html'; }, 1000);</script>";
         }
         else{
             echo "<script>alert('Password Does Not Match!');</script>";
@@ -61,7 +61,7 @@ $(document).ready(function () {
 </head>
 <body>
 <ol id="menu">
-  <li class="active_menu_item"><a href="index.html" style="color:#FFF">Home</a>
+  <li class="active_menu_item"><a href="index.php" style="color:#FFF">Home</a>
     <!-- sub menu -->
   </li>
   <!-- end sub menu -->
@@ -98,7 +98,7 @@ $(document).ready(function () {
   </li>
 
   <div id="login_button">
-  <a href="login.html"><button>Login</button></a>
+  <a href="login.php"><button>Login</button></a>
 </div>
 </ol>
 
