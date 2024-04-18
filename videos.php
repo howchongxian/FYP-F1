@@ -1,3 +1,4 @@
+<?php include("dataconnection.php"); ?>
 <!DOCTYPE HTML>
 <head>
 <title>videos</title>
@@ -17,15 +18,15 @@
     <!-- end sub menu -->
     <li><a href="#">Latest</a>
       <ol>
-        <li><a href="news.html">News</a></li>
-        <li><a href="videos.html">Videos</a></li>
+        <li><a href="news.php">News</a></li>
+        <li><a href="videos.php">Videos</a></li>
       </ol>
     </li>
-    <li><a href="schedule_result.html">Schedule & Result</a></li>
+    <li><a href="schedule_result.php">Schedule & Result</a></li>
     <li><a href="#">Drivers & Teams</a>
       <ol>
-        <li><a href="driver.html">Drivers</a></li>
-        <li><a href="team.html">Teams</a></li>
+        <li><a href="driver.php">Drivers</a></li>
+        <li><a href="team.php">Teams</a></li>
       </ol>
     </li>
     <li><a href="#">Shop</a>
@@ -37,7 +38,7 @@
     </li>
     <li><a href="#">About Us</a>
     <ol>
-      <li><a href="about_us.html">About Us</a></li>
+      <li><a href="about_us.php">About Us</a></li>
       <li><a href="contact.php">Contact Us</a></li>
     </ol>
     </li>
