@@ -17,7 +17,7 @@ if(isset($_POST["submit"]))
             mysqli_query($connect, $query);
             echo "<script>alert('Registration Successful');</script>";
             // Redirect to home page after 2 seconds
-            echo "<script>setTimeout(function(){ window.location.href = 'index.html'; }, 1000);</script>";
+            echo "<script>setTimeout(function(){ window.location.href = 'index.php'; }, 1000);</script>";
         }
         else{
             echo "<script>alert('Password Does Not Match!');</script>";
@@ -192,7 +192,7 @@ $(document).ready(function () {
         var loginLink = document.querySelector('.login-signup .signin-text');
         loginLink.addEventListener('click', function(event) {
             event.preventDefault();
-            window.location.href = "login.html";
+            window.location.href = "login.php";
         });
     </script>
 </html>

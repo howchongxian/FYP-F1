@@ -44,7 +44,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         else {
             // 普通用户登录
             $_SESSION["role"] = "user";
-            header("Location:index.html"); // 重定向到用户页面
+            header("Location:index.php"); // 重定向到用户页面
             exit();
         }
     } else {
