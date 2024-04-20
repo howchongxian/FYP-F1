@@ -84,7 +84,7 @@ $(document).ready(function () {
                 </span>
             </div>
             <input type="submit" value="Login" name="submit">
-            <a href="" id="forgetPasswordLink" onclick="showAlert()">Forget Password? </a><br>
+            <a href="forgot_password.php">Forgot password?</a><br>
             <a href="signup.php">Don't have an account?</a>
         </form>
     </div>
@@ -106,10 +106,6 @@ $(document).ready(function () {
         toggleIcon.classList.remove("uil-eye-slash");
         toggleIcon.classList.add("uil-eye");
     }
-}
-
-    function showAlert() {
-        alert("We Have Send Code To Your Email. Pls Check");
 }
 </script>
 </body>
