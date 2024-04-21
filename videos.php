@@ -46,10 +46,16 @@
 
   <h1>F1 Videos</h1>
   <div class="video-container">
+  <div class="video-card">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/MQLl-0FlLr4?si=98Hy7IiiRrYtCFvj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <h3>Race Highlights | Formula 1 Chinese Grand Prix 2024</h3>
+        <a href="https://youtu.be/MQLl-0FlLr4?si=98Hy7IiiRrYtCFvj" target="_blank">Watch on YouTube</a>
+    </div>
+
     <div class="video-card">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/0p62wCm5-KQ?si=NF2z_Zq7s2rotcZN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <h3>Podium Celebrations | Formula 1 Japanese Grand Prix 2024</h3>
-        <a href="https://youtu.be/0p62wCm5-KQ?si=NF2z_Zq7s2rotcZN" target="_blank">Watch on YouTube</a>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/29NuNyNPVUA?si=OrmZz8sKtSPtlAx7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <h3>Sprint Race Highlights | Formula 1 Chinese Grand Prix 2024</h3>
+        <a href="https://youtu.be/29NuNyNPVUA?si=OrmZz8sKtSPtlAx7" target="_blank">Watch on YouTube</a>
     </div>
 
     <div class="video-card">
