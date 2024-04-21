@@ -40,10 +40,6 @@
     <li><a href="contact.php">Contact Us</a></li>
   </ol>
   </li>
-
-  <div id="login_button">
-  <a href="login.php"><button>Login</button></a>
-</div>
 </ol>
 <div class="help">
   <h2>Formula 1 Website</h2>

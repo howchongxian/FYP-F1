@@ -42,10 +42,6 @@
       <li><a href="contact.php">Contact Us</a></li>
     </ol>
     </li>
-  
-    <div id="login_button">
-    <a href="login.php"><button>Login</button></a>
-  </div>
   </ol>
 
   <h1>F1 Videos</h1>

@@ -1,4 +1,14 @@
-<?php include("dataconnection.php"); ?>
+<?php
+session_start();
+
+include "dataconnection.php";
+// Check if user is logged in
+if(!isset($_SESSION['userid'])) {
+    header("Location: login.php"); // Redirect to login page if not logged in
+    exit();
+}
+?>
+
 <!DOCTYPE HTML>
 <head>
 <title>index</title>
@@ -61,10 +71,6 @@ $(document).ready(function () {
     <li><a href="contact.php">Contact Us</a></li>
   </ol>
   </li>
-
-  <div id="login_button">
-  <a href="login.php"><button>Login</button></a>
-</div>
 </ol>
 
 <div class="news-container">

@@ -3,6 +3,11 @@
 session_start();
 include "dataconnection.php";
 
+if(isset($_SESSION['userid'])) {
+    header("Location: index.php"); // Redirect to index page if already logged in
+    exit();
+}
+
 if (isset($_POST['username']) && isset($_POST['password'])) {
     function validate($data)
     {

@@ -66,9 +66,6 @@ $(document).ready(function () {
   </ol>
   </li>
 
-  <div id="login_button">
-  <a href="login.php"><button>Login</button></a>
-</div>
 </ol>
 
 <div class="about-us">

@@ -61,10 +61,6 @@ $(document).ready(function () {
     <li><a href="contact.php">Contact Us</a></li>
   </ol>
   </li>
-
-  <div id="login_button">
-  <a href="login.php"><button>Login</button></a>
-</div>
 </ol>
 
 <h2>Formula 1 Schedule and Results</h2>

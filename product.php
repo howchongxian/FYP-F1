@@ -52,10 +52,6 @@
     <li><a href="contact.php">Contact Us</a></li>
   </ol>
   </li>
-
-  <div id="login_button">
-  <a href="login.php"><button>Login</button></a>
-</div>
 </ol>
 <div id="container">
   <h1>F1 Product Shop</h1>
