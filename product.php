@@ -65,7 +65,7 @@
                     <th>Product size</th>
                     <th>Product Description</th>
                     <th>product Price</th>			
-                    <th>Action</th>
+                    <th colspan="2">Action</th>
                 </tr>
     
                 <?php
@@ -83,7 +83,8 @@
                         <td><?php echo $row["product_size"];?></td>
                         <td><?php echo $row["description"];?></td>
                         <td>£<?php echo $row["product_price"];?></td>
-                        <td><a href="Order.php">Order Now</a></td>
+                        <td><a href="order.php">Order Now</a></td>
+                        <td><a href="add_ShoppingCart.php">Add to Shopping Cart</a></td>
                         <!--<td><a href="manage product.php?edit&procode=<?php echo $row['product_code']; ?>">Edit</a></td>-->
                         <!--<td><a href="product_list.php?del&procode=<?php echo $row['product_code']; ?>" onclick="return confirmation();">Delete</a></td>-->
                     </tr>
@@ -102,7 +103,7 @@
                     <th>Race ID</th>
                     <th>Stand</th>
                     <th>Ticket Price</th>			
-                    <th>Action</th>
+                    <th colspan="2">Action</th>
                 </tr>
     
                 <?php
@@ -119,6 +120,7 @@
                         <td><?php echo $row["stand"];?></td>
                         <td>£<?php echo $row["ticket_price"];?></td>
                         <td><a href="Order.php">Order Now</a></td>
+                        <td><a href="add_ShoppingCart.php">Add to Shopping Cart</a></td>
                         <!--<td><a href="manage product.php?edit&procode=<?php echo $row['product_code']; ?>">Edit</a></td>-->
                         <!--<td><a href="product_list.php?del&procode=<?php echo $row['product_code']; ?>" onclick="return confirmation();">Delete</a></td>-->
                     </tr>
