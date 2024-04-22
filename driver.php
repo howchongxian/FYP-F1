@@ -1,7 +1,7 @@
 <?php include("dataconnection.php"); ?>
 <!DOCTYPE HTML>
 <head>
-<title>about us</title>
+<title>Driver</title>
 <meta charset="utf-8">
 <!-- Google Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
