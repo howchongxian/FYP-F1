@@ -46,8 +46,8 @@ if ($_POST["password"] !== $_POST["password_confirmation"]) {
 $password = password($_POST["password"], PASSWORD_DEFAULT);
 
 $sql = "UPDATE user
-        SET password_hash = ?,
-            reset_token_hash = NULL,
+        SET password = ?,
+            reset_token = NULL,
             reset_token_expires_at = NULL
         WHERE id = ?";
 
