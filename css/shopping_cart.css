@@ -21,13 +21,19 @@ tr:hover {
     background-color: #f5f5f5;
 }
 
-.cart-buttons button{
-    width: 20%;
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
+.sc_btn{
+    width: 10%;
+    background-color: #007bff;
+    display: inline-block;
+    justify-content: center;
+    color: white;
     border: none;
+    margin: 5px;
+    padding: 5px 10px;
     border-radius: 5px;
-    cursor: pointer;
+    text-align: center;
+}
+
+.sc_btn:hover {
+    background-color: #0056b3; 
 }

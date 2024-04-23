@@ -53,7 +53,7 @@
   </ol>
   </li>
 </ol>
-<div id="container">
+<div id="product_shop">
   <h1>F1 Product Shop</h1>
     <div class="product-list">
       <h2>Clothes</h2>
@@ -83,8 +83,8 @@
                         <td><?php echo $row["product_size"];?></td>
                         <td><?php echo $row["description"];?></td>
                         <td>£<?php echo $row["product_price"];?></td>
-                        <td><a href="order.php">Order Now</a></td>
-                        <td><a href="add_ShoppingCart.php">Add to Shopping Cart</a></td>
+                        <td><a class="product-btn" href="order.html">Order Now</a></td>
+                        <td><a class="product-btn" href="add_ShoppingCart.php">Add to Shopping Cart</a></td>
                         <!--<td><a href="manage product.php?edit&procode=<?php echo $row['product_code']; ?>">Edit</a></td>-->
                         <!--<td><a href="product_list.php?del&procode=<?php echo $row['product_code']; ?>" onclick="return confirmation();">Delete</a></td>-->
                     </tr>
@@ -119,8 +119,8 @@
                         <td><?php echo $row["raceID"];?></td>
                         <td><?php echo $row["stand"];?></td>
                         <td>£<?php echo $row["ticket_price"];?></td>
-                        <td><a href="Order.php">Order Now</a></td>
-                        <td><a href="add_ShoppingCart.php">Add to Shopping Cart</a></td>
+                        <td><a class="product-btn" href="order.html">Order Now</a></td>
+                        <td><a class="product-btn" href="add_ShoppingCart.php">Add to Shopping Cart</a></td>
                         <!--<td><a href="manage product.php?edit&procode=<?php echo $row['product_code']; ?>">Edit</a></td>-->
                         <!--<td><a href="product_list.php?del&procode=<?php echo $row['product_code']; ?>" onclick="return confirmation();">Delete</a></td>-->
                     </tr>

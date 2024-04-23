@@ -72,8 +72,8 @@
   </table>             
 
     <div class="cart-buttons">
-      <button onclick="goBack()">Cancel</button>
-      <button><a href="Payment.php">Buy</a></button>
+      <a class="sc_btn" href="product.php">Cancel</a>
+      <a class="sc_btn" href="payment.html">Buy</a>
     </div>
 </div>
 
