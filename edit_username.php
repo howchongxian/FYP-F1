@@ -1,17 +1,34 @@
 <?php
-
 include_once "dataconnection.php";
 
+session_start(); // Start the session if not already started
+
+// Check if the user is logged in
+if (!isset($_SESSION['userId'])) {
+    echo "User not logged in.";
+    exit;
+}
+
+// Retrieve the user ID from the session
+$userId = $_SESSION['userId'];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     $newUsername = $_POST["newUsername"];
-
 
     if (strlen($newUsername) < 3) {
         echo "Username must be at least 3 characters long.";
         exit;
     }
-    echo "Username updated successfully to: " . $newUsername;
+
+    // Update the existing username in the database
+    $sql = "UPDATE `user` SET `username`='$newUsername' WHERE `id`='$userId'";
+    if (mysqli_query($connect, $sql)) {
+        echo "Username updated successfully to: " . $newUsername;
+    } else {
+        echo "Error updating username: " . mysqli_error($connect);
+    }
+
+    mysqli_close($connect);
 }
 ?>
 
@@ -77,9 +94,9 @@ $(document).ready(function () {
   </style>
 </head>
 <body>
-  <div class="container">
+<div class="container">
     <h2>Edit Username</h2>
-    <form id="editUsernameForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form id="editUsernameForm" method="POST" action="edit-username.php">
       <label for="newUsername">New Username:</label>
       <input type="text" id="newUsername" name="newUsername" required>
       <button type="submit" name="submit">Submit</button>
