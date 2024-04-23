@@ -2,7 +2,7 @@
 
 <!DOCTYPE HTML>
 <head>
-<title>Shop</title>
+<title>Admin</title>
 <meta charset="utf-8">
 <!-- Google Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
@@ -13,6 +13,15 @@
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
 <script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
+<script type="text/javascript">
+
+function confirmation()
+{
+	answer = confirm("Do you want to delete this product?");
+	return answer;
+}
+
+</script>
 </head>
 <body>
     <div id="container">

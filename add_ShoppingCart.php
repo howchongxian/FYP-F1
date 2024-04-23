@@ -11,7 +11,7 @@ if (isset($_GET['product_code'])) {
 
     if ($row = mysqli_fetch_assoc($result)) {
         $price = $row['product_price'];
-        $add_query = "INSERT INTO shopping_cart (userid, product_code, price) VALUES ('$userid', '$product_code', '$price')";
+        $add_query = "INSERT INTO shopping_cart (id, product_code, product_price) VALUES ('$userid', '$product_code', '$price')";
         mysqli_query($connect, $add_query);
     }
 }
@@ -23,7 +23,7 @@ if (isset($_GET['ticketID'])) {
 
     if ($row = mysqli_fetch_assoc($result)) {
         $price = $row['ticket_price'];
-        $add_query = "INSERT INTO shopping_cart (userid, ticketID, price) VALUES ('$userid', '$ticketID', '$price')";
+        $add_query = "INSERT INTO shopping_cart (id, ticketID, ticket_price) VALUES ('$userid', '$ticketID', '$price')";
         mysqli_query($connect, $add_query);
     }
 }
