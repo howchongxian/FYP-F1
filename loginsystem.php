@@ -1,66 +1,42 @@
-
 <?php
 session_start();
-include "dataconnection.php";
 
-if(isset($_SESSION['userid'])) {
-    header("Location: index.php"); // Redirect to index page if already logged in
-    exit();
+// Database connection
+$sname = "localhost";
+$uname = "root";
+$password = "";
+$db_name = "f1";
+
+$connect = mysqli_connect($sname,$uname,$password,$db_name);
+
+if(!$connect) {
+    echo "Connection failed";
+    exit(); // Exit if connection fails
 }
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    function validate($data)
-    {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
+if(isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    $uname = validate($_POST['username']);
-    $pass = validate($_POST['password']);
+    // Perform query to check if username and password match
+    $query = "SELECT * FROM user WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($connect, $query);
 
-    if (empty($uname)) {
-        header("Location: login.php?error=Username is required");
-        exit();
-    } else if (empty($pass)) {
-        header("Location: login.php?error=Password is required");
-        exit();
-    }
-
-    $sql = "SELECT * FROM user WHERE username = '$uname' AND password='$pass'";
-
-    $result = mysqli_query($connect, $sql);
-
-    if (mysqli_num_rows($result) === 1) {
-        $row = mysqli_fetch_assoc($result);
-
-    if ($row) {
-        // 登录成功
-        $_SESSION["userid"] = $row["id"]; // 保存用户ID到会话中
-    
-        if ($row["role"] == "admin") {
-            // 管理员登录
-            $_SESSION["role"] = "admin";
-            header("Location: userlist.php"); // 重定向到管理员页面
-            echo "Welcome, Admin!";
-            exit();
-        } 
-        else {
-            // 普通用户登录
-            $_SESSION["role"] = "user";
-            header("Location:index.php"); // 重定向到用户页面
-            exit();
-        }
+    if(mysqli_num_rows($result) == 1) {
+        // Username and password match
+        $user = mysqli_fetch_assoc($result);
+        $_SESSION['userid'] = $user['id']; // Assuming 'id' is the primary key of the 'user' table
+        header("Location: index.php"); // Redirect to index.php
+        exit(); // Stop further execution
     } else {
-        // 登录失败
+        // Username and password do not match
         $error = "Invalid username or password";
+        header("Location: login.php?error=" . urlencode($error)); // Redirect to login.php with error message
+        exit();
     }
-}
-
-else {
-    header("Location: login.php?error=Incorrect Username or Password");
+} else {
+    // If user accessed loginsystem.php directly without submitting the form
+    header("Location: login.php"); // Redirect to login.php
     exit();
-}
 }
 ?>
