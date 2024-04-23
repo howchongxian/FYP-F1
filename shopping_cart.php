@@ -1,3 +1,12 @@
+<?php
+include("dataconnection.php"); 
+session_start();
+$userid = $_SESSION['userid'];
+
+$query = "SELECT * FROM shopping_cart WHERE id = '$userid'";
+$result = mysqli_query($connect, $query);
+?>
+
 <!DOCTYPE HTML>
 <head>
 <title>Shopping Cart</title>
@@ -62,13 +71,34 @@
 
   <table class="product-table" border="1" width="700px" height="100px">
                 <tr>
-                    <th>Product Code</th>
+                    <th>Product Code/Ticket ID</th>
                     <th>Product Image</th>
                     <th>Product Name</th>
-                    <th>Product size</th>
-                    <th>Product Description</th>
-                    <th>product Price</th>			
+                    <th>Quantity</th>
+                    <th>Product/Ticket Price</th>	
+                    <th>Action</th>		
                 </tr>
+
+                <?php
+                
+                $result = mysqli_query($connect, "select * from product");	
+                while($row = mysqli_fetch_assoc($result))
+                    {
+                    ?>			
+    
+                    <tr>
+                        <td><?php echo $row["product_code"];?></td>
+                        <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
+                        <td><?php echo $row["product_name"];?></td>
+                        <td><?php echo $row["quantity"];?></td>
+                        <td>£<?php echo $row["product_price"];?></td>
+                        <td><a href="delete.php?del&procode=<?php echo $row['product_code']; ?>" onclick="return confirmation();">Delete</a></td>
+                    </tr>
+                    <?php
+                    
+                    }		
+                
+                ?>
   </table>             
 
     <div class="cart-buttons">
