@@ -1,76 +1,72 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Forgot Password</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-</head>
 <?php
-include_once('dataconnection.php'); // Include the dataconnection.php file
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-if(isset($_REQUEST['pwdrst']))
-{
-  $email = $_REQUEST['email'];
-  $check_email = mysqli_query($connect, "select email from user where email='$email'");
-  $res = mysqli_num_rows($check_email);
-  if($res > 0)
-  {
-    $message = '<div>
-     <p><b>Hello!</b></p>
-     <p>You are receiving this email because we received a password reset request for your account.</p>
-     <br>
-     <p><button class="btn btn-primary"><a href="http://localhost/user-login/passwordreset.php?secret='.base64_encode($email).'">Reset Password</a></button></p>
-     <br>
-     <p>If you did not request a password reset, no further action is required.</p>
-    </div>';
+require 'vendor/autoload.php';
+include('dataconnection.php');
+// 处理邮件发送逻辑
+if(isset($_POST['submit'])){
+    $to = $_POST['to'];
 
-    include_once("SMTP/class.phpmailer.php");
-    include_once("SMTP/class.smtp.php");
-    $email = $email; 
-    $mail = new PHPMailer;
-    $mail->IsSMTP();
-    $mail->SMTPAuth = true;                 
-    $mail->SMTPSecure = "tls";      
-    $mail->Host = 'smtp.gmail.com';
-    $mail->Port = 587; 
-    $mail->Username = ""; // Your Gmail username
-    $mail->Password = ""; // Your Gmail password
-    $mail->FromName = "Tech Area";
-    $mail->AddAddress($email);
-    $mail->Subject = "Reset Password";
-    $mail->isHTML(TRUE);
-    $mail->Body = $message;
-    if($mail->send())
-    {
-      $msg = "We have emailed your password reset link!";
+    $sql = "SELECT * FROM user WHERE email = '$to'";
+    $result = $connect->query($sql);
+    
+    if ($result->num_rows > 0) {
+        // 如果存在匹配的记录，发送邮件
+        $subject = "Password Reset";
+        $message = '<html><body>';
+        $message .= '<h1>Password Reset</h1>';
+        $message .= '<p>To reset your password, click the link below:</p>';
+        $message .= '<p><a href="login.php">Reset Password</a></p>';
+        $message .= '</body></html>';
+        
+        $mail = new PHPMailer(true);
+
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'howchongxian@gmail.com';
+            $mail->Password = 'xnkm yzlm bazw swzk'; 
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+
+            $mail->setFrom('your_email@gmail.com', 'F1');
+            $mail->addAddress($to);
+
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body = $message;
+
+            $mail->send();
+            echo 'Email sent successfully';
+        } catch (Exception $e) {
+            echo "Failed to send email. Error: {$mail->ErrorInfo}";
+        }
+    } else {
+        // 如果数据库中不存在匹配的记录，显示消息给用户
+        echo "Email address not found in database";
     }
-  }
-  else
-  {
-    $msg = "We can't find a user with that email address";
-  }
-}
 
+    $connect->close(); // 关闭数据库连接
+}
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Reset</title>
+</head>
 <body>
-<div class="container">  
-    <div class="table-responsive">  
-    <h3 align="center">Forgot Password</h3><br/>
-    <div class="box">
-     <form id="validate_form" method="post" >  
-       <div class="form-group">
-       <label for="email">Email Address</label>
-       <input type="text" name="email" id="email" placeholder="Enter Email" required 
-       data-parsley-type="email" data-parsley-trigger="keyup" class="form-control" />
-      </div>
-      <div class="form-group">
-       <input type="submit" id="login" name="pwdrst" value="Send Password Reset Link" class="btn btn-success" />
-       </div>
-       
-       <p class="error"><?php if(!empty($msg)){ echo $msg; } ?></p>
-     </form>
-     </div>
-   </div>  
-  </div>
+    <h1>Password Reset</h1>
+    <form method="post">
+        <p>
+            <label for="to">TO:</label>
+            <input type="text" name="to" placeholder="Enter your email address"/>
+        </p>
+        <button type="submit" name="submit">Send Reset Link</button>
+    </form>
 </body>
 </html>
