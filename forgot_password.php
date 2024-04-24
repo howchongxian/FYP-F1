@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
         $message = '<html><body>';
         $message .= '<h1>Password Reset</h1>';
         $message .= '<p>To reset your password, click the link below:</p>';
-        $message .= '<p><a href="login.php">Reset Password</a></p>';
+        $message .= '<p><a href="http://localhost/FYP-F1/passwordreset.php">Reset Password</a></p>';
         $message .= '</body></html>';
         
         $mail = new PHPMailer(true);
