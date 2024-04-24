@@ -100,8 +100,8 @@
             <table class="product-table" border="1" width="700px" height="100px">
                 <tr>
                     <th>Ticket ID</th>
-                    <th>Race ID</th>
-                    <th>Stand</th>
+                    <th>Race</th>
+                    <th>Grandstand</th>
                     <th>Ticket Price</th>			
                     <th colspan="2">Action</th>
                 </tr>

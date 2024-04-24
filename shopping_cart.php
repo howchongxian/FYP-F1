@@ -139,7 +139,7 @@ function confirmation()
 
     <div class="cart-buttons">
       <a class="sc_btn" href="product.php">Cancel</a>
-      <a class="sc_btn" href="payment.html">Buy</a>
+      <a class="sc_btn" href="payment.html">Check Out</a>
     </div>
 </div>
 
