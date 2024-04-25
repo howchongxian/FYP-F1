@@ -58,6 +58,11 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Reset</title>
+    <link rel="stylesheet" type="text/css" href="css/forgot_password.css">
+    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
 </head>
 <body>
     <h1>Password Reset</h1>
