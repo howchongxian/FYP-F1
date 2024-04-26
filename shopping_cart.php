@@ -100,7 +100,7 @@ function confirmation()
                         <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
                         <td><?php echo $row["product_name"];?></td>
                         <td><?php echo $row["quantity"];?></td>
-                        <td>£<?php echo $row["product_price"];?></td>
+                        <td><?php echo $row["product_price"];?></td>
                         <td><a class="del_btn" href="delete.php?del&procode=<?php echo $row['product_code']; ?>" onclick="return confirmation();">Delete</a></td>
                     </tr>
                     <?php
@@ -127,7 +127,7 @@ function confirmation()
                     <tr>
                         <td><?php echo $row["ticketID"];?></td>
                         <td><?php echo $row["quantity"];?></td>
-                        <td>£<?php echo $row["ticket_price"];?></td>
+                        <td><?php echo $row["ticket_price"];?></td>
                         <td><a class="del_btn" href="delete.php?del&procode=<?php echo $row['ticketID']; ?>" onclick="return confirmation();">Delete</a></td>
                     </tr>
                     <?php

@@ -82,7 +82,7 @@
                         <td><?php echo $row["product_name"];?></td>
                         <td><?php echo $row["product_size"];?></td>
                         <td><?php echo $row["description"];?></td>
-                        <td>£<?php echo $row["product_price"];?></td>
+                        <td><?php echo $row["product_price"];?></td>
                         <td><a class="product-btn" href="order.html">Order Now</a></td>
                         <td><a class="product-btn" href="add_ShoppingCart.php">Add to Shopping Cart</a></td>
                         <!--<td><a href="manage product.php?edit&procode=<?php echo $row['product_code']; ?>">Edit</a></td>-->
@@ -97,7 +97,7 @@
                 
             </table>
             <h2>Tickets</h2>
-            <table class="product-table" border="1" width="700px" height="100px">
+            <table class="ticket-table" border="1" width="700px" height="100px">
                 <tr>
                     <th>Ticket ID</th>
                     <th>Race</th>
@@ -116,9 +116,9 @@
     
                     <tr>
                         <td><?php echo $row["ticketID"];?></td>
-                        <td><?php echo $row["raceID"];?></td>
+                        <td><?php echo $row["race"];?></td>
                         <td><?php echo $row["stand"];?></td>
-                        <td>£<?php echo $row["ticket_price"];?></td>
+                        <td><?php echo $row["ticket_price"];?></td>
                         <td><a class="product-btn" href="order.html">Order Now</a></td>
                         <td><a class="product-btn" href="add_ShoppingCart.php">Add to Shopping Cart</a></td>
                         <!--<td><a href="manage product.php?edit&procode=<?php echo $row['product_code']; ?>">Edit</a></td>-->
