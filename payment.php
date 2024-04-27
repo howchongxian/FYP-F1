@@ -1,3 +1,13 @@
+<?php
+session_start();
+$userid = $_SESSION['userid'];
+
+if(!isset($_SESSION['userid'])) {
+  header("Location: login.php"); // Redirect to login page if not logged in
+  exit();
+}
+?>
+
 <!DOCTYPE HTML>
 <head>
 <title>Payment</title>
@@ -28,17 +38,17 @@
     <div class="payment-methods">
       <div class="payment-method">
         <input type="radio" name="payment-method" id="paypal" value="paypal" required>
-        <img src="images/paypal.png" alt="PayPal">
+        <img src="images/payment/paypal.png" alt="PayPal">
         <label for="paypal">PayPal</label>
       </div>
       <div class="payment-method">
         <input type="radio" name="payment-method" id="Touch'n Go" value="Touch'n Go" required>
-        <img src="images/tng.jpg" alt="Touch'n Go">
+        <img src="images/payment/tng.jpg" alt="Touch'n Go">
         <label for="paypal">Touch'n Go</label>
       </div>
       <div class="payment-method">
         <input type="radio" name="payment-method" id="credit-card" value="credit-card" required>
-        <img src="images/CreditCard.jpg" alt="Credit Card">
+        <img src="images/payment/CreditCard.jpg" alt="Credit Card">
         <label for="credit-card">Credit Card/Debit Card</label>
       </div>
     </div>

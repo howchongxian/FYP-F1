@@ -3,6 +3,12 @@ include("dataconnection.php");
 session_start();
 $userid = $_SESSION['userid'];
 
+// Check if user is not logged in
+if(!isset($_SESSION['userid'])) {
+  header("Location: login.php"); // Redirect to login page if not logged in
+  exit();
+}
+
 //$query = "SELECT * FROM shopping_cart WHERE id = '$userid'";
 //$result = mysqli_query($connect, $query);
 ?>

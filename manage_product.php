@@ -1,6 +1,7 @@
 <?php include("dataconnection.php"); ?>
 
 <!DOCTYPE HTML>
+<html>
 <head>
 <title>Admin</title>
 <meta charset="utf-8">
@@ -52,7 +53,7 @@ function confirmation()
                         <td><?php echo $row["product_name"];?></td>
                         <td><?php echo $row["product_size"];?></td>
                         <td><?php echo $row["description"];?></td>
-                        <td>£<?php echo $row["product_price"];?></td>
+                        <td><?php echo $row["product_price"];?></td>
                         <td><a href="edit_proudct.php?edit&procode=<?php echo $row['product_code']; ?>">Edit</a></td>
                         <td><a href="delete.php?del&procode=<?php echo $row['product_code']; ?>" onclick="return confirmation();">Delete</a></td>
                     </tr>
@@ -82,9 +83,9 @@ function confirmation()
     
                     <tr>
                         <td><?php echo $row["ticketID"];?></td>
-                        <td><?php echo $row["raceID"];?></td>
+                        <td><?php echo $row["race"];?></td>
                         <td><?php echo $row["stand"];?></td>
-                        <td>£<?php echo $row["ticket_price"];?></td>
+                        <td><?php echo $row["ticket_price"];?></td>
                         <td><a href="edit_product.php?edit&procode=<?php echo $row['ticketID']; ?>">Edit</a></td>
                         <td><a href="delete.php?del&procode=<?php echo $row['ticketID']; ?>" onclick="return confirmation();">Delete</a></td>
                     </tr>
@@ -94,5 +95,12 @@ function confirmation()
                 
                 ?>
                 </table>
+
+            <div class="edit-buttons">
+                <!--<a class="edit_btn" href=".php">Cancel</a>-->
+                <a class="edit_btn" href="add_product.php">Add Product/Ticket</a>
+            </div>
         </div>
     </div>    
+</body>
+</html>

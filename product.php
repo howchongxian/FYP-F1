@@ -1,6 +1,7 @@
 <?php include("dataconnection.php"); ?>
 
 <!DOCTYPE HTML>
+<html>
 <head>
 <title>Shop</title>
 <meta charset="utf-8">
