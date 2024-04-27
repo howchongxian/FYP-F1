@@ -46,19 +46,14 @@ CREATE TABLE `feedback` (
   `feedback` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
 -- Dumping data for table `feedback`
---
 
 INSERT INTO `feedback` (`feedback_no.`, `feedback`) VALUES
 (1, 'Nice product'),
-(2, 'Good service bro!'),
+(2, 'Good service bro!');
 
 -- --------------------------------------------------------
-
---
 -- Table structure for table `order`
---
 
 CREATE TABLE `order` (
   `OrderID` int(11) NOT NULL,
@@ -182,7 +177,10 @@ ALTER TABLE `transaction`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
-  ADD UNIQUE KEY `email` (`email`);
+
+ALTER TABLE `user` 
+ADD UNIQUE KEY `email` (`email`);
+
 
 --
 -- AUTO_INCREMENT for dumped tables
