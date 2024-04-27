@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 25, 2024 at 09:13 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- 主机： 127.0.0.1
+-- 生成日期： 2024-04-27 12:51:11
+-- 服务器版本： 10.4.32-MariaDB
+-- PHP 版本： 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `f1`
+-- 数据库： `f1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact`
+-- 表的结构 `contact`
 --
 
 CREATE TABLE `contact` (
@@ -38,7 +38,7 @@ CREATE TABLE `contact` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feedback`
+-- 表的结构 `feedback`
 --
 
 CREATE TABLE `feedback` (
@@ -46,14 +46,19 @@ CREATE TABLE `feedback` (
   `feedback` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table `feedback`
+--
+-- 转存表中的数据 `feedback`
+--
 
 INSERT INTO `feedback` (`feedback_no.`, `feedback`) VALUES
 (1, 'Nice product'),
 (2, 'Good service bro!');
 
 -- --------------------------------------------------------
--- Table structure for table `order`
+
+--
+-- 表的结构 `order`
+--
 
 CREATE TABLE `order` (
   `OrderID` int(11) NOT NULL,
@@ -66,7 +71,7 @@ CREATE TABLE `order` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- 表的结构 `product`
 --
 
 CREATE TABLE `product` (
@@ -79,7 +84,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `product`
+-- 转存表中的数据 `product`
 --
 
 INSERT INTO `product` (`product_code`, `product_img`, `product_name`, `product_size`, `description`, `product_price`) VALUES
@@ -88,20 +93,28 @@ INSERT INTO `product` (`product_code`, `product_img`, `product_name`, `product_s
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ticket`
+-- 表的结构 `ticket`
 --
 
 CREATE TABLE `ticket` (
   `ticketID` int(4) NOT NULL,
   `race` varchar(1000) NOT NULL,
   `stand` varchar(100) NOT NULL,
-  `ticket_price` decimal(5,2) NOT NULL
+  `ticket_price` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 转存表中的数据 `ticket`
+--
+
+INSERT INTO `ticket` (`ticketID`, `race`, `stand`, `ticket_price`) VALUES
+(1, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024', 'HOSPITALITY - FORMULA ONE PADDOCK CLUB', 10000.00),
+(2, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024', 'Marina Central Grandstand', 850.00);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaction`
+-- 表的结构 `transaction`
 --
 
 CREATE TABLE `transaction` (
@@ -116,7 +129,7 @@ CREATE TABLE `transaction` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- 表的结构 `user`
 --
 
 CREATE TABLE `user` (
@@ -127,7 +140,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `user`
+-- 转存表中的数据 `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`) VALUES
@@ -137,103 +150,100 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`) VALUES
 (4, 'test', 'test@hotmail.com', 't20e5s19t20');
 
 --
--- Indexes for dumped tables
+-- 转储表的索引
 --
 
 --
--- Indexes for table `contact`
+-- 表的索引 `contact`
 --
 ALTER TABLE `contact`
   ADD PRIMARY KEY (`contact_code`);
 
 --
--- Indexes for table `feedback`
+-- 表的索引 `feedback`
 --
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`feedback_no.`);
 
 --
--- Indexes for table `order`
+-- 表的索引 `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`OrderID`),
   ADD KEY `id` (`id`) USING BTREE;
 
 --
--- Indexes for table `ticket`
+-- 表的索引 `ticket`
 --
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`ticketID`);
 
 --
--- Indexes for table `transaction`
+-- 表的索引 `transaction`
 --
 ALTER TABLE `transaction`
   ADD PRIMARY KEY (`transactionID`),
   ADD KEY `OrderID` (`OrderID`);
 
 --
--- Indexes for table `user`
+-- 表的索引 `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `user` 
-ADD UNIQUE KEY `email` (`email`);
-
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 在导出的表使用AUTO_INCREMENT
 --
 
 --
--- AUTO_INCREMENT for table `contact`
+-- 使用表AUTO_INCREMENT `contact`
 --
 ALTER TABLE `contact`
   MODIFY `contact_code` int(3) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `feedback`
+-- 使用表AUTO_INCREMENT `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_no.` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `feedback_no.` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `order`
+-- 使用表AUTO_INCREMENT `order`
 --
 ALTER TABLE `order`
   MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ticket`
+-- 使用表AUTO_INCREMENT `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `ticketID` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `ticketID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `transaction`
+-- 使用表AUTO_INCREMENT `transaction`
 --
 ALTER TABLE `transaction`
   MODIFY `transactionID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- 使用表AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Constraints for dumped tables
+-- 限制导出的表
 --
 
 --
--- Constraints for table `order`
+-- 限制表 `order`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`);
 
 --
--- Constraints for table `transaction`
+-- 限制表 `transaction`
 --
 ALTER TABLE `transaction`
   ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `order` (`OrderID`);
