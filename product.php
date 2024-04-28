@@ -85,9 +85,11 @@
                         <td><?php echo $row["description"];?></td>
                         <td><?php echo $row["product_price"];?></td>
                         <td><a class="product-btn" href="order.html">Order Now</a></td>
-                        <td><a class="product-btn" href="add_ShoppingCart.php">Add to Shopping Cart</a></td>
-                        <!--<td><a href="manage product.php?edit&procode=<?php echo $row['product_code']; ?>">Edit</a></td>-->
-                        <!--<td><a href="product_list.php?del&procode=<?php echo $row['product_code']; ?>" onclick="return confirmation();">Delete</a></td>-->
+                        <td><a class="product-btn" href="add_ShoppingCart.php?product_code=<?php echo $row['product_code']; ?>
+                          &product_img=<?php echo $row['product_img']; ?>
+                          &product_name=<?php echo $row['product_name']; ?>
+                          &product_price=<?php echo $row['product_price']; ?>">Add to Shopping Cart</a>
+                        </td>
                     </tr>
                     <?php
                     
@@ -121,9 +123,10 @@
                         <td><?php echo $row["stand"];?></td>
                         <td><?php echo $row["ticket_price"];?></td>
                         <td><a class="product-btn" href="order.html">Order Now</a></td>
-                        <td><a class="product-btn" href="add_ShoppingCart.php">Add to Shopping Cart</a></td>
-                        <!--<td><a href="manage product.php?edit&procode=<?php echo $row['product_code']; ?>">Edit</a></td>-->
-                        <!--<td><a href="product_list.php?del&procode=<?php echo $row['product_code']; ?>" onclick="return confirmation();">Delete</a></td>-->
+                        <td><a class="product-btn" href="add_ShoppingCart.php?ticketID=<?php echo $row['ticketID']; ?>
+                          &race=<?php echo $row['race']; ?>
+                          &ticket_price=<?php echo $row['ticket_price']; ?>">Add to Shopping Cart</a>
+                        </td>
                     </tr>
                     <?php
                     

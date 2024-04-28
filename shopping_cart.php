@@ -9,8 +9,6 @@ if(!isset($_SESSION['userid'])) {
   exit();
 }
 
-//$query = "SELECT * FROM shopping_cart WHERE id = '$userid'";
-//$result = mysqli_query($connect, $query);
 ?>
 
 <!DOCTYPE HTML>
@@ -96,7 +94,8 @@ function confirmation()
 
                 <?php
                 
-                $result = mysqli_query($connect, "select * from product");	
+                $query = "SELECT * FROM shopping_cart WHERE id = '$userid'";
+                $result = mysqli_query($connect, $query);
                 while($row = mysqli_fetch_assoc($result))
                     {
                     ?>			
@@ -105,9 +104,16 @@ function confirmation()
                         <td><?php echo $row["product_code"];?></td>
                         <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
                         <td><?php echo $row["product_name"];?></td>
-                        <td><?php echo $row["quantity"];?></td>
+                        <td>
+                          <!--<div class="qty">
+                            <span class="min"><</span>-->
+                            <span><?php echo $row["quantity"];?></span>
+                            <!--<span class="plus">></span>
+                          </div>-->
+                        </td>
                         <td><?php echo $row["product_price"];?></td>
-                        <td><a class="del_btn" href="delete.php?del&procode=<?php echo $row['product_code']; ?>" onclick="return confirmation();">Delete</a></td>
+                        <td><a class="del_btn" href="delete.php?del=1&product_code=<?php echo urlencode($row['product_code']); ?>" 
+                        onclick="return confirmation();">Delete</a>
                     </tr>
                     <?php
                     
@@ -115,9 +121,10 @@ function confirmation()
                 
                 ?>
   </table>
-  <table class="product-table" border="1" width="700px" height="100px">
+  <table class="ticket-table" border="1" width="700px" height="100px">
                 <tr>
                     <th>Ticket ID</th>
+                    <th>Race</th>
                     <th>Quantity</th>
                     <th>Ticket Price</th>	
                     <th>Action</th>		
@@ -125,16 +132,24 @@ function confirmation()
 
                 <?php
                 
-                $result = mysqli_query($connect, "select * from ticket");	
+                $query = "SELECT * FROM shopping_cart2 WHERE id = '$userid'";
+                $result = mysqli_query($connect, $query);
                 while($row = mysqli_fetch_assoc($result))
                     {
                     ?>			
     
                     <tr>
                         <td><?php echo $row["ticketID"];?></td>
-                        <td><?php echo $row["quantity"];?></td>
+                        <td><?php echo $row["race"];?></td>
+                        <td>
+                          <!--<div class="qty">
+                            <span class="min"><</span>-->
+                            <span><?php echo $row["quantity"];?></span>
+                            <!--<span class="plus">></span>
+                          </div>-->
+                        </td>
                         <td><?php echo $row["ticket_price"];?></td>
-                        <td><a class="del_btn" href="delete.php?del&procode=<?php echo $row['ticketID']; ?>" onclick="return confirmation();">Delete</a></td>
+                        <td><a class="del_btn" href="delete_ticket.php?del=1&ticket_id=<?php echo $row['ticketID']; ?>" onclick="return confirmation();">Delete</a></td>
                     </tr>
                     <?php
                     
@@ -145,7 +160,7 @@ function confirmation()
 
     <div class="cart-buttons">
       <a class="sc_btn" href="product.php">Cancel</a>
-      <a class="sc_btn" href="payment.html">Check Out</a>
+      <a class="sc_btn" href="order.html">Check Out</a>
     </div>
 </div>
 

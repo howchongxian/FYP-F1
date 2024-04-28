@@ -6,24 +6,80 @@
     border-radius: 5px;
 }
 
-th, td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
+.product-table td:nth-child(2) img{
+    width: 100px;
+    height: 100px;
 }
 
-th {
+.product-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.product-table th {
     background-color: #f2f2f2;
     font-weight: bold;
     text-align: center;
+    vertical-align: middle;
+}
+
+.product-table td:nth-child(4) .qty span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: black;
+    color: #eee;
+    border-radius: 50%;
+}
+
+.product-table td:nth-child(4) .qty span:nth-child(2) {
+    background-color: transparent;
+    color: #040404;
 }
 
 tr:hover {
     background-color: #f5f5f5;
 }
 
-.del_btn{
+.ticket-table {
     width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #007bff; /* border around the table */
+    border-radius: 5px;
+}
+
+.ticket-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ticket-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ticket-table td:nth-child(3) .qty span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: black;
+    color: #eee;
+    border-radius: 50%;
+}
+
+.ticket-table td:nth-child(3) .qty span:nth-child(2) {
+    background-color: transparent;
+    color: #040404;
+}
+
+.del_btn{
+    width: 90%;
     background-color: #007bff;
     display: inline-block;
     justify-content: center;
