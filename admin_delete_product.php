@@ -1,24 +1,36 @@
-<?php
-include("dataconnection.php");
+<?php 
+include("dataconnection.php"); 
 
-if(isset($_GET['del']) && isset($_GET['procode'])) {
-    $procode = $_GET['procode'];
+if(isset($_GET['product_code'])) {
+    $product_code = $_GET['product_code'];
+    $sql = "DELETE FROM product WHERE product_code = '$product_code'";
 
-    // Perform deletion based on the product code
-    $query = "DELETE FROM product WHERE product_code = '$procode'";
-    $result = mysqli_query($connect, $query);
-
-    // Check if deletion was successful
-    if($result) {
-        echo "<script>alert('Product deleted successfully');</script>";
-        echo "<script>window.location.href='admin.php';</script>";
+    if(mysqli_query($connect, $sql)) {
+        // back to current page
+        header("Location: ".$_SERVER['HTTP_REFERER']);
+        exit();
     } else {
-        echo "<script>alert('Failed to delete product');</script>";
-        echo "<script>window.location.href='admin.php';</script>";
+        echo "Error: Failed to delete product with product_code: $product_code.";
     }
+
 } else {
-    // Redirect to admin page if del or procode parameters are not set
-    header("Location: admin.php");
-    exit();
+    echo "Error: Product code not provided.";
 }
+
+if(isset($_GET['ticketID'])) {
+    $ticketID = $_GET['ticketID'];
+    $sql = "DELETE FROM ticket WHERE ticketID = '$ticketID'";
+
+    if(mysqli_query($connect, $sql)) {
+        // back to current page
+        header("Location: ".$_SERVER['HTTP_REFERER']);
+        exit();
+    } else {
+        echo "Error: Failed to delete ticket with ticketID: $ticketID.";
+    }
+
+} else {
+    echo "Error: Ticket ID not provided.";
+}
+
 ?>
