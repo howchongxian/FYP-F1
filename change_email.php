@@ -40,6 +40,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Change Email</title>
+    <link rel="stylesheet" type="text/css" href="css/edit_profile.css">
+    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
 </head>
 <body>
     <h2>Change Email</h2>
