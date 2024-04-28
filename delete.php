@@ -6,7 +6,7 @@ if(isset($_GET['product_code'])) {
     $sql = "DELETE FROM product WHERE product_code = '$product_code'";
 
     if(mysqli_query($connect, $sql)) {
-        // 如果成功执行查询，返回上一页
+        // back to current page
         header("Location: ".$_SERVER['HTTP_REFERER']);
         exit();
     } else {
@@ -22,7 +22,7 @@ if(isset($_GET['ticketID'])) {
     $sql = "DELETE FROM ticket WHERE ticketID = '$ticketID'";
 
     if(mysqli_query($connect, $sql)) {
-        // 如果成功执行查询，返回上一页
+        // back to current page
         header("Location: ".$_SERVER['HTTP_REFERER']);
         exit();
     } else {

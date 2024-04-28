@@ -112,7 +112,7 @@ function confirmation()
                           </div>-->
                         </td>
                         <td><?php echo $row["product_price"];?></td>
-                        <td><a class="del_btn" href="delete.php?del=1&product_code=<?php echo urlencode($row['product_code']); ?>" 
+                        <td><a class="del_btn" href="/*delete.php?del=1&product_code=<?php echo urlencode($row['product_code']); ?>*/" 
                         onclick="return confirmation();">Delete</a>
                     </tr>
                     <?php
