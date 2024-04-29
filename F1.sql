@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2024 at 12:54 PM
+-- Generation Time: Apr 29, 2024 at 12:52 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -93,6 +93,51 @@ INSERT INTO `product` (`product_code`, `product_img`, `product_name`, `product_s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `shopping_cart`
+--
+
+CREATE TABLE `shopping_cart` (
+  `cart_id` int(11) NOT NULL,
+  `id` int(11) DEFAULT NULL,
+  `product_code` int(8) DEFAULT NULL,
+  `product_name` varchar(100) DEFAULT NULL,
+  `product_img` text NOT NULL,
+  `quantity` int(11) DEFAULT 1,
+  `product_price` decimal(7,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `shopping_cart`
+--
+
+INSERT INTO `shopping_cart` (`cart_id`, `id`, `product_code`, `product_name`, `product_img`, `quantity`, `product_price`) VALUES
+(5, 3, 13334182, 'Oracle Red Bull Racing 2023 Team Polo                          ', 'images/product/Red Bull clothes(1).jpg                          ', 2, 48.75);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shopping_cart2`
+--
+
+CREATE TABLE `shopping_cart2` (
+  `cart_id` int(11) NOT NULL,
+  `id` int(11) DEFAULT NULL,
+  `ticketID` int(4) DEFAULT NULL,
+  `race` varchar(1000) DEFAULT NULL,
+  `quantity` int(11) DEFAULT 1,
+  `ticket_price` decimal(8,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `shopping_cart2`
+--
+
+INSERT INTO `shopping_cart2` (`cart_id`, `id`, `ticketID`, `race`, `quantity`, `ticket_price`) VALUES
+(3, 3, 1, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024                          ', 1, 10000.00);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ticket`
 --
 
@@ -173,6 +218,18 @@ ALTER TABLE `order`
   ADD KEY `id` (`id`) USING BTREE;
 
 --
+-- Indexes for table `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  ADD PRIMARY KEY (`cart_id`);
+
+--
+-- Indexes for table `shopping_cart2`
+--
+ALTER TABLE `shopping_cart2`
+  ADD PRIMARY KEY (`cart_id`);
+
+--
 -- Indexes for table `ticket`
 --
 ALTER TABLE `ticket`
@@ -213,6 +270,18 @@ ALTER TABLE `feedback`
 --
 ALTER TABLE `order`
   MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `shopping_cart2`
+--
+ALTER TABLE `shopping_cart2`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ticket`

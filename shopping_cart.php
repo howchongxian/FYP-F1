@@ -105,14 +105,14 @@ function confirmation()
                         <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
                         <td><?php echo $row["product_name"];?></td>
                         <td>
-                          <!--<div class="qty">
-                            <span class="min"><</span>-->
+                          <div class="qty">
+                            <span class="min"><</span>
                             <span><?php echo $row["quantity"];?></span>
-                            <!--<span class="plus">></span>
-                          </div>-->
+                            <span class="plus">></span>
+                          </div>
                         </td>
                         <td><?php echo $row["product_price"];?></td>
-                        <td><a class="del_btn" href="/*delete.php?del=1&product_code=<?php echo urlencode($row['product_code']); ?>*/" 
+                        <td><a class="del_btn" href="del_ShoppingCart.php?del=1&product_code=<?php echo urlencode($row['product_code']); ?>" 
                         onclick="return confirmation();">Delete</a>
                     </tr>
                     <?php
@@ -142,14 +142,15 @@ function confirmation()
                         <td><?php echo $row["ticketID"];?></td>
                         <td><?php echo $row["race"];?></td>
                         <td>
-                          <!--<div class="qty">
-                            <span class="min"><</span>-->
+                          <div class="qty">
+                            <span class="min"><</span>
                             <span><?php echo $row["quantity"];?></span>
-                            <!--<span class="plus">></span>
-                          </div>-->
+                            <span class="plus">></span>
+                          </div>
                         </td>
                         <td><?php echo $row["ticket_price"];?></td>
-                        <td><a class="del_btn" href="delete_ticket.php?del=1&ticket_id=<?php echo $row['ticketID']; ?>" onclick="return confirmation();">Delete</a></td>
+                        <td><a class="del_btn" href="del_ShoppingCart.php?del=1&ticketID=<?php echo urlencode($row['ticketID']); ?>" 
+                        onclick="return confirmation();">Delete</a></td>
                     </tr>
                     <?php
                     
