@@ -12,23 +12,25 @@ include_once('dataconnection.php');
 
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $newUsername = $_POST['new_username'];
+    $newEmail = $_POST['new_email'];
 
-    // Validate username (add more validation if needed)
-    if (empty($newUsername)) {
-        $error = "Username is required";
+    // Validate email address
+    if (empty($newEmail)) {
+        $error = "Email address is required";
+    } elseif (!filter_var($newEmail, FILTER_VALIDATE_EMAIL)) {
+        $error = "Invalid email address format";
     } else {
         // Sanitize the input to prevent SQL injection
-        $newUsername = mysqli_real_escape_string($connect, $newUsername);
+        $newEmail = mysqli_real_escape_string($connect, $newEmail);
 
-        // Update the username in the database
+        // Update the email in the database
         $userid = $_SESSION['userid'];
-        $updateQuery = "UPDATE user SET username = '$newUsername' WHERE id = $userid";
+        $updateQuery = "UPDATE user SET email = '$newEmail' WHERE id = $userid";
 
         if (mysqli_query($connect, $updateQuery)) {
-            $success = "Username updated successfully";
+            $success = "Email address updated successfully";
         } else {
-            $error = "Error updating username: " . mysqli_error($connect);
+            $error = "Error updating email address: " . mysqli_error($connect);
         }
     }
 }
@@ -37,15 +39,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Edit Username</title>
-    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <title>Change Email</title>
     <link rel="stylesheet" type="text/css" href="css/edit_profile.css">
+    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <!-- CSS Files -->
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
 </head>
 <body>
-    <h2>Edit Username</h2>
+    <h2>Change Email</h2>
     <?php
     if (isset($error)) {
         echo '<div style="color: red;">' . $error . '</div>';
@@ -54,8 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <label for="new_username">New Username:</label><br>
-        <input type="text" id="new_username" name="new_username"><br><br>
+        <label for="new_email">New Email Address:</label><br>
+        <input type="email" id="new_email" name="new_email"><br><br>
         <input type="submit" value="Submit">
     </form>
 </body>
