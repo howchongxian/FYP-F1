@@ -192,8 +192,8 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`) VALUES
 (1, 'shawnkew0828', 'shawnkohenwee@gmail.com', 'Mt4-8+28'),
 (2, 'User', 'user@hotmail.com', 'Mt021-036'),
 (3, 'Shawnkew', 'shawnkew@hotmail.com', 'Mt4-8+28'),
-(4, 'test', 'test@hotmail.com', 't20e5s19t20');
-(5, 'howchongxian', 'howchongxian@gmail.com', '1234');
+(4, 'test', 'test@hotmail.com', 't20e5s19t20'),
+(5, 'howchongxian', 'howchongxian@gmail.com', '1234'),
 
 --
 -- Indexes for dumped tables
