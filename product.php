@@ -84,7 +84,7 @@
                         <td><?php echo $row["product_size"];?></td>
                         <td><?php echo $row["description"];?></td>
                         <td><?php echo $row["product_price"];?></td>
-                        <td><a class="product-btn" href="order.html">Order Now</a></td>
+                        <td><a class="product-btn" href="order.php">Order Now</a></td>
                         <td><a class="product-btn" href="add_ShoppingCart.php?product_code=<?php echo $row['product_code']; ?>
                           &product_img=<?php echo $row['product_img']; ?>
                           &product_name=<?php echo $row['product_name']; ?>
@@ -122,7 +122,7 @@
                         <td><?php echo $row["race"];?></td>
                         <td><?php echo $row["stand"];?></td>
                         <td><?php echo $row["ticket_price"];?></td>
-                        <td><a class="product-btn" href="order.html">Order Now</a></td>
+                        <td><a class="product-btn" href="order.php">Order Now</a></td>
                         <td><a class="product-btn" href="add_ShoppingCart.php?ticketID=<?php echo $row['ticketID']; ?>
                           &race=<?php echo $row['race']; ?>
                           &ticket_price=<?php echo $row['ticket_price']; ?>">Add to Shopping Cart</a>
