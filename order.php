@@ -25,46 +25,7 @@ if(!isset($_SESSION['userid'])) {
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
 <script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
-<script>
-function increment(btn) {
-    const productId = btn.getAttribute("data-product-id");
-    const quantityElement = btn.nextElementSibling;
-    let quantity = parseInt(quantityElement.textContent);
-
-    quantity += 1; // 增加数量
-
-    updateQuantity(productId, quantity); // 使用 Ajax 更新服务器数据
-}
-
-function decrement(btn) {
-    const productId = btn.getAttribute("data-product-id");
-    const quantityElement = btn.previousElementSibling;
-    let quantity = parseInt(quantityElement.textContent);
-
-    if (quantity > 1) { // 确保数量不低于 1
-        quantity -= 1; // 减少数量
-
-        updateQuantity(productId, quantity); // 使用 Ajax 更新服务器数据
-    }
-}
-
-function updateQuantity(productId, quantity) {
-    $.ajax({
-        url: "update_quantity.php",
-        type: "POST",
-        data: {
-            product_code: productId,
-            quantity: quantity
-        },
-        success: function(response) {
-            console.log("Quantity updated:", response);
-        },
-        error: function(xhr, status, error) {
-            console.error("Error updating quantity:", status, error);
-        }
-    });
-}
-</script>
+<script src="confirm_delete.js"></script>
 </head>
 <body>
     <div id="container">
@@ -92,13 +53,7 @@ function updateQuantity(productId, quantity) {
                         <td><?php echo $row["product_code"];?></td>
                         <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
                         <td><?php echo $row["product_name"];?></td>
-                        <td>
-                          <div class="qty">
-                            <button class="min" data-product-id="<?php echo $row['product_code']; ?>" onclick="decrement(this)"><</button>
-                            <span class="quantity"><?php echo $row["quantity"]; ?></span>
-                            <button class="plus" data-product-id="<?php echo $row['product_code']; ?>" onclick="increment(this)">></button>
-                          </div>
-                        </td>
+                        <td><?php echo $row["quantity"]; ?> </td>
                         <td><?php echo $row["product_price"];?></td>
                         <td><a class="del_btn" href="del_ShoppingCart.php?del=1&product_code=<?php echo urlencode($row['product_code']); ?>" 
                         onclick="return confirmation();">Delete</a>
@@ -129,13 +84,7 @@ function updateQuantity(productId, quantity) {
                     <tr>
                         <td><?php echo $row["ticketID"];?></td>
                         <td><?php echo $row["race"];?></td>
-                        <td>
-                          <div class="qty" >
-                            <button class="min" data-product-id="<?php echo $row['ticketID']; ?>" onclick="decrement(this)"><</button>
-                            <span class="quantity"><?php echo $row["quantity"]; ?></span>
-                            <button class="plus" data-product-id="<?php echo $row['ticketID']; ?>" onclick="increment(this)">></button>
-                          </div>
-                        </td>
+                        <td><?php echo $row["quantity"]; ?> </td>
                         <td><?php echo $row["ticket_price"];?></td>
                         <td><a class="del_btn" href="del_ShoppingCart.php?del=1&ticketID=<?php echo urlencode($row['ticketID']); ?>" 
                         onclick="return confirmation();">Delete</a></td>
@@ -148,7 +97,7 @@ function updateQuantity(productId, quantity) {
                 </table>
             </div>
             <div class="order-buttons">
-                <a class="order-btn" href="product.php">Cancel</a>
+                <a class="order-btn" href="shopping_cart.php">Cancel</a>
                 <a class="order-btn" href="payment.php">Confirm Order</a>
               </div>
             </div>

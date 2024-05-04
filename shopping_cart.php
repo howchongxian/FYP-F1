@@ -24,13 +24,7 @@ if(!isset($_SESSION['userid'])) {
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
 <script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
-<script type="text/javascript">
-function confirmation()
-{
-	answer = confirm("Do you want to delete this product?");
-	return answer;
-}
-</script>
+<script src="confirm_delete.js"></script>
 <script>
 function increment(btn) {
     const productId = btn.getAttribute("data-product-id");
@@ -87,7 +81,7 @@ function updateQuantity(productId, quantity) {
     </ol>
   </li>
   <!-- end sub menu -->
-  <li><a href="#">Schedule & Results</a>
+  <li><a href="#">Schedule & Result</a>
     <!-- sub menu -->
     <ol>
       <li><a href="schedule.php">Schedule</a></li>

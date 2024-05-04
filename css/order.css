@@ -1,12 +1,12 @@
 body, html {
     height: 100%;
-    margin: 0;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .product-table {
+.product-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
@@ -31,20 +31,6 @@ body, html {
     font-weight: bold;
     text-align: center;
     vertical-align: middle;
-}
-
-.product-table td:nth-child(4) .qty button {
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    background-color: black;
-    color: #eee;
-    border-radius: 50%;
-}
-
-.product-table td:nth-child(4) .qty span {
-    background-color: transparent;
-    color: #040404;
 }
 
 tr:hover {
@@ -72,18 +58,19 @@ tr:hover {
     vertical-align: middle;
 }
 
-.ticket-table td:nth-child(3) .qty button {
+.del_btn{
+    width: 90%;
+    background-color: #007bff;
     display: inline-block;
-    width: 25px;
-    height: 25px;
-    background-color: black;
-    color: #eee;
-    border-radius: 50%;
+    justify-content: center;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
 }
 
-.ticket-table td:nth-child(3) .qty span {
-    background-color: transparent;
-    color: #040404;
+.del_btn:hover {
+    background-color: #0056b3; 
 }
 
 .order-btn{
