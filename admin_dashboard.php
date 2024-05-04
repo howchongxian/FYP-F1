@@ -1,3 +1,10 @@
+<?php
+// Assume $fetch_profile is defined and contains user profile data
+$fetch_profile = array(
+    'username' => 'JohnDoe' // Example username
+);
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -7,7 +14,6 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
   <div class="sidebar">
     <div class="logo-details">
       <i class='bx bxl-c-plus-plus icon'></i>
@@ -16,7 +22,7 @@
     </div>
     <ul class="nav-list">
       <li>
-        <a href="dashboard.php">
+        <a href="admin_dashboard.php">
           <i class='bx bx-grid-alt'></i>
           <span class="links_name">Dashboard</span>
         </a>
@@ -66,9 +72,12 @@
       </li>
     </ul>
   </div>
-  <section class="home-section">
-    <div class="text">Dashboard</div>
+  <section class="dashboard">
+
+   <h1 class="heading">Dashboard</h1>
+
   </section>
+
   <script>
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.querySelector("#btn");
@@ -87,5 +96,4 @@
       }
     }
   </script>
-</body>
 </html>
