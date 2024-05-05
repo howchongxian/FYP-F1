@@ -138,9 +138,9 @@ function updateQuantity(productId, quantity) {
                         <td><?php echo $row["product_name"];?></td>
                         <td>
                           <div class="qty">
-                            <button class="min" data-product-id="<?php echo $row['product_code']; ?>" onclick="decrement(this)"><</button>
-                            <span class="quantity"><?php echo $row["quantity"]; ?></span>
-                            <button class="plus" data-product-id="<?php echo $row['product_code']; ?>" onclick="increment(this)">></button>
+                              <button class="min" data-product-id="<?php echo $row['product_code']; ?>" onclick="decrement(this)">-</button>
+                              <span class="quantity"><?php echo $row["quantity"]; ?></span>
+                              <button class="plus" data-product-id="<?php echo $row['product_code']; ?>" onclick="increment(this)">+</button>
                           </div>
                         </td>
                         <td><?php echo $row["product_price"];?></td>
@@ -175,9 +175,9 @@ function updateQuantity(productId, quantity) {
                         <td><?php echo $row["race"];?></td>
                         <td>
                           <div class="qty" >
-                            <button class="min" data-product-id="<?php echo $row['ticketID']; ?>" onclick="decrement(this)"><</button>
+                            <button class="min" data-product-id="<?php echo $row['ticketID']; ?>" onclick="/*decrement(this)*/"><</button>
                             <span class="quantity"><?php echo $row["quantity"]; ?></span>
-                            <button class="plus" data-product-id="<?php echo $row['ticketID']; ?>" onclick="increment(this)">></button>
+                            <button class="plus" data-product-id="<?php echo $row['ticketID']; ?>" onclick="/*increment(this)*/">></button>
                           </div>
                         </td>
                         <td><?php echo $row["ticket_price"];?></td>
@@ -192,40 +192,43 @@ function updateQuantity(productId, quantity) {
   </table>
   <script>
   function increment(btn) {
-      const productId = btn.getAttribute("data-product-id");
-      const quantityElement = $(btn).siblings("span"); // 确保获取正确的元素
-      let quantity = parseInt(quantityElement.text());
+    const productId = btn.getAttribute("data-product-id");
+    const quantityElement = btn.nextElementSibling;
+    let quantity = parseInt(quantityElement.textContent);
 
-      quantity += 1; // 增加数量
+    quantity += 1; // increase qty
 
-      updateQuantity(productId, quantity);
-  }
+    updateQuantity(productId, quantity); // use Ajax update server data
+}
 
-  function decrement(btn) {
-      const productId = btn.getAttribute("data-product-id");
-      const quantityElement = $(btn).siblings("span");
-      let quantity = parseInt(quantityElement.text());
+function decrement(btn) {
+    const productId = btn.getAttribute("data-product-id");
+    const quantityElement = btn.previousElementSibling;
+    let quantity = parseInt(quantityElement.textContent);
 
-      if (quantity > 1) { // 确保数量不低于1
-          quantity -= 1;
+    if (quantity > 1) { // quantity no lower than 1
+        quantity -= 1; // decrease qty
 
-          updateQuantity(productId, quantity);
-      }
-  }
+        updateQuantity(productId, quantity); // use Ajax update server data
+    }
+}
 
-  function updateQuantity(productId, quantity) {
-      $.ajax({
-          url: "update_qty.php", // PHP 脚本来处理更新
-          type: "POST",
-          data: { product_code: productId, quantity: quantity }, // 仅传递需要的数据
-          success: function(response) {
-              quantityElement.text(quantity); // 更新显示的数量
-          },
-          error: function(xhr, status, error) {
-              console.error("Error updating quantity:", status, error);
-          }
-      });
-  }
+function updateQuantity(productId, quantity) {
+    $.ajax({
+        url: "update_quantity.php",
+        type: "POST",
+        data: {
+            product_code: productId,
+            quantity: quantity
+        },
+        success: function(response) {
+            console.log("Quantity updated:", response);
+        },
+        error: function(xhr, status, error) {
+            console.error("Error updating quantity:", status, error);
+        }
+    });
+}
   </script>
 
     <div class="cart-buttons">
