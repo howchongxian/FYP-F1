@@ -25,7 +25,7 @@ if(!isset($_SESSION['userid'])) {
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
 <script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
-<script src="confirm_delete.js"></script>
+<script src="js/confirm_delete.js"></script>
 </head>
 <body>
     <div id="container">
@@ -54,7 +54,7 @@ if(!isset($_SESSION['userid'])) {
                         <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
                         <td><?php echo $row["product_name"];?></td>
                         <td><?php echo $row["quantity"]; ?> </td>
-                        <td><?php echo $row["product_price"];?></td>
+                        <td><?php echo $row["product_price"]*$row["quantity"];?></td>
                         <td><a class="del_btn" href="del_ShoppingCart.php?del=1&product_code=<?php echo urlencode($row['product_code']); ?>" 
                         onclick="return confirmation();">Delete</a>
                     </tr>
@@ -85,7 +85,7 @@ if(!isset($_SESSION['userid'])) {
                         <td><?php echo $row["ticketID"];?></td>
                         <td><?php echo $row["race"];?></td>
                         <td><?php echo $row["quantity"]; ?> </td>
-                        <td><?php echo $row["ticket_price"];?></td>
+                        <td><?php echo $row["ticket_price"]*$row["quantity"];?></td>
                         <td><a class="del_btn" href="del_ShoppingCart.php?del=1&ticketID=<?php echo urlencode($row['ticketID']); ?>" 
                         onclick="return confirmation();">Delete</a></td>
                     </tr>
@@ -95,6 +95,9 @@ if(!isset($_SESSION['userid'])) {
                 
                 ?>
                 </table>
+                <div>
+                    <p>Total Price</p>
+                </div>
             </div>
             <div class="order-buttons">
                 <a class="order-btn" href="shopping_cart.php">Cancel</a>

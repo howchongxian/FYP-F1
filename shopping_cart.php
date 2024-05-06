@@ -24,16 +24,28 @@ if(!isset($_SESSION['userid'])) {
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
 <script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
-<script src="confirm_delete.js"></script>
-<script>
-function increment(btn) {
+<script src="js/confirm_delete.js"></script>
+<!--<script>
+  document.querySelectorAll('.plus').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        console.log("Plus button clicked!"); 
+    });
+  });
+
+  document.querySelectorAll('.min').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        console.log("Minus button clicked!"); 
+    });
+  });
+
+  function increment(btn) {
     const productId = btn.getAttribute("data-product-id");
     const quantityElement = btn.nextElementSibling;
     let quantity = parseInt(quantityElement.textContent);
 
-    quantity += 1; // 增加数量
+    quantity += 1; // increase qty
 
-    updateQuantity(productId, quantity); // 使用 Ajax 更新服务器数据
+    updateQuantity(productId, quantity); // use Ajax update server data
 }
 
 function decrement(btn) {
@@ -41,10 +53,10 @@ function decrement(btn) {
     const quantityElement = btn.previousElementSibling;
     let quantity = parseInt(quantityElement.textContent);
 
-    if (quantity > 1) { // 确保数量不低于 1
-        quantity -= 1; // 减少数量
+    if (quantity > 1) { // quantity no lower than 1
+        quantity -= 1; // decrease qty
 
-        updateQuantity(productId, quantity); // 使用 Ajax 更新服务器数据
+        updateQuantity(productId, quantity); // use Ajax update server data
     }
 }
 
@@ -64,7 +76,7 @@ function updateQuantity(productId, quantity) {
         }
     });
 }
-</script>
+</script>-->
 </head>
 <body>
 <!-- Main Menu -->
@@ -138,12 +150,15 @@ function updateQuantity(productId, quantity) {
                         <td><?php echo $row["product_name"];?></td>
                         <td>
                           <div class="qty">
-                              <button class="min" data-product-id="<?php echo $row['product_code']; ?>" onclick="decrement(this)">-</button>
-                              <span class="quantity"><?php echo $row["quantity"]; ?></span>
-                              <button class="plus" data-product-id="<?php echo $row['product_code']; ?>" onclick="increment(this)">+</button>
+                            <a class="min" onclick="decrement(this)" ><</a>
+                            <span class="quantity"><?php echo $row["quantity"]; ?></span>
+                            <a class="plus" href="add_ShoppingCart.php?product_code=<?php echo $row['product_code']; ?>
+                              &product_img=<?php echo $row['product_img']; ?>
+                              &product_name=<?php echo $row['product_name']; ?>
+                              &product_price=<?php echo $row['product_price']; ?>">></a>
                           </div>
                         </td>
-                        <td><?php echo $row["product_price"];?></td>
+                        <td><?php echo $row["product_price"]*$row["quantity"];?></td>
                         <td><a class="del_btn" href="del_ShoppingCart.php?del=1&product_code=<?php echo urlencode($row['product_code']); ?>" 
                         onclick="return confirmation();">Delete</a>
                     </tr>
@@ -175,12 +190,14 @@ function updateQuantity(productId, quantity) {
                         <td><?php echo $row["race"];?></td>
                         <td>
                           <div class="qty" >
-                            <button class="min" data-product-id="<?php echo $row['ticketID']; ?>" onclick="/*decrement(this)*/"><</button>
+                            <a class="min" data-product-id="<?php echo $row['ticketID']; ?>" onclick="/*decrement(this)*/"><</a>
                             <span class="quantity"><?php echo $row["quantity"]; ?></span>
-                            <button class="plus" data-product-id="<?php echo $row['ticketID']; ?>" onclick="/*increment(this)*/">></button>
+                            <a class="plus" href="add_ShoppingCart.php?ticketID=<?php echo $row['ticketID']; ?>
+                              &race=<?php echo $row['race']; ?>
+                              &ticket_price=<?php echo $row['ticket_price']; ?>">></a>
                           </div>
                         </td>
-                        <td><?php echo $row["ticket_price"];?></td>
+                        <td><?php echo $row["ticket_price"]*$row["quantity"];?></td>
                         <td><a class="del_btn" href="del_ShoppingCart.php?del=1&ticketID=<?php echo urlencode($row['ticketID']); ?>" 
                         onclick="return confirmation();">Delete</a></td>
                     </tr>
@@ -190,46 +207,6 @@ function updateQuantity(productId, quantity) {
                 
                 ?>
   </table>
-  <script>
-  function increment(btn) {
-    const productId = btn.getAttribute("data-product-id");
-    const quantityElement = btn.nextElementSibling;
-    let quantity = parseInt(quantityElement.textContent);
-
-    quantity += 1; // increase qty
-
-    updateQuantity(productId, quantity); // use Ajax update server data
-}
-
-function decrement(btn) {
-    const productId = btn.getAttribute("data-product-id");
-    const quantityElement = btn.previousElementSibling;
-    let quantity = parseInt(quantityElement.textContent);
-
-    if (quantity > 1) { // quantity no lower than 1
-        quantity -= 1; // decrease qty
-
-        updateQuantity(productId, quantity); // use Ajax update server data
-    }
-}
-
-function updateQuantity(productId, quantity) {
-    $.ajax({
-        url: "update_quantity.php",
-        type: "POST",
-        data: {
-            product_code: productId,
-            quantity: quantity
-        },
-        success: function(response) {
-            console.log("Quantity updated:", response);
-        },
-        error: function(xhr, status, error) {
-            console.error("Error updating quantity:", status, error);
-        }
-    });
-}
-  </script>
 
     <div class="cart-buttons">
       <a class="sc_btn" href="product.php">Cancel</a>

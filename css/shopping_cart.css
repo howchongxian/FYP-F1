@@ -32,7 +32,7 @@ body, html {
     vertical-align: middle;
 }
 
-.product-table td:nth-child(4) .qty button {
+.product-table td:nth-child(4) .qty a {
     display: inline-block;
     width: 25px;
     height: 25px;
@@ -71,7 +71,7 @@ tr:hover {
     vertical-align: middle;
 }
 
-.ticket-table td:nth-child(3) .qty button {
+.ticket-table td:nth-child(3) .qty a {
     display: inline-block;
     width: 25px;
     height: 25px;

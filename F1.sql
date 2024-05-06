@@ -89,10 +89,57 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_code`, `product_img`, `product_name`, `product_size`, `description`, `product_price`) VALUES
-(13334182, 'images/product/Red Bull clothes(1).jpg', 'Oracle Red Bull Racing 2023 Team Polo', '55-80', '<ul>\r\n              <li>84% polyester/16% Elastane</li>\r\n              <li>Short sleeves</li>\r\n              <li>Quarter zip neck</li>\r\n              <li>Polo collar</li>\r\n              <li>Regular fit</li>\r\n              <li>Heat-sealed team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', '48.75');
+(13334182, 'images/product/Red Bull clothes(1).jpg', 'Oracle Red Bull Racing 2023 Team Polo', '55-80', '<ul>\r\n              <li>84% polyester/16% Elastane</li>\r\n              <li>Short sleeves</li>\r\n              <li>Quarter zip neck</li>\r\n              <li>Polo collar</li>\r\n              <li>Regular fit</li>\r\n              <li>Heat-sealed team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', 48.75),
+(13368549, 'images/product/Mercedes clothes.jpg', 'Mercedes AMG Petronas F1 2023 Team Driver T-Shirt - White', '55-80', '<ul>\r\n                            <li>100% polyester</li>\r\n              <li>Short sleeves</li>\r\n              <li>Crew neck</li>\r\n              <li>Regular fit</li>\r\n              <li>Team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', 43.40);
+
+-- --------------------------------------------------------
+--
+-- Table structure for table `shopping_cart`
+--
+
+CREATE TABLE `shopping_cart` (
+  `cart_id` int(11) NOT NULL,
+  `id` int(11) DEFAULT NULL,
+  `product_code` int(8) DEFAULT NULL,
+  `product_name` varchar(100) DEFAULT NULL,
+  `product_img` text NOT NULL,
+  `quantity` int(11) DEFAULT 1,
+  `product_price` decimal(7,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `shopping_cart`
+--
+
+INSERT INTO `shopping_cart` (`cart_id`, `id`, `product_code`, `product_name`, `product_img`, `quantity`, `product_price`) VALUES
+(0, 3, 13334182, 'Oracle Red Bull Racing 2023 Team Polo                          ', 'images/product/Red Bull clothes(1).jpg                          ', 3, 48.75),
+(1, 3, 13368549, 'Mercedes AMG Petronas F1 2023 Team Driver T-Shirt - White                          ', 'images/product/Mercedes clothes.jpg                          ', 1, 43.40),
+(2, 1, 13368549, 'Mercedes AMG Petronas F1 2023 Team Driver T-Shirt - White                          ', 'images/product/Mercedes clothes.jpg                          ', 2, 43.40);
 
 -- --------------------------------------------------------
 
+--
+-- Table structure for table `shopping_cart2`
+--
+
+CREATE TABLE `shopping_cart2` (
+  `cart_id` int(11) NOT NULL,
+  `id` int(11) DEFAULT NULL,
+  `ticketID` int(4) DEFAULT NULL,
+  `race` varchar(1000) DEFAULT NULL,
+  `quantity` int(11) DEFAULT 1,
+  `ticket_price` decimal(8,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `shopping_cart2`
+--
+
+INSERT INTO `shopping_cart2` (`cart_id`, `id`, `ticketID`, `race`, `quantity`, `ticket_price`) VALUES
+(0, 3, 2, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024                          ', 2, 850.00),
+(1, 1, 1, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024                          ', 1, 10000.00);
+
+-- --------------------------------------------------------
 --
 -- Table structure for table `ticket`
 --
@@ -103,6 +150,15 @@ CREATE TABLE `ticket` (
   `stand` varchar(100) NOT NULL,
   `ticket_price` decimal(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+--
+-- Dumping data for table `ticket`
+--
+
+INSERT INTO `ticket` (`ticketID`, `race`, `stand`, `ticket_price`) VALUES
+(0, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024', 'HOSPITALITY - FORMULA ONE PADDOCK CLUB', 10000.00),
+(1, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024', 'Marina Central Grandstand', 850.00);
 
 -- --------------------------------------------------------
 
@@ -241,6 +297,36 @@ ALTER TABLE `order`
 --
 ALTER TABLE `transaction`
   ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `order` (`OrderID`);
+COMMIT;
+
+
+--
+-- Indexes for table `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  ADD PRIMARY KEY (`cart_id`);
+
+--
+-- Indexes for table `shopping_cart2`
+--
+ALTER TABLE `shopping_cart2`
+  ADD PRIMARY KEY (`cart_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `shopping_cart2`
+--
+ALTER TABLE `shopping_cart2`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
