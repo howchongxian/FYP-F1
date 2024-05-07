@@ -1,3 +1,4 @@
+<?php include("dataconnection.php"); ?>
 <!DOCTYPE HTML>
 <head>
 <title>index</title>
