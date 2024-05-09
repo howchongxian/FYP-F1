@@ -23,60 +23,83 @@ if(!isset($_SESSION['userid'])) {
 <link rel="stylesheet" type="text/css" media="screen" href="css/shopping_cart.css">
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
-<script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="js/confirm_delete.js"></script>
-<!--<script>
-  document.querySelectorAll('.plus').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        console.log("Plus button clicked!"); 
-    });
-  });
+<script>
+function increment(productCode) {
+  const quantitySpan = document.getElementById(`quantity-${productCode}`);
+  let currentQuantity = parseInt(quantitySpan.textContent);
 
-  document.querySelectorAll('.min').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        console.log("Minus button clicked!"); 
-    });
-  });
+  if (currentQuantity < 5) {
+    currentQuantity += 1; // Increment the quantity
 
-  function increment(btn) {
-    const productId = btn.getAttribute("data-product-id");
-    const quantityElement = btn.nextElementSibling;
-    let quantity = parseInt(quantityElement.textContent);
-
-    quantity += 1; // increase qty
-
-    updateQuantity(productId, quantity); // use Ajax update server data
+    updateQuantity(productCode, currentQuantity); // Update database
+  }
 }
 
-function decrement(btn) {
-    const productId = btn.getAttribute("data-product-id");
-    const quantityElement = btn.previousElementSibling;
-    let quantity = parseInt(quantityElement.textContent);
+function decrement(productCode) {
+  const quantitySpan = document.getElementById(`quantity-${productCode}`);
+  let currentQuantity = parseInt(quantitySpan.textContent);
 
-    if (quantity > 1) { // quantity no lower than 1
-        quantity -= 1; // decrease qty
+  if (currentQuantity > 1) {
+    currentQuantity -= 1; // Decrement the quantity
 
-        updateQuantity(productId, quantity); // use Ajax update server data
+    updateQuantity(productCode, currentQuantity); // Update database
+  }
+}
+
+function updateQuantity(productCode, newQuantity) {
+  $.ajax({
+    url: "update_quantity.php",
+    type: "POST",
+    data: { product_code: productCode, quantity: newQuantity },
+    success: function(response) {
+      console.log("Quantity updated:", response);
+      document.getElementById(`quantity-${productCode}`).textContent = newQuantity;
+    },
+    error: function(xhr, status, error) {
+      console.error("Error updating quantity:", status, error);
     }
+  });
 }
 
-function updateQuantity(productId, quantity) {
-    $.ajax({
-        url: "update_quantity.php",
-        type: "POST",
-        data: {
-            product_code: productId,
-            quantity: quantity
-        },
-        success: function(response) {
-            console.log("Quantity updated:", response);
-        },
-        error: function(xhr, status, error) {
-            console.error("Error updating quantity:", status, error);
-        }
-    });
+function increment2(ticketid) {
+  const quantitySpan = document.getElementById(`quantity-${ticketid}`);
+  let currentQuantity = parseInt(quantitySpan.textContent);
+
+  if (currentQuantity < 5) {
+    currentQuantity += 1; // Increment the quantity
+
+    updateQuantity2(ticketid, currentQuantity); // Update database
+  }
 }
-</script>-->
+
+function decrement2(ticketid) {
+  const quantitySpan = document.getElementById(`quantity-${ticketid}`);
+  let currentQuantity = parseInt(quantitySpan.textContent);
+
+  if (currentQuantity > 1) {
+    currentQuantity -= 1; // Decrement the quantity
+
+    updateQuantity2(ticketid, currentQuantity); // Update database
+  }
+}
+
+function updateQuantity2(ticketid, newQuantity) {
+  $.ajax({
+    url: "update_quantity.php",
+    type: "POST",
+    data: { ticketID: ticketid, quantity: newQuantity },
+    success: function(response) {
+      console.log("Quantity updated:", response);
+      document.getElementById(`quantity-${ticketid}`).textContent = newQuantity;
+    },
+    error: function(xhr, status, error) {
+      console.error("Error updating quantity:", status, error);
+    }
+  });
+}
+</script>
 </head>
 <body>
 <!-- Main Menu -->
@@ -150,15 +173,12 @@ function updateQuantity(productId, quantity) {
                         <td><?php echo $row["product_name"];?></td>
                         <td>
                           <div class="qty">
-                            <a class="min" onclick="decrement(this)" ><</a>
-                            <span class="quantity"><?php echo $row["quantity"]; ?></span>
-                            <a class="plus" href="add_ShoppingCart.php?product_code=<?php echo $row['product_code']; ?>
-                              &product_img=<?php echo $row['product_img']; ?>
-                              &product_name=<?php echo $row['product_name']; ?>
-                              &product_price=<?php echo $row['product_price']; ?>">></a>
+                            <button class="min" onclick="decrement('<?php echo $row['product_code']; ?>')">-</button>
+                            <span id="quantity-<?php echo $row['product_code']; ?>"><?php echo $row["quantity"]; ?></span>
+                            <button class="plus" onclick="increment('<?php echo $row['product_code']; ?>')">+</button>
                           </div>
                         </td>
-                        <td><?php echo $row["product_price"]*$row["quantity"];?></td>
+                        <td><?php echo $row["product_price"]/**$row["quantity"]*/;?></td>
                         <td><a class="del_btn" href="del_ShoppingCart.php?del=1&product_code=<?php echo urlencode($row['product_code']); ?>" 
                         onclick="return confirmation();">Delete</a>
                     </tr>
@@ -189,15 +209,13 @@ function updateQuantity(productId, quantity) {
                         <td><?php echo $row["ticketID"];?></td>
                         <td><?php echo $row["race"];?></td>
                         <td>
-                          <div class="qty" >
-                            <a class="min" data-product-id="<?php echo $row['ticketID']; ?>" onclick="/*decrement(this)*/"><</a>
-                            <span class="quantity"><?php echo $row["quantity"]; ?></span>
-                            <a class="plus" href="add_ShoppingCart.php?ticketID=<?php echo $row['ticketID']; ?>
-                              &race=<?php echo $row['race']; ?>
-                              &ticket_price=<?php echo $row['ticket_price']; ?>">></a>
+                          <div class="qty">
+                            <button class="min" onclick="decrement2('<?php echo $row['ticketID']; ?>')">-</button>
+                            <span id="quantity-<?php echo $row['ticketID']; ?>"><?php echo $row["quantity"]; ?></span>
+                            <button class="plus" onclick="increment2('<?php echo $row['ticketID']; ?>')">+</button>
                           </div>
                         </td>
-                        <td><?php echo $row["ticket_price"]*$row["quantity"];?></td>
+                        <td><?php echo $row["ticket_price"]/**$row["quantity"]*/;?></td>
                         <td><a class="del_btn" href="del_ShoppingCart.php?del=1&ticketID=<?php echo urlencode($row['ticketID']); ?>" 
                         onclick="return confirmation();">Delete</a></td>
                     </tr>

@@ -42,7 +42,7 @@ if(!isset($_SESSION['userid'])) {
                         <th>Action</th>		
                     </tr>
                     <?php
-                
+                    $totalPrice = 0;
                     $query = "SELECT * FROM shopping_cart WHERE id = '$userid'";
                     $result = mysqli_query($connect, $query);
                     while($row = mysqli_fetch_assoc($result))
@@ -54,10 +54,15 @@ if(!isset($_SESSION['userid'])) {
                         <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
                         <td><?php echo $row["product_name"];?></td>
                         <td><?php echo $row["quantity"]; ?> </td>
-                        <td><?php echo $row["product_price"]*$row["quantity"];?></td>
+                        <td>
+                            <?php $rowPrice = $row["product_price"]*$row["quantity"];
+                            echo $rowPrice;
+                            $totalPrice += $rowPrice;?>
+                        </td>
                         <td><a class="del_btn" href="del_ShoppingCart.php?del=1&product_code=<?php echo urlencode($row['product_code']); ?>" 
                         onclick="return confirmation();">Delete</a>
                     </tr>
+                        
                     <?php
                     
                     }		
@@ -85,7 +90,10 @@ if(!isset($_SESSION['userid'])) {
                         <td><?php echo $row["ticketID"];?></td>
                         <td><?php echo $row["race"];?></td>
                         <td><?php echo $row["quantity"]; ?> </td>
-                        <td><?php echo $row["ticket_price"]*$row["quantity"];?></td>
+                        <td><?php $rowPrice = $row["ticket_price"]*$row["quantity"];
+                            echo $rowPrice;
+                            $totalPrice += $rowPrice;?>
+                        </td>
                         <td><a class="del_btn" href="del_ShoppingCart.php?del=1&ticketID=<?php echo urlencode($row['ticketID']); ?>" 
                         onclick="return confirmation();">Delete</a></td>
                     </tr>
@@ -95,8 +103,8 @@ if(!isset($_SESSION['userid'])) {
                 
                 ?>
                 </table>
-                <div>
-                    <p>Total Price</p>
+                <div class="total">
+                    <h2>Total Price: <?php echo $totalPrice;?></h2>
                 </div>
             </div>
             <div class="order-buttons">

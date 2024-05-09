@@ -73,6 +73,10 @@ tr:hover {
     background-color: #0056b3; 
 }
 
+.total h2{
+    color: black;
+}
+
 .order-btn{
     background-color: #007bff;
     display: inline-block;
