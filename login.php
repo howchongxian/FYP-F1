@@ -5,12 +5,7 @@
 <!-- Google Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 <!-- CSS Files -->
-<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-<link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
 <link rel="stylesheet" type="text/css" media="screen" href="css/login.css">
-<!-- Contact Form -->
-<link href="contact-form/css/style.css" media="screen" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 <!-- JS Files -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script src="js/jquery.tools.min.js"></script>
