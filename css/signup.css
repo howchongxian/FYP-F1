@@ -1,131 +1,106 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600&display=swap');
-    *{
-        font-family: 'Poppins', sans-serif;
-        margin: 0; padding:0;
-        box-sizing: border-box;
-        outline:none; border:none;
-        text-decoration: none;
-        transition:all .2s linear;
-    }
-    
-    .loginbox {
-        width: 320px;
-        height: 650px;
-        background: #000;
-        color: #fff;
-        top: 70%;
-        left: 50%;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        box-sizing: border-box;
-        padding: 70px 30px;
-    }
-    
-    .signup{
-        text-align: center;
-    }
-    
-    .avatar {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        position: absolute;
-        top: -40px;
-        left: calc(50% - 50px);
-    }
-    
-    h1 {
-        margin: 0;
-        padding: 0 0 20px;
-        text-align: center;
-        font-size: 22px;
-    }
-    
-    .loginbox p {
-        margin: 0;
-        padding: 0;
-        font-weight: bold;
-    }
-    
-    .loginbox input {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    
-    .loginbox input[type="text"],
-    input[type="password"] {
-        border: none;
-        border-bottom: 1px solid #fff;
-        background: transparent;
-        outline: none;
-        height: 40px;
-        color: #fff;
-        font-size: 16px;
-    }
-    
-    .password-container {
-        position: relative;
-    }
-    
-    .password-container input[type="password"] {
-        width: calc(100% - 30px); /* Adjusted width to accommodate icon */
-    }
-    
-    .toggle-password {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
-        cursor: pointer;
-    }
-    
-    .toggle-password i {
-        font-size: 20px;
-        color: #ccc; /* Adjust icon color as needed */
-    }
-    
-    .loginbox input[type="email"],
-    input[type="password"] {
-        border: none;
-        border-bottom: 1px solid #fff;
-        background: transparent;
-        outline: none;
-        height: 40px;
-        color: #fff;
-        font-size: 16px;
-    }
-    
-    .loginbox input[type="submit"] {
-        border: none;
-        outline: none;
-        height: 40px;
-        background: #fb2525;
-        color: #fff;
-        font-size: 18px;
-        border-radius: 20px;
-    }
-    
-    .loginbox input[type="submit"]:hover {
-        cursor: pointer;
-        background: #ffc107;
-        color: #000;
-    }
-    
-    .loginbox a {
-        text-decoration: none;
-        font-size: 12px;
-        line-height: 20px;
-        color: darkgray;
-    }
-    
-    .loginbox a:hover {
-        color: #ffc107;
-    }
-    
-    h1 {
-        margin-top: 100px;
-        padding: 0 0 20px;
-        text-align: center;
-        font-size: 30px;
-        color: #fff;
-      }
+body {
+    background-image: url('images/f1_background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.loginbox {
+    width: 320px;
+    height: 480px;
+    background: #fff;
+    color: #000;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.loginbox h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 28px;
+}
+
+.loginbox p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #000;
+}
+
+.loginbox input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.loginbox input[type="text"],
+.loginbox input[type="email"],
+.loginbox input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #000;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 16px;
+}
+
+.loginbox input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #000;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.loginbox input[type="submit"]:hover {
+    background: #333;
+    transition: background 0.3s ease;
+}
+
+.loginbox .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+.signup {
+    text-align: center;
+}
+
+.signup .text {
+    font-size: 16px;
+    color: #000;
+}
+
+.signup .signin-text {
+    color: #333;
+    font-weight: bold;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
