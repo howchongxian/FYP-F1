@@ -3,9 +3,10 @@
 <title>Login</title>
 <meta charset="utf-8">
 <!-- Google Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+
 <!-- CSS Files -->
-<link rel="stylesheet" type="text/css" media="screen" href="css/login.css">
+<link rel="stylesheet" href="css/signin.css">
 <!-- JS Files -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script src="js/jquery.tools.min.js"></script>
@@ -28,8 +29,8 @@ $(document).ready(function () {
 </head>
 <body>      
     <div class="loginbox">
-        <img src="images/avatar.png" class="avatar" style="margin-top:90px">
-        <h1>Login Here</h1>
+        <img src="images/avatar.png" class="avatar">
+        <h1>Sign In</h1>
         <?php if(isset($_GET['error'])){ ?>
             <p style="color:red;" class="error"><?php echo $_GET['error'];?></p>
         <?php } ?>

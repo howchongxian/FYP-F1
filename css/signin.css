@@ -1,13 +1,9 @@
-/* login.css */
-
 body {
-    background-image: url('f1_background.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: url('/FYP-F1/images/f1_background.jpg');
     margin: 0;
     padding: 0;
-    font-family: 'Quicksand', sans-serif;
+    background-size: cover;
+    font-family: sans-serif;
 }
 
 .loginbox {
@@ -30,6 +26,7 @@ body {
     padding: 0 0 20px;
     text-align: center;
     font-size: 28px;
+    color: black;
 }
 
 .loginbox p {
