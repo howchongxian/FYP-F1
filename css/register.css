@@ -1,11 +1,9 @@
 body {
-    background-image: url('css/f1_background.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: url('/FYP-F1/images/f1_background.jpg');
     margin: 0;
     padding: 0;
-    font-family: 'Quicksand', sans-serif;
+    background-size: cover;
+    font-family: sans-serif;
 }
 
 .loginbox {
@@ -85,11 +83,11 @@ body {
 
 .signup .text {
     font-size: 16px;
-    color: #000;
+    color: white;
 }
 
 .signup .signin-text {
-    color: #333;
+    color: white;
     font-weight: bold;
 }
 
@@ -103,4 +101,9 @@ body {
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer;
+}
+
+.password-strength {
+    font-size: 12px;
+    margin-top: 5px;
 }

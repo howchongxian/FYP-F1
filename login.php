@@ -45,7 +45,7 @@ $(document).ready(function () {
             </div>
             <input type="submit" value="Login" name="submit">
             <a href="forgot_password.php">Forgot password?</a><br>
-            <a href="signup.php">Don't have an account?</a>
+            <a href="register.php">Don't have an account?</a>
         </form>
     </div>
 
