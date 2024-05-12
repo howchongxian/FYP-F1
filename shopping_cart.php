@@ -5,7 +5,7 @@ $userid = $_SESSION['userid'];
 
 // Check if user is not logged in
 if(!isset($_SESSION['userid'])) {
-  header("Location: login.php"); // Redirect to login page if not logged in
+  header("Location: signin.php"); // Redirect to login page if not logged in
   exit();
 }
 
@@ -155,7 +155,7 @@ function updateQuantity2(ticketid, newQuantity) {
                     <th>Product Image</th>
                     <th>Product Name</th>
                     <th>Quantity</th>
-                    <th>Product Price</th>	
+                    <th>Product Price per 1</th>	
                     <th>Action</th>		
                 </tr>
 

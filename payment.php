@@ -3,7 +3,7 @@ session_start();
 $userid = $_SESSION['userid'];
 
 if(!isset($_SESSION['userid'])) {
-  header("Location: login.php"); // Redirect to login page if not logged in
+  header("Location: signin.php"); // Redirect to login page if not logged in
   exit();
 }
 ?>

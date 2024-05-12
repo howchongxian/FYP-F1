@@ -111,10 +111,6 @@ CREATE TABLE `shopping_cart` (
 -- Dumping data for table `shopping_cart`
 --
 
-INSERT INTO `shopping_cart` (`cart_id`, `id`, `product_code`, `product_name`, `product_img`, `quantity`, `product_price`) VALUES
-(0, 3, 13334182, 'Oracle Red Bull Racing 2023 Team Polo                          ', 'images/product/Red Bull clothes(1).jpg                          ', 3, 48.75),
-(1, 3, 13368549, 'Mercedes AMG Petronas F1 2023 Team Driver T-Shirt - White                          ', 'images/product/Mercedes clothes.jpg                          ', 1, 43.40),
-(2, 1, 13368549, 'Mercedes AMG Petronas F1 2023 Team Driver T-Shirt - White                          ', 'images/product/Mercedes clothes.jpg                          ', 2, 43.40);
 
 -- --------------------------------------------------------
 
@@ -135,9 +131,6 @@ CREATE TABLE `shopping_cart2` (
 -- Dumping data for table `shopping_cart2`
 --
 
-INSERT INTO `shopping_cart2` (`cart_id`, `id`, `ticketID`, `race`, `quantity`, `ticket_price`) VALUES
-(0, 3, 2, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024                          ', 2, 850.00),
-(1, 1, 1, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024                          ', 1, 10000.00);
 
 -- --------------------------------------------------------
 --
