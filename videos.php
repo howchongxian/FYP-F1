@@ -32,6 +32,7 @@
     <li><a href="#">Shop</a>
       <ol>
         <li><a href="product.php">Products</a></li>
+        <li><a href="ticket.php">Tickets</a></li>
         <li><a href="shopping_cart.php">Shopping Cart</a></li>
         <li><a href="feedback.php">Feedback</a></li>
       </ol>
