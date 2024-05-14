@@ -8,9 +8,9 @@
 <!-- Google Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 <!-- CSS Files -->
-<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+<link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css">
 <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
-<link rel="stylesheet" type="text/css" media="screen" href="css/product.css">
+<link rel="stylesheet" type="text/css" media="screen" href="./assets/css/product.css">
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
 <script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>

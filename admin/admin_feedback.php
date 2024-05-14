@@ -9,9 +9,9 @@ $result = mysqli_query($connect, "SELECT * FROM feedback");
 <head>
     <title>Admin Feedback</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/admin_feedback.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/feedback.css">
 </head>
 <body>
     <!-- Admin Header -->
