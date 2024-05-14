@@ -32,7 +32,7 @@ body, html {
     vertical-align: middle;
 }
 
-.product-table td:nth-child(4) .qty button {
+.product-table td:nth-child(5) .qty button {
     display: inline-block;
     width: 25px;
     height: 25px;
@@ -41,9 +41,18 @@ body, html {
     border-radius: 50%;
 }
 
-.product-table td:nth-child(4) .qty span {
+.product-table td:nth-child(5) .qty span {
     background-color: transparent;
     color: #040404;
+}
+
+.product-table td:nth-child(4) input [type="size"],
+.product-table textarea {
+    width: 50px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
 }
 
 tr:hover {
