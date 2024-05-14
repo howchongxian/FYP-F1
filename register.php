@@ -93,7 +93,7 @@ $(document).ready(function () {
             <input type="submit" value="Signup" name="submit">
             <div class="signup">
             <span class="text">Have a member?
-            <a href="login.php" class="text signin-text">Sign in now</a>
+            <a href="signin.php" class="text signin-text">Sign in now</a>
             </span>
             </div>
         </form>
