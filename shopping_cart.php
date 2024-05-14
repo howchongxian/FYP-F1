@@ -135,6 +135,7 @@ function updateQuantity2(ticketid, newQuantity) {
     <!-- sub menu -->
     <ol>
       <li><a href="product.php">Products</a></li>
+      <li><a href="ticket.php">Tickets</a></li>
       <li><a href="shopping_cart.php">Shopping Cart</a></li>
       <li><a href="feedback.php">Feedback</a></li>
     </ol>
@@ -154,6 +155,7 @@ function updateQuantity2(ticketid, newQuantity) {
                     <th>Product Code</th>
                     <th>Product Image</th>
                     <th>Product Name</th>
+                    <th>Product Size</th>
                     <th>Quantity</th>
                     <th>Product Price per 1</th>	
                     <th>Action</th>		
@@ -171,6 +173,7 @@ function updateQuantity2(ticketid, newQuantity) {
                         <td><?php echo $row["product_code"];?></td>
                         <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
                         <td><?php echo $row["product_name"];?></td>
+                        <td><input type="size" id="size" placeholder=<?php echo $row["product_size"];?>></td>
                         <td>
                           <div class="qty">
                             <button class="min" onclick="decrement('<?php echo $row['product_code']; ?>')">-</button>

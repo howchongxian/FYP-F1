@@ -20,7 +20,19 @@ if(!isset($_SESSION['userid'])) {
 <link rel="stylesheet" type="text/css" media="screen" href="css\payment.css">
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
-<script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  document.querySelectorAll('input[name="payment-method"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+        var cardInfoDiv = document.getElementById('credit-card-info');
+        if (this.value === 'credit-card') {
+            cardInfoDiv.style.display = 'contents';
+        } else {
+            cardInfoDiv.style.display = 'none';
+        }
+    });
+});
+</script>
 </head>
 <body>
 
@@ -31,8 +43,11 @@ if(!isset($_SESSION['userid'])) {
     <label for="name">Your Name:</label>
     <input type="text" id="name" required>
 
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Exp: 012-345-6789" required>
+
     <label for="address">Address:</label>
-    <input type="address" id="address" required>
+    <input type="address" id="address" placeholder="Exp: NoXX, Jalan xxxxx, Taman xxxxxx, 83000 Batu Pahat, Johor">
 
     <label for="payment-method"><br>Payment Method:</label>
     <div class="payment-methods">
@@ -50,6 +65,10 @@ if(!isset($_SESSION['userid'])) {
         <input type="radio" name="payment-method" id="credit-card" value="credit-card" required>
         <img src="images/payment/CreditCard.jpg" alt="Credit Card">
         <label for="credit-card">Credit Card/Debit Card</label>
+        <div id="credit-card-info" style="display:contents;">
+          <label for="card-number">Card Number:</label>
+          <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" pattern="\d{4}\s?\d{4}\s?\d{4}\s?\d{4}" required>
+        </div>
       </div>
     </div>
 

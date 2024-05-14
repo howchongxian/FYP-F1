@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_query($connect, $clearCartQuery);
 
     // 重定向到成功页面或执行其他操作
-    header('Location: pay_success.php');
+    header('Location: payment.php');
     exit();
 }
 ?>

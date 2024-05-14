@@ -37,6 +37,7 @@ if(!isset($_SESSION['userid'])) {
                         <th>Product Code</th>
                         <th>Product Image</th>
                         <th>Product Name</th>
+                        <th>Product Size</th>
                         <th>Quantity</th>
                         <th>Product Price</th>	
                         <th>Action</th>		
@@ -53,6 +54,7 @@ if(!isset($_SESSION['userid'])) {
                         <td><?php echo $row["product_code"];?></td>
                         <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
                         <td><?php echo $row["product_name"];?></td>
+                        <td><?php echo $row["product_size"];?></td>
                         <td><?php echo $row["quantity"]; ?> </td>
                         <td>
                             <?php $rowPrice = $row["product_price"]*$row["quantity"];
@@ -109,7 +111,7 @@ if(!isset($_SESSION['userid'])) {
             </div>
             <div class="order-buttons">
                 <a class="order-btn" href="shopping_cart.php">Cancel</a>
-                <a class="order-btn" href="payment.php">Confirm Order</a>
+                <a class="order-btn" href="comfirm_order.php">Confirm Order</a>
               </div>
             </div>
             <!-- END Second Column -->

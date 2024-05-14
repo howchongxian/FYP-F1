@@ -58,39 +58,32 @@
 <div id="product_shop">
   <h1>F1 Product Shop</h1>
     <div class="product-list">
-      <h2>Wears</h2>
-            <table class="product-table" border="1" width="700px" height="100px">
+            <h2>Tickets</h2>
+            <table class="ticket-table" border="1" width="700px" height="100px">
                 <tr>
-                    <th>Product Code</th>
-                    <th>Product Image</th>
-                    <th>Product Name</th>
-                    <th>Category</th>
-                    <th>Product size</th>
-                    <th>Product Description</th>
-                    <th>product Price</th>			
+                    <th>Ticket ID</th>
+                    <th>Race</th>
+                    <th>Grandstand</th>
+                    <th>Ticket Price</th>			
                     <th>Action</th>
                 </tr>
     
                 <?php
                 
-                $result = mysqli_query($connect, "select * from product");	
+                $result = mysqli_query($connect, "select * from ticket");	
                 while($row = mysqli_fetch_assoc($result))
                     {
                         
                     ?>			
     
                     <tr>
-                        <td><?php echo $row["product_code"];?></td>
-                        <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
-                        <td><?php echo $row["product_name"];?></td>
-                        <td><?php echo $row["category"];?></td>
-                        <td><?php echo $row["product_size"];?></td>
-                        <td><?php echo $row["description"];?></td>
-                        <td><?php echo $row["product_price"];?></td>
-                        <td><a class="product-btn" href="add_ShoppingCart.php?product_code=<?php echo $row['product_code']; ?>
-                          &product_img=<?php echo $row['product_img']; ?>
-                          &product_name=<?php echo $row['product_name']; ?>
-                          &product_price=<?php echo $row['product_price']; ?>">Add to Shopping Cart</a><!--add cart confirm need-->
+                        <td><?php echo $row["ticketID"];?></td>
+                        <td><?php echo $row["race"];?></td>
+                        <td><?php echo $row["stand"];?></td>
+                        <td><?php echo $row["ticket_price"];?></td>
+                        <td><a class="product-btn" href="add_ShoppingCart.php?ticketID=<?php echo $row['ticketID']; ?>
+                          &race=<?php echo $row['race']; ?>
+                          &ticket_price=<?php echo $row['ticket_price']; ?>">Add to Shopping Cart</a><!--add cart confirm need-->
                         </td>
                     </tr>
                     <?php
@@ -101,7 +94,6 @@
     
                 
             </table>
-            
     </div>	
   <!-- END Second Column -->
   <div style="clear:both; height: 40px"></div>

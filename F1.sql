@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2024 at 12:09 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 14, 2024 at 06:53 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,8 +52,7 @@ CREATE TABLE `feedback` (
 
 INSERT INTO `feedback` (`feedback_no.`, `feedback`) VALUES
 (1, 'Nice product'),
-(2, 'Good service bro!'),
-(3, 'Nice website');
+(2, 'Good service bro!');
 
 -- --------------------------------------------------------
 
@@ -77,8 +76,9 @@ CREATE TABLE `order` (
 
 CREATE TABLE `product` (
   `product_code` int(8) NOT NULL,
-  `product_img` text NOT NULL,
+  `product_img` text DEFAULT NULL,
   `product_name` varchar(100) NOT NULL,
+  `category` varchar(200) DEFAULT NULL,
   `product_size` varchar(5) NOT NULL,
   `description` varchar(500) NOT NULL,
   `product_price` decimal(5,2) NOT NULL
@@ -88,11 +88,12 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`product_code`, `product_img`, `product_name`, `product_size`, `description`, `product_price`) VALUES
-(13334182, 'images/product/Red Bull clothes(1).jpg', 'Oracle Red Bull Racing 2023 Team Polo', '55-80', '<ul>\r\n              <li>84% polyester/16% Elastane</li>\r\n              <li>Short sleeves</li>\r\n              <li>Quarter zip neck</li>\r\n              <li>Polo collar</li>\r\n              <li>Regular fit</li>\r\n              <li>Heat-sealed team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', 48.75),
-(13368549, 'images/product/Mercedes clothes.jpg', 'Mercedes AMG Petronas F1 2023 Team Driver T-Shirt - White', '55-80', '<ul>\r\n                            <li>100% polyester</li>\r\n              <li>Short sleeves</li>\r\n              <li>Crew neck</li>\r\n              <li>Regular fit</li>\r\n              <li>Team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', 43.40);
+INSERT INTO `product` (`product_code`, `product_img`, `product_name`, `category`, `product_size`, `description`, `product_price`) VALUES
+(13334182, 'images/product/Red Bull clothes(1).jpg', 'Oracle Red Bull Racing 2023 Team Polo', 'Clother', '55-80', '<ul>\r\n              <li>84% polyester/16% Elastane</li>\r\n              <li>Short sleeves</li>\r\n              <li>Quarter zip neck</li>\r\n              <li>Polo collar</li>\r\n              <li>Regular fit</li>\r\n              <li>Heat-sealed team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', 48.75),
+(13368549, 'images/product/Mercedes clothes.jpg', 'Mercedes AMG Petronas F1 2023 Team Driver T-Shirt - White', 'Clother', '55-80', '<ul>\r\n                            <li>100% polyester</li>\r\n              <li>Short sleeves</li>\r\n              <li>Crew neck</li>\r\n              <li>Regular fit</li>\r\n              <li>Team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', 43.40);
 
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `shopping_cart`
 --
@@ -103,6 +104,7 @@ CREATE TABLE `shopping_cart` (
   `product_code` int(8) DEFAULT NULL,
   `product_name` varchar(100) DEFAULT NULL,
   `product_img` text NOT NULL,
+  `product_size` varchar(5) DEFAULT NULL,
   `quantity` int(11) DEFAULT 1,
   `product_price` decimal(7,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -110,7 +112,6 @@ CREATE TABLE `shopping_cart` (
 --
 -- Dumping data for table `shopping_cart`
 --
-
 
 -- --------------------------------------------------------
 
@@ -133,6 +134,7 @@ CREATE TABLE `shopping_cart2` (
 
 
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `ticket`
 --
@@ -141,17 +143,16 @@ CREATE TABLE `ticket` (
   `ticketID` int(4) NOT NULL,
   `race` varchar(1000) NOT NULL,
   `stand` varchar(100) NOT NULL,
-  `ticket_price` decimal(5,2) NOT NULL
+  `ticket_price` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 --
 -- Dumping data for table `ticket`
 --
 
 INSERT INTO `ticket` (`ticketID`, `race`, `stand`, `ticket_price`) VALUES
-(0, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024', 'HOSPITALITY - FORMULA ONE PADDOCK CLUB', 10000.00),
-(1, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024', 'Marina Central Grandstand', 850.00);
+(1, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024', 'HOSPITALITY - FORMULA ONE PADDOCK CLUB', 10000.00),
+(2, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024', 'Marina Central Grandstand', 850.00);
 
 -- --------------------------------------------------------
 
@@ -187,20 +188,15 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`) VALUES
-(1, 'superadmin', 'superadmin@gmail.com', 'Mt4-8+28', 'superadmin'),
+(1, 'superadmin', 'superadmin@gmail.com', 'S19h8a1w23n', 'superadmin'),
 (2, 'admin', 'admin@hotmail.com', 'Mt021-036', 'admin'),
-(3, 'user', 'user@hotmail.com', 'Mt4-8+28', 'user'),
-(4, 'test', 'test@hotmail.com', 't20e5s19t20', 'user');
+(3, 'user', 'user@hotmail.com', 'S19h8a1w23n', 'user'),
+(4, 'test', 'test@hotmail.com', 't20e5s19t20', 'user'),
+(5, 'Shawnkew', 'shawnkohenwee@gmail.com', 'mt=04-08+28', 'user');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `contact`
---
-ALTER TABLE `contact`
-  ADD PRIMARY KEY (`contact_code`);
 
 --
 -- Indexes for table `feedback`
@@ -213,85 +209,13 @@ ALTER TABLE `feedback`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`OrderID`),
-  ADD KEY `id` (`id`) USING BTREE;
+  ADD KEY `order_ibfk_1` (`id`);
 
 --
--- Indexes for table `ticket`
+-- Indexes for table `product`
 --
-ALTER TABLE `ticket`
-  ADD PRIMARY KEY (`ticketID`);
-
---
--- Indexes for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`transactionID`),
-  ADD KEY `OrderID` (`OrderID`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `contact`
---
-ALTER TABLE `contact`
-  MODIFY `contact_code` int(3) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `feedback`
---
-ALTER TABLE `feedback`
-  MODIFY `feedback_no.` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `order`
---
-ALTER TABLE `order`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `ticket`
---
-ALTER TABLE `ticket`
-  MODIFY `ticketID` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `transaction`
---
-ALTER TABLE `transaction`
-  MODIFY `transactionID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `order`
---
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`);
-
---
--- Constraints for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `order` (`OrderID`);
-COMMIT;
-
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`product_code`);
 
 --
 -- Indexes for table `shopping_cart`
@@ -306,6 +230,19 @@ ALTER TABLE `shopping_cart2`
   ADD PRIMARY KEY (`cart_id`);
 
 --
+-- Indexes for table `ticket`
+--
+ALTER TABLE `ticket`
+  ADD PRIMARY KEY (`ticketID`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -313,13 +250,29 @@ ALTER TABLE `shopping_cart2`
 -- AUTO_INCREMENT for table `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `shopping_cart2`
 --
 ALTER TABLE `shopping_cart2`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `order`
+--
+ALTER TABLE `order`
+  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

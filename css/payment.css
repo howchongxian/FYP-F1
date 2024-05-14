@@ -9,6 +9,7 @@ body, html {
 #container {
 	font-size: 1em;
 	width:960px;
+  height: auto;
 	background: #FFF;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -21,15 +22,17 @@ body, html {
 
 label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-weight: bold;
   color: #333;
 }
 
 input[type="text"],
 input[type="address"],
+input[type="tel"],
 select {
   width: 97.5%;
+  margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -52,7 +55,7 @@ input[type="submit"]:hover {
 }
 
 .payment-methods {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .payment-method {
@@ -76,4 +79,16 @@ input[type="submit"]:hover {
 
 .payment-method label {
   font-weight: normal;
+}
+
+label[for="card-number"]{
+  margin-left: 15px;
+}
+
+input[name="card-number"]{
+  width: 40%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
