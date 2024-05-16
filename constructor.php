@@ -7,10 +7,8 @@
 <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 <!-- CSS Files -->
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-<link rel="stylesheet" type="text/css" media="screen" href="css/team.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/constructor.css">
 <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
-<!-- Contact Form -->
-<link href="contact-form/css/style.css" media="screen" rel="stylesheet" type="text/css">
 <!-- JS Files -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script src="js/jquery.tools.min.js"></script>
@@ -55,6 +53,7 @@ $(document).ready(function () {
   <li><a href="#">Shop</a>
     <ol>
       <li><a href="product.php">Products</a></li>
+      <li><a href="ticket.php">Tickets</a></li>
       <li><a href="shopping_cart.php">Shopping Cart</a></li>
       <li><a href="feedback.php">Feedback</a></li>
     </ol>
@@ -73,5 +72,49 @@ $(document).ready(function () {
   </li>
 </ol>
 
+<h1>2024 F1 Constructor Standings</h1>
+    <table id="constructor-standings">
+        <thead>
+            <tr>
+                <th>Pos</th>
+                <th>Team</th>
+                <th>Pts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Standings will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+    <script>
+        const standings = [
+            { pos: 1, team: 'RED BULL RACING HONDA RBPT', pts: 239, url: 'https://www.formula1.com/en/results.html/2024/team/red_bull_racing_honda_rbpt.html' },
+            { pos: 2, team: 'FERRARI', pts: 187, url: 'https://www.formula1.com/en/results.html/2024/team/ferrari.html' },
+            { pos: 3, team: 'MCLAREN MERCEDES', pts: 124, url: 'https://www.formula1.com/en/results.html/2024/team/mclaren_mercedes.html' },
+            { pos: 4, team: 'MERCEDES', pts: 64, url: 'https://www.formula1.com/en/results.html/2024/team/mercedes.html' },
+            { pos: 5, team: 'ASTON MARTIN ARAMCO MERCEDES', pts: 42, url: 'https://www.formula1.com/en/results.html/2024/team/aston_martin_aramco_mercedes.html' },
+        ];
+
+        function populateStandings() {
+            const tbody = document.querySelector('#constructor-standings tbody');
+            standings.forEach(team => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${team.pos}</td>
+                    <td class="team-link" data-url="${team.url}">${team.team}</td>
+                    <td>${team.pts}</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            document.querySelectorAll('.team-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const url = this.getAttribute('data-url');
+                    window.location.href = url;
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', populateStandings);
+    </script>
 </body>
 </html>

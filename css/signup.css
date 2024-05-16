@@ -8,9 +8,9 @@ body {
 
 .loginbox {
     width: 320px;
-    height: 400px;
+    height: 480px;
     background: #fff;
-    color: white;
+    color: #000;
     top: 50%;
     left: 50%;
     position: absolute;
@@ -41,6 +41,7 @@ body {
 }
 
 .loginbox input[type="text"],
+.loginbox input[type="email"],
 .loginbox input[type="password"] {
     border: none;
     border-bottom: 1px solid #000;
@@ -76,24 +77,33 @@ body {
     left: calc(50% - 50px);
 }
 
-.loginbox a {
-    color: #333;
-    text-decoration: none;
-    font-size: 14px;
+.signup {
+    text-align: center;
 }
 
-.loginbox a:hover {
-    text-decoration: underline;
+.signup .text {
+    font-size: 16px;
+    color: white;
 }
 
-.password-input {
+.signup .signin-text {
+    color: white;
+    font-weight: bold;
+}
+
+.password-container {
     position: relative;
 }
 
-.password-input .toggle-password {
+.password-container .toggle-password {
     position: absolute;
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer;
+}
+
+.password-strength {
+    font-size: 12px;
+    margin-top: 5px;
 }
