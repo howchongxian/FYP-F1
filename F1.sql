@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2024 at 06:53 AM
+-- Generation Time: May 17, 2024 at 10:16 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -109,10 +109,6 @@ CREATE TABLE `shopping_cart` (
   `product_price` decimal(7,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `shopping_cart`
---
-
 -- --------------------------------------------------------
 
 --
@@ -127,11 +123,6 @@ CREATE TABLE `shopping_cart2` (
   `quantity` int(11) DEFAULT 1,
   `ticket_price` decimal(8,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `shopping_cart2`
---
-
 
 -- --------------------------------------------------------
 
@@ -245,6 +236,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `feedback_no.` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `shopping_cart`
