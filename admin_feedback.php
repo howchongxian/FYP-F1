@@ -6,6 +6,7 @@ $result = mysqli_query($connect, "SELECT * FROM feedback");
 ?>
 
 <!DOCTYPE HTML>
+<html>
 <head>
     <title>Admin Feedback</title>
     <meta charset="utf-8">
@@ -13,9 +14,7 @@ $result = mysqli_query($connect, "SELECT * FROM feedback");
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" media="screen" href="css/admin_feedback.css">
 </head>
-<?php
-include'admin_dashboard.php'
-?>
+<?php include 'admin_dashboard.php'; ?>
 <body>
     <div class="main-content">
         <!-- Admin Header -->
@@ -36,7 +35,7 @@ include'admin_dashboard.php'
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                 <tr>
-                    <td><?php echo $row["feedback_no."];?></td>
+                    <td><?php echo $row["feedback_no."]; ?></td>
                     <td><?php echo $row["feedback"]; ?></td>
                 </tr>
                 <?php
@@ -47,4 +46,3 @@ include'admin_dashboard.php'
     </div>
 </body>
 </html>
-

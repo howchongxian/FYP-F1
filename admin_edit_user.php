@@ -7,21 +7,22 @@ if (isset($_POST["submit"])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  $sql = "UPDATE `user` SET `username`='$username',`email`='$email',`password`='$password' WHERE id = $id";
+  // Using prepared statements for security
+  $sql = "UPDATE `user` SET `username`=?, `email`=?, `password`=? WHERE id = ?";
+  $stmt = mysqli_prepare($connect, $sql);
+  mysqli_stmt_bind_param($stmt, "sssi", $username, $email, $password, $id);
 
-  $result = mysqli_query($connect, $sql);
-
-  if ($result) {
+  if (mysqli_stmt_execute($stmt)) {
     header("Location: user.php?msg=Data updated successfully");
+    exit();
   } else {
-    echo "Failed: user.php" . mysqli_error($connect);
+    echo "Failed: " . mysqli_error($connect);
   }
+
+  mysqli_stmt_close($stmt);
 }
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,13 +37,13 @@ if (isset($_POST["submit"])) {
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="admin_style.css">
-  <title>User List</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Edit User</title>
 </head>
 
 <body>
   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">
-    User List
+    Edit User
   </nav>
 
   <div class="container">
@@ -61,7 +62,7 @@ if (isset($_POST["submit"])) {
       <form action="" method="post" style="width:50vw; min-width:300px;">
         <div class="row mb-3">
           <div class="col">
-            <label class="form-label">Userame:</label>
+            <label class="form-label">Username:</label>
             <input type="text" class="form-control" name="username" value="<?php echo $row['username'] ?>">
           </div>
 
