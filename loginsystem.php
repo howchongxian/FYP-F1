@@ -28,7 +28,7 @@ if(isset($_POST['submit'])) {
         if ($user) {
             if ($user['role'] == 'admin') {
                 $_SESSION['admin_userid'] = $user['id'];
-                header("Location: admin.php"); // Redirect admin to admin panel
+                header("Location: admin_dashboard.php"); // Redirect admin to admin panel
                 exit();
             } elseif ($user['role'] == 'superadmin') {
                 $_SESSION['superadmin_userid'] = $user['id'];
