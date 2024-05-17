@@ -17,7 +17,9 @@
   <link rel="stylesheet" href="admin_style.css">
   <title>User List</title>
 </head>
-
+<?php
+include'./includes/sidebar.php'
+?>
 <body>
   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">
   User List
