@@ -43,7 +43,7 @@ if(isset($_POST["submit"])) {
 <!-- Google Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 <!-- CSS Files -->
-<link rel="stylesheet" href="css/register.css">
+<link rel="stylesheet" href="css/signup.css">
 <!-- JS Files -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script src="js/jquery.tools.min.js"></script>

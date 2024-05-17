@@ -9,7 +9,7 @@
 <!-- CSS Files -->
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
 <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
-<link rel="stylesheet" type="text/css" media="screen" href="css\feedback.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/feedback.css">
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
 <script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>

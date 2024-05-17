@@ -17,6 +17,11 @@ body {	font-family: Arial, Helvetica, sans-serif;
 		color: #666;
 }
  
+.main-content {
+	margin-left: 280px; /* Adjust this value as needed */
+  }
+
+
 #container {
 	font-size: 1em;
 	width:960px;

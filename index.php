@@ -76,6 +76,7 @@ $(document).ready(function () {
   <ol>
     <li><a href="edit_username.php">Edit Username</a></li>
     <li><a href="change_email.php">Change Email</a></li>
+    <li><a href="logout.php">Logout</a></li>
   </ol>
   </li>
 </ol>
