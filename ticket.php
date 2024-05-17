@@ -14,6 +14,7 @@
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
 <script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
+<script src="js/confirmation.js"></script>
 </head>
 <body>
 <!-- Main Menu -->
@@ -83,7 +84,7 @@
                         <td><?php echo $row["ticket_price"];?></td>
                         <td><a class="product-btn" href="add_ShoppingCart.php?ticketID=<?php echo $row['ticketID']; ?>
                           &race=<?php echo $row['race']; ?>
-                          &ticket_price=<?php echo $row['ticket_price']; ?>">Add to Shopping Cart</a><!--add cart confirm need-->
+                          &ticket_price=<?php echo $row['ticket_price']; ?>" onclick="return addCart();">Add to Shopping Cart</a><!--add cart confirm need-->
                         </td>
                     </tr>
                     <?php

@@ -13,7 +13,8 @@
 <link rel="stylesheet" type="text/css" media="screen" href="css/product.css">
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
-<script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="js/confirmation.js"></script>
 </head>
 <body>
 <!-- Main Menu -->
@@ -90,7 +91,7 @@
                         <td><a class="product-btn" href="add_ShoppingCart.php?product_code=<?php echo $row['product_code']; ?>
                           &product_img=<?php echo $row['product_img']; ?>
                           &product_name=<?php echo $row['product_name']; ?>
-                          &product_price=<?php echo $row['product_price']; ?>">Add to Shopping Cart</a><!--add cart confirm need-->
+                          &product_price=<?php echo $row['product_price']; ?>" onclick="return addCart();">Add to Shopping Cart</a><!--add cart confirm need-->
                         </td>
                     </tr>
                     <?php

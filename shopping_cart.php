@@ -24,7 +24,7 @@ if(!isset($_SESSION['userid'])) {
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="js/confirm_delete.js"></script>
+<script src="js/confirmation.js"></script>
 <script>
 function increment(productCode) {
   const quantitySpan = document.getElementById(`quantity-${productCode}`);
@@ -150,7 +150,8 @@ function updateQuantity2(ticketid, newQuantity) {
 <div id="container">
   <h1>Shopping Cart</h1>
 
-  <table class="product-table" border="1" width="700px" height="100px">
+  <form method="post" action="process_size.php">
+    <table class="product-table" border="1" width="700px" height="100px">
                 <tr>
                     <th>Product Code</th>
                     <th>Product Image</th>
@@ -173,7 +174,7 @@ function updateQuantity2(ticketid, newQuantity) {
                         <td><?php echo $row["product_code"];?></td>
                         <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
                         <td><?php echo $row["product_name"];?></td>
-                        <td><input type="size" id="size" placeholder=<?php echo $row["product_size"];?>></td>
+                        <td><input type="text" name="product_size[<?php echo $row['product_code']; ?>]"></td>
                         <td>
                           <div class="qty">
                             <button class="min" onclick="decrement('<?php echo $row['product_code']; ?>')">-</button>
@@ -190,8 +191,8 @@ function updateQuantity2(ticketid, newQuantity) {
                     }		
                 
                 ?>
-  </table>
-  <table class="ticket-table" border="1" width="700px" height="100px">
+    </table>
+    <table class="ticket-table" border="1" width="700px" height="100px">
                 <tr>
                     <th>Ticket ID</th>
                     <th>Race</th>
@@ -227,12 +228,13 @@ function updateQuantity2(ticketid, newQuantity) {
                     }		
                 
                 ?>
-  </table>
+    </table>
 
     <div class="cart-buttons">
       <a class="sc_btn" href="product.php">Cancel</a>
-      <a class="sc_btn" href="order.php">Check Out</a>
+      <input class="sc_btn" type="submit" value="Check Out">
     </div>
+  </form>
 </div>
 
   <!-- END Second Column -->
