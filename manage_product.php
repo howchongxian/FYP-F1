@@ -27,7 +27,7 @@ function confirmation()
 </script>
 </head>
 <?php 
-include 'admin_dashboard.php'
+include 'sidebar.php'
 ?>
 <body>
     <div id="container">

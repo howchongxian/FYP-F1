@@ -1,8 +1,5 @@
 <?php
 include("dataconnection.php");
-
-// Query to retrieve all feedback
-$result = mysqli_query($connect, "SELECT * FROM feedback");
 ?>
 
 <!DOCTYPE HTML>
@@ -14,24 +11,18 @@ $result = mysqli_query($connect, "SELECT * FROM feedback");
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" media="screen" href="css/admin_feedback.css">
 </head>
-<?php include 'admin_dashboard.php'; ?>
+<?php include 'sidebar.php'; ?>
 <body>
-    <div class="main-content">
-        <!-- Admin Header -->
-        <div id="admin-header">
-            <h1>Feedback</h1>
-        </div>
-
-        <!-- Feedback List -->
+    <div id="container">
+        <h1>Feedback</h1>
         <div class="feedback-list">
             <table class="feedback-table" border="1" width="700px" height="100px">
                 <tr>
                     <th>Feedback No.</th>
                     <th>Feedback</th>
                 </tr>
-
                 <?php
-                // Display feedback
+                $result = mysqli_query($connect, "SELECT * FROM feedback");
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                 <tr>
@@ -43,6 +34,6 @@ $result = mysqli_query($connect, "SELECT * FROM feedback");
                 ?>
             </table>
         </div>
-    </div>
+    </div>    
 </body>
 </html>

@@ -68,7 +68,6 @@ if (isset($_POST['update'])) {
     header("Location: admin.php");
     exit;
 }
-
 ?>
 
 <!DOCTYPE HTML>
@@ -100,7 +99,7 @@ if (isset($_POST['update'])) {
     </style>
 </head>
 <body>
-    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data">
+    <form action="admin_edit_product.php?edit&procode=<?php echo $product_code; ?>" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Product Code:</td>
