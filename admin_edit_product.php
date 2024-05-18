@@ -10,7 +10,7 @@ if (isset($_GET['edit']) && isset($_GET['procode'])) {
     $row = $result->fetch_assoc();
 
     if (!$row) {
-        header("Location: admin.php");
+        header("Location: manage_product.php");
         exit;
     }
 }
@@ -65,7 +65,7 @@ if (isset($_POST['update'])) {
     $stmt->bind_param("ssssss", $product_name, $product_size, $description, $product_price, $product_img, $product_code);
     $stmt->execute();
 
-    header("Location: admin.php");
+    header("Location: manage_product.php");
     exit;
 }
 ?>
