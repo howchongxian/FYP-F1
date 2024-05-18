@@ -42,9 +42,6 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">
-    Edit User
-  </nav>
 
   <div class="container">
     <div class="text-center mb-4">
@@ -79,7 +76,7 @@ if (isset($_POST["submit"])) {
 
         <div>
           <button type="submit" class="btn btn-success" name="submit">Update</button>
-          <a href="admin.php" class="btn btn-danger">Cancel</a>
+          <a href="user.php" class="btn btn-danger">Cancel</a>
         </div>
       </form>
     </div>
