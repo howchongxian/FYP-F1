@@ -39,7 +39,7 @@ if(!isset($_SESSION['userid'])) {
 <div id="container">
   <h1>Payment</h1>
   
-  <form>
+  <form id="paymentForm" method="post" action="comfirm_order.php">
     <label for="name">Your Name:</label>
     <input type="text" id="name" required>
 
@@ -65,14 +65,14 @@ if(!isset($_SESSION['userid'])) {
         <input type="radio" name="payment-method" id="credit-card" value="credit-card" required>
         <img src="images/payment/CreditCard.jpg" alt="Credit Card">
         <label for="credit-card">Credit Card/Debit Card</label>
-        <div id="credit-card-info" style="display:contents;">
+        <div id="credit-card-info" style="display:none;">
           <label for="card-number">Card Number:</label>
           <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" pattern="\d{4}\s?\d{4}\s?\d{4}\s?\d{4}" required>
         </div>
       </div>
     </div>
 
-    <input type="submit" value="Confirm Payment">
+    <button class="py_btn" type="button" onclick="document.getElementById('paymentForm').submit();">Confirm Payment</button>
   </form>
 
   <!-- END Second Column -->

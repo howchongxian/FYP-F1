@@ -111,7 +111,7 @@ if(!isset($_SESSION['userid'])) {
             </div>
             <div class="order-buttons">
                 <a class="order-btn" href="shopping_cart.php">Cancel</a>
-                <a class="order-btn" href="comfirm_order.php">Confirm Order</a>
+                <a class="order-btn" href="payment.php">Confirm Order</a>
               </div>
             </div>
             <!-- END Second Column -->
