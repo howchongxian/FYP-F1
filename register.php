@@ -16,49 +16,27 @@ if(isset($_POST["submit"])) {
     if(!validatePasswordLength($password)) {
         echo "<script>alert('Password must be at least 8 characters long. Please try again.');</script>";
     } else {
-        // Using prepared statements for security
-        $duplicate_query = "SELECT * FROM user WHERE username = ? OR email = ?";
-        $stmt = mysqli_prepare($connect, $duplicate_query);
-        mysqli_stmt_bind_param($stmt, "ss", $username, $email);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-
-        if(mysqli_num_rows($result) > 0){
+        $duplicate = mysqli_query($connect,"SELECT * FROM user WHERE username='$username' OR email='$email'");
+        if(mysqli_num_rows($duplicate) > 0){
             echo "<script>alert('Username or Email Has Already Registered');</script>";
-        } else {
+        }
+        else{
             if($password == $confirmpassword){
-                // Hash the password
-                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-                // Default role
-                $role = 'user';
-
-                // Insert the new user into the database
-                $insert_query = "INSERT INTO user (username, email, password, role) VALUES (?, ?, ?, ?)";
-                $insert_stmt = mysqli_prepare($connect, $insert_query);
-                mysqli_stmt_bind_param($insert_stmt, "ssss", $username, $email, $hashed_password, $role);
-
-                if (mysqli_stmt_execute($insert_stmt)) {
-                    echo "<script>alert('Registration Successful');</script>";
-                    // Redirect to home page after 2 seconds
-                    echo "<script>setTimeout(function(){ window.location.href = 'index.php'; }, 1000);</script>";
-                } else {
-                    echo "<script>alert('Failed: " . mysqli_error($connect) . "');</script>";
-                }
-
-                mysqli_stmt_close($insert_stmt);
-            } else {
+                $query = "INSERT INTO user (username, email, password) VALUES ('$username', '$email', '$password')";
+                mysqli_query($connect, $query);
+                echo "<script>alert('Registration Successful');</script>";
+                // Redirect to home page after 2 seconds
+                echo "<script>setTimeout(function(){ window.location.href = 'index.php'; }, 1000);</script>";
+            }
+            else{
                 echo "<script>alert('Password Does Not Match!');</script>";
             }
         }
-
-        mysqli_stmt_close($stmt);
     }
 }
 ?>
 
 <!DOCTYPE HTML>
-<html>
 <head>
 <title>Sign up</title>
 <meta charset="utf-8">
@@ -85,16 +63,6 @@ $(document).ready(function () {
         return false;
     });
 });
-</script>
-<script>
-function togglePasswordVisibility(fieldId) {
-    var field = document.getElementById(fieldId);
-    if (field.type === "password") {
-        field.type = "text";
-    } else {
-        field.type = "password";
-    }
-}
 </script>
 </head>
 <body>
