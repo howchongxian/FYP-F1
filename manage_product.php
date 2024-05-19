@@ -27,7 +27,7 @@ function confirmation()
 </script>
 </head>
 <?php 
-include 'admin_dashboard.php'
+include 'sidebar.php'
 ?>
 <body>
     <div id="container">
@@ -91,7 +91,7 @@ include 'admin_dashboard.php'
                         <td><?php echo $row["race"];?></td>
                         <td><?php echo $row["stand"];?></td>
                         <td><?php echo $row["ticket_price"];?></td>
-                        <td><a href="admin_edit_product.php?edit&procode=<?php echo $row['ticketID']; ?>">Edit</a></td>
+                        <td><a href="admin_edit_ticket.php?edit&procode=<?php echo $row['ticketID']; ?>">Edit</a></td>
                         <td><a href="admin_delete_product.php?del&procode=<?php echo $row['ticketID']; ?>" onclick="return confirmation();">Delete</a></td>
                     </tr>
                     <?php
@@ -103,7 +103,8 @@ include 'admin_dashboard.php'
 
             <div class="edit-buttons">
                 <!--<a class="edit_btn" href=".php">Cancel</a>-->
-                <a class="edit_btn" href="admin_add_product.php">Add Product/Ticket</a>
+                <a class="edit_btn" href="admin_add_product.php">Add Product /</a>
+                <a class="edit_btn" href="admin_add_ticket.php">Add Ticket</a>
             </div>
         </div>
     </div>    

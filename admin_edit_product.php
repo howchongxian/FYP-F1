@@ -10,7 +10,7 @@ if (isset($_GET['edit']) && isset($_GET['procode'])) {
     $row = $result->fetch_assoc();
 
     if (!$row) {
-        header("Location: admin.php");
+        header("Location: manage_product.php");
         exit;
     }
 }
@@ -65,10 +65,9 @@ if (isset($_POST['update'])) {
     $stmt->bind_param("ssssss", $product_name, $product_size, $description, $product_price, $product_img, $product_code);
     $stmt->execute();
 
-    header("Location: admin.php");
+    header("Location: manage_product.php");
     exit;
 }
-
 ?>
 
 <!DOCTYPE HTML>
@@ -100,7 +99,7 @@ if (isset($_POST['update'])) {
     </style>
 </head>
 <body>
-    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data">
+    <form action="admin_edit_product.php?edit&procode=<?php echo $product_code; ?>" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Product Code:</td>

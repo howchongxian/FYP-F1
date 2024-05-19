@@ -44,10 +44,16 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
+        // Hash the password for security
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // Default role
+        $role = 'user';
+
         // Using prepared statements for security
-        $sql = "INSERT INTO user (username, email, password) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO user (username, email, password, role) VALUES (?, ?, ?, ?)";
         $stmt = mysqli_prepare($connect, $sql);
-        mysqli_stmt_bind_param($stmt, "sss", $username, $email, $password);
+        mysqli_stmt_bind_param($stmt, "ssss", $username, $email, $hashed_password, $role);
 
         if (mysqli_stmt_execute($stmt)) {
             header("Location: user.php?msg=New record created successfully");
@@ -58,6 +64,6 @@
 
         mysqli_stmt_close($stmt);
     }
-   ?>
+    ?>
 </body>
 </html>

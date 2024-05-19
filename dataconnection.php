@@ -12,7 +12,6 @@ if(!$connect)
   $sname = "localhost";
   $uname = "root";
   $password = "";
-
   $db_name = "f1";
 
   $connect = mysqli_connect($sname,$uname,$password,$db_name);

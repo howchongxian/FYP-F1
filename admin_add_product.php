@@ -10,13 +10,13 @@
 <!-- CSS Files -->
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
 <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
-<link rel="stylesheet" type="text/css" media="screen" href="./assets/css/product.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/product.css">
 </head>
 <body>
     <div id="container">
         <h1>F1 Product</h1>
         <div class="product-list">
-            <h2>Add Product/Ticket</h2>
+            <h2>Add Product</h2>
             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data">
                 <table>
                     <tr>
@@ -62,18 +62,31 @@
 
         // Upload product image
         $target_dir = "uploads/";
-        $target_file = $target_dir. basename($_FILES["product_img"]["name"]);
-        move_uploaded_file($_FILES["product_img"]["tmp_name"], $target_file);
-
-        // Check if it's a product or ticket
-        if (!empty($product_code)) {
-            // Insert into product table
-            $query = "INSERT INTO product (product_code, product_img, product_name, product_size, description, product_price) VALUES ('$product_code', '$product_img', '$product_name', '$product_size', '$description', '$product_price')";
-            mysqli_query($connect, $query);
+        if (!is_dir($target_dir)) {
+            mkdir($target_dir, 0777, true);
         }
-
-        header("Location: admin.php");
-        exit;
+        $target_file = $target_dir . basename($product_img);
+        
+        if (move_uploaded_file($_FILES["product_img"]["tmp_name"], $target_file)) {
+            // Check for duplicate product code
+            $query = "SELECT * FROM product WHERE product_code='$product_code'";
+            $result = mysqli_query($connect, $query);
+            
+            if (mysqli_num_rows($result) == 0) {
+                // Insert into product table
+                $query = "INSERT INTO product (product_code, product_img, product_name, product_size, description, product_price) VALUES ('$product_code', '$product_img', '$product_name', '$product_size', '$description', '$product_price')";
+                if (mysqli_query($connect, $query)) {
+                    header("Location: manage_product.php");
+                    exit;
+                } else {
+                    echo "Error: " . mysqli_error($connect);
+                }
+            } else {
+                echo "Error: Duplicate product code.";
+            }
+        } else {
+            echo "Error: There was an error uploading the file.";
+        }
     }
    ?>
 </body>
