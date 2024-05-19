@@ -103,7 +103,7 @@ include 'sidebar.php'
 
             <div class="edit-buttons">
                 <!--<a class="edit_btn" href=".php">Cancel</a>-->
-                <a class="edit_btn" href="admin_add_product.php">Add Product</a>
+                <a class="edit_btn" href="admin_add_product.php">Add Product /</a>
                 <a class="edit_btn" href="admin_add_ticket.php">Add Ticket</a>
             </div>
         </div>
