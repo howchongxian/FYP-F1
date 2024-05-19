@@ -31,7 +31,7 @@ $(document).ready(function () {
 </head>
 <body>
 <ol id="menu">
-  <li class="active_menu_item"><a href="index.html" style="color:#FFF">Home</a>
+  <li class="active_menu_item"><a href="index.php" style="color:#FFF">Home</a>
   </li>
   <li><a href="#">Latest</a>
     <ol>
@@ -68,6 +68,7 @@ $(document).ready(function () {
   <ol>
     <li><a href="edit_username.php">Edit Username</a></li>
     <li><a href="change_email.php">Change Email</a></li>
+    <li><a href="logout.php">Logout</a></li>
   </ol>
   </li>
 </ol>

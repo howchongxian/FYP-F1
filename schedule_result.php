@@ -41,7 +41,11 @@ $(document).ready(function () {
       <li><a href="videos.php">Videos</a></li>
     </ol>
   </li>
-    <li><a href="schedule_result.php">Schedule & Result</a></li>
+  <li><a href="schedule_result.php">Schedule & Result</a>
+    <ol>
+      <li><a href="constructor.php">Constructor Standings</a></li>
+    </ol>
+  </li>
   <li><a href="#">Drivers & Teams</a>
     <ol>
       <li><a href="driver.php">Drivers</a></li>
@@ -60,6 +64,13 @@ $(document).ready(function () {
   <ol>
     <li><a href="about_us.php">About Us</a></li>
     <li><a href="contact.php">Contact Us</a></li>
+  </ol>
+  </li>
+  <li><a href="#">user</a>
+  <ol>
+    <li><a href="edit_username.php">Edit Username</a></li>
+    <li><a href="change_email.php">Change Email</a></li>
+    <li><a href="logout.php">Logout</a></li>
   </ol>
   </li>
 </ol>
