@@ -75,43 +75,43 @@ $(document).ready(function () {
             <img src="drivers/MaxVers.jpg" alt="Driver 1">
             <p>Max Verstappen</p>
             <p>1</p>
-            <p>136 PTS</p>
+            <p>161 PTS</p>
         </a>
     </div>
     <div class="column" id="driver2">
-        <a href="https://formula1.com/en/drivers/sergio-perez.html">
-            <p class="rank">2</p>
-            <img src="drivers/Perez.jpg" alt="Driver 2">
-            <p>Sergio Perez</p>
-            <p>11</p>
-            <p>101 PTS</p>
+        <p class="rank">2</p>
+        <a href="https://www.formula1.com/en/drivers/charles-leclerc.html">
+            <img src="drivers/Leclerc.jpg" alt="Driver 2">
+            <p>Charles Leclerc</p>
+            <p>16</p>
+            <p>113 PTS</p>
         </a>
     </div>
     <div class="column" id="driver3">
-        <p class="rank">3</p>
-        <a href="https://www.formula1.com/en/drivers/charles-leclerc.html">
-            <img src="drivers/Leclerc.jpg" alt="Driver 3">
-            <p>Charles Leclerc</p>
-            <p>16</p>
-            <p>98 PTS</p>
+        <a href="https://formula1.com/en/drivers/sergio-perez.html">
+            <p class="rank">3</p>
+            <img src="drivers/Perez.jpg" alt="Driver 3">
+            <p>Sergio Perez</p>
+            <p>11</p>
+            <p>107 PTS</p>
         </a>
     </div>
     <div class="column" id="driver4">
-        <a href="https://www.formula1.com/en/drivers/carlos-sainz.html">
+        <a href="https://www.formula1.com/en/drivers/lando-norris.html">
             <p class="rank">4</p>
-            <img src="drivers/Sainz.jpg" alt="Driver 4">
-            <p>Carlos Sainz</p>
-            <p>55</p>
-            <p>85 PTS</p>
+            <img src="drivers/Norris.jpg" alt="Driver 4">
+            <p>Lando Norris</p>
+            <p>4</p>
+            <p>101 PTS</p>
         </a>
     </div>
     <div class="column" id="driver5">
-        <a href="https://www.formula1.com/en/drivers/lando-norris.html">
+        <a href="https://www.formula1.com/en/drivers/carlos-sainz.html">
             <p class="rank">5</p>
-            <img src="drivers/Norris.jpg" alt="Driver 5">
-            <p>Lando Norris</p>
-            <p>4</p>
-            <p>83 PTS</p>
+            <img src="drivers/Sainz.jpg" alt="Driver 5">
+            <p>Carlos Sainz</p>
+            <p>55</p>
+            <p>93 PTS</p>
         </a>
     </div>
     <div class="column" id="driver6">
@@ -120,7 +120,7 @@ $(document).ready(function () {
             <img src="drivers/Piastri.jpg" alt="Driver 6">
             <p>Oscar Piastri</p>
             <p>81</p>
-            <p>41 PTS</p>
+            <p>53 PTS</p>
         </a>
     </div>
     <div class="column" id="driver7">
@@ -129,25 +129,25 @@ $(document).ready(function () {
             <img src="drivers/Russel.jpg" alt="Driver 7">
             <p>George Russell</p>
             <p>63</p>
-            <p>37 PTS</p>
+            <p>44 PTS</p>
         </a>
     </div>
     <div class="column" id="driver8">
-        <a href="https://www.formula1.com/en/drivers/fernando-alonso.html">
+        <a href="https://www.formula1.com/en/drivers/lewis-hamilton.html">
             <p class="rank">8</p>
-            <img src="drivers/Alonso.jpg" alt="Driver 8">
-            <p>Fernando Alonso</p>
-            <p>14</p>
-            <p>33 PTS</p>
+            <img src="drivers/Hamilton.jpg" alt="Driver 8">
+            <p>Lewis Hamilton</p>
+            <p>44</p>
+            <p>35 PTS</p>
         </a>
     </div>
     <div class="column" id="driver9">
-        <a href="https://www.formula1.com/en/drivers/lewis-hamilton.html">
+        <a href="https://www.formula1.com/en/drivers/fernando-alonso.html">
             <p class="rank">9</p>
-            <img src="drivers/Hamilton.jpg" alt="Driver 9">
-            <p>Lewis Hamilton</p>
-            <p>44</p>
-            <p>27 PTS</p>
+            <img src="drivers/Alonso.jpg" alt="Driver 9">
+            <p>Fernando Alonso</p>
+            <p>14</p>
+            <p>33 PTS</p>
         </a>
     </div>
     <div class="column" id="driver10">
@@ -156,7 +156,7 @@ $(document).ready(function () {
             <img src="drivers/Stroll.jpg" alt="Driver 10">
             <p>Lance Stroll</p>
             <p>18</p>
-            <p>9 PTS</p>
+            <p>11 PTS</p>
         </a>
     </div>
 </div>

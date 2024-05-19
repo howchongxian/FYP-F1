@@ -48,6 +48,12 @@
   <h1>F1 Videos</h1>
   <div class="video-container">
     <div class="video-card">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/bo-c4RnUGLA?si=FRT0Whz9gZHBegqK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <h3>Race Highlights | Formula 1 Emilia-Romagna Grand Prix 2024</h3>
+      <a href="https://youtu.be/bo-c4RnUGLA?si=FRT0Whz9gZHBegqK" target="_blank">Watch on YouTube</a>
+    </div>
+
+    <div class="video-card">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/b8zOOzAtN-0?si=Y8eHbMIK4S2sTUEj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></ifram>
       <h3>Qualifying Highlights | Formula 1 Emilia-Romagna Grand Prix 2024</h3>
       <a href="https://youtu.be/b8zOOzAtN-0?si=Y8eHbMIK4S2sTUEj" target="_blank">Watch on YouTube</a>

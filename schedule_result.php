@@ -82,7 +82,7 @@ $(document).ready(function () {
     { grandPrix: 'FORMULA 1 MSC CRUISES JAPANESE GRAND PRIX 2024', date: '5-7 Apr 2024', winner: 'Max Verstappen', points: '26', detailsURL: 'https://www.formula1.com/en/results.html/2024/races/1232/japan/race-result.html' },
     { grandPrix: 'FORMULA 1 LENOVO CHINESE GRAND PRIX 2024', date: '19-21 Apr 2024', winner: 'Max Verstappen', points: '25', detailsURL: 'https://www.formula1.com/en/results.html/2024/races/1233/china/race-result.html' },
     { grandPrix: 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024', date: '4-6 May 2024', winner: 'Lando Norris', points: '25', detailsURL: 'https://www.formula1.com/en/results.html/2024/races/1234/miami/race-result.html' },
-    { grandPrix: 'FORMULA 1 ITALY E DELL EMILIA-ROMAGNA 2024', date: '17-19 May 2024', winner: 'Upcoming', points: '', detailsURL: 'https://www.formula1.com/en/racing/2024/EmiliaRomagna.html' },
+    { grandPrix: 'FORMULA 1 ITALY E DELL EMILIA-ROMAGNA 2024', date: '17-19 May 2024', winner: 'Max Verstappen', points: '25', detailsURL: 'https://www.formula1.com/en/results.html/2024/races/1235/italy/race-result.html' },
     { grandPrix: 'FORMULA 1 GRAND PRIX DE MONACO 2024', date: '24-26 May 2024', winner: 'Upcoming', points: '', detailsURL: 'https://www.formula1.com/en/racing/2024/Monaco.html' },
     { grandPrix: 'FORMULA 1 GRAND PRIX DU CANADA 2024', date: '8-10 Jun 2024', winner: 'Upcoming', points: '', detailsURL: 'https://www.formula1.com/en/racing/2024/Canada.html' },
     { grandPrix: 'FORMULA 1 ARAMCO GRAN PREMIO DE ESPAÑA 2024', date: '21-23 Jun 2024', winner: 'Upcoming', points: '', detailsURL: 'https://www.formula1.com/en/racing/2024/Spain.html' },
