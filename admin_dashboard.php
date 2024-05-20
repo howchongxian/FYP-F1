@@ -1,8 +1,3 @@
-<?php
-include 'dataconnection.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +7,6 @@ include 'dataconnection.php';
    <title>Dashboard</title>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
    <link rel="stylesheet" href="css/admin_dashboard.css">
-
 </head>
 <body>
 <?php include 'sidebar.php'; ?>
@@ -24,6 +18,39 @@ include 'dataconnection.php';
       <div class="box">
          <h3>Welcome!</h3>
          <p><?= htmlspecialchars($fetch_profile['username']); ?></p>
+      </div>
+
+      <div class="box">
+         <?php
+            $select_users = $connect->prepare("SELECT * FROM `user`");
+            $select_users->execute();
+            $result_users = $select_users->get_result();
+            $number_of_users = $result_users->num_rows;
+         ?>
+         <h3><?= $number_of_users; ?></h3>
+         <p>User Accounts</p>
+      </div>
+
+      <div class="box">
+         <?php
+            $select_products = $connect->prepare("SELECT * FROM `product`");
+            $select_products->execute();
+            $result_products = $select_products->get_result();
+            $number_of_products = $result_products->num_rows;
+         ?>
+         <h3><?= $number_of_products; ?></h3>
+         <p>Products Added</p>
+      </div>
+
+      <div class="box">
+         <?php
+            $select_orders = $connect->prepare("SELECT * FROM `order`");
+            $select_orders->execute();
+            $result_orders = $select_orders->get_result();
+            $number_of_orders = $result_orders->num_rows;
+         ?>
+         <h3><?= $number_of_orders; ?></h3>
+         <p>Orders Placed</p>
       </div>
 
       <div class="box">
@@ -56,39 +83,6 @@ include 'dataconnection.php';
          ?>
          <h3><span>RM</span><?= $total_completes; ?><span></span></h3>
          <p>Completed Orders</p>
-      </div>
-
-      <div class="box">
-         <?php
-            $select_orders = $connect->prepare("SELECT * FROM `order`");
-            $select_orders->execute();
-            $result_orders = $select_orders->get_result();
-            $number_of_orders = $result_orders->num_rows;
-         ?>
-         <h3><?= $number_of_orders; ?></h3>
-         <p>Orders Placed</p>
-      </div>
-
-      <div class="box">
-         <?php
-            $select_products = $connect->prepare("SELECT * FROM `product`");
-            $select_products->execute();
-            $result_products = $select_products->get_result();
-            $number_of_products = $result_products->num_rows;
-         ?>
-         <h3><?= $number_of_products; ?></h3>
-         <p>Products Added</p>
-      </div>
-
-      <div class="box">
-         <?php
-            $select_users = $connect->prepare("SELECT * FROM `user`");
-            $select_users->execute();
-            $result_users = $select_users->get_result();
-            $number_of_users = $result_users->num_rows;
-         ?>
-         <h3><?= $number_of_users; ?></h3>
-         <p>User Accounts</p>
       </div>
 
       <div class="box">

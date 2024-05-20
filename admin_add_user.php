@@ -1,16 +1,15 @@
 <?php include("dataconnection.php");?>
 
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
 <title>Add New User</title>
 <meta charset="utf-8">
 <!-- Google Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 <!-- CSS Files -->
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
 <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
-<link rel="stylesheet" type="text/css" media="screen" href="./assets/css/product.css">
 </head>
 <body>
     <div id="container">
@@ -50,16 +49,29 @@
         // Default role
         $role = 'user';
 
-        // Using prepared statements for security
-        $sql = "INSERT INTO user (username, email, password, role) VALUES (?, ?, ?, ?)";
-        $stmt = mysqli_prepare($connect, $sql);
-        mysqli_stmt_bind_param($stmt, "ssss", $username, $email, $hashed_password, $role);
+        // Check for duplicate username or email
+        $check_sql = "SELECT * FROM user WHERE username=? OR email=?";
+        $stmt = mysqli_prepare($connect, $check_sql);
+        mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
-        if (mysqli_stmt_execute($stmt)) {
-            header("Location: user.php?msg=New record created successfully");
-            exit();
+        if (mysqli_num_rows($result) > 0) {
+            echo "<script>alert('Username or Email has already been registered.');</script>";
         } else {
-            echo "Failed: " . mysqli_error($connect);
+            // Insert new user into the database
+            $sql = "INSERT INTO user (username, email, password, role) VALUES (?, ?, ?, ?)";
+            $stmt = mysqli_prepare($connect, $sql);
+            mysqli_stmt_bind_param($stmt, "ssss", $username, $email, $hashed_password, $role);
+
+            if (mysqli_stmt_execute($stmt)) {
+                header("Location: user.php?msg=New record created successfully");
+                exit();
+            } else {
+                echo "Failed: " . mysqli_error($connect);
+            }
+
+            mysqli_stmt_close($stmt);
         }
 
         mysqli_stmt_close($stmt);
