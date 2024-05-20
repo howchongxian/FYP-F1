@@ -39,7 +39,7 @@ if(!isset($_SESSION['userid'])) {
 <div id="container">
   <h1>Payment</h1>
   
-  <form id="paymentForm" method="post" action="comfirm_order.php">
+  <form id="paymentForm" method="post" action="confirm_order.php">
     <label for="name">Your Name:</label>
     <input type="text" id="name" required>
 

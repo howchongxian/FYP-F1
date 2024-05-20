@@ -12,6 +12,7 @@ if (!isset($userid)) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
+    $phone = $_POST['phone'];
     $address = $_POST['address'];
     $payment_method = $_POST['payment_method'];
     
