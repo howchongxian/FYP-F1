@@ -7,25 +7,28 @@ $uname = "root";
 $password = "";
 $db_name = "f1";
 
-$connect = mysqli_connect($sname,$uname,$password,$db_name);
+$connect = mysqli_connect($sname, $uname, $password, $db_name);
 
-if(!$connect) {
+if (!$connect) {
     echo "Connection failed";
     exit(); // Exit if connection fails
 }
 
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Perform query to check if username and password match
-    $query = "SELECT * FROM user WHERE username='$username' AND password='$password'";
-    $result = mysqli_query($connect, $query);
+    // Perform query to check if username exists
+    $query = "SELECT * FROM user WHERE username=?";
+    $stmt = $connect->prepare($query);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if($result && mysqli_num_rows($result) == 1) {
-        // Username and password match
-        $user = mysqli_fetch_assoc($result);
-        if ($user) {
+    if ($result && $result->num_rows == 1) {
+        $user = $result->fetch_assoc();
+        // Verify password
+        if (password_verify($password, $user['password'])) {
             if ($user['role'] == 'admin') {
                 $_SESSION['admin_userid'] = $user['id'];
                 header("Location: admin_dashboard.php"); // Redirect admin to admin panel
@@ -39,9 +42,12 @@ if(isset($_POST['submit'])) {
                 header("Location: index.php"); // Redirect regular user to index.php
                 exit();
             }
+        } else {
+            $error = "Invalid username or password";
+            header("Location: login.php?error=" . urlencode($error)); // Redirect to login.php with error message
+            exit();
         }
     } else {
-        // Username and password do not match
         $error = "Invalid username or password";
         header("Location: login.php?error=" . urlencode($error)); // Redirect to login.php with error message
         exit();
@@ -51,3 +57,4 @@ if(isset($_POST['submit'])) {
     header("Location: login.php"); // Redirect to login.php
     exit();
 }
+?>
