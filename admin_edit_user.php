@@ -40,7 +40,7 @@ if (isset($_POST["submit"])) {
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>Edit User</title>
 </head>
 
@@ -49,7 +49,6 @@ if (isset($_POST["submit"])) {
   <div class="container">
     <div class="text-center mb-4">
       <h3>Edit User Information</h3>
-      <p class="text-muted">Click update after changing any information</p>
     </div>
 
     <?php

@@ -10,7 +10,6 @@
 <!-- CSS Files -->
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
 <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
-<link rel="stylesheet" type="text/css" media="screen" href="./assets/css/product.css">
 </head>
 <body>
     <div id="container">
