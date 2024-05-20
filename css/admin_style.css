@@ -24,7 +24,7 @@ body {	font-family: Arial, Helvetica, sans-serif;
 
 #container {
 	font-size: 1em;
-	width:max-content;
+	width:1000px;
 	background: #FFF;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;

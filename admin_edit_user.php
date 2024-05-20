@@ -7,10 +7,13 @@ if (isset($_POST["submit"])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
 
+  // Hash the password for security
+  $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
   // Using prepared statements for security
   $sql = "UPDATE `user` SET `username`=?, `email`=?, `password`=? WHERE id = ?";
   $stmt = mysqli_prepare($connect, $sql);
-  mysqli_stmt_bind_param($stmt, "sssi", $username, $email, $password, $id);
+  mysqli_stmt_bind_param($stmt, "sssi", $username, $email, $hashed_password, $id);
 
   if (mysqli_stmt_execute($stmt)) {
     header("Location: user.php?msg=Data updated successfully");
@@ -50,8 +53,11 @@ if (isset($_POST["submit"])) {
     </div>
 
     <?php
-    $sql = "SELECT * FROM `user` WHERE id = $id LIMIT 1";
-    $result = mysqli_query($connect, $sql);
+    $sql = "SELECT * FROM `user` WHERE id = ?";
+    $stmt = mysqli_prepare($connect, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     $row = mysqli_fetch_assoc($result);
     ?>
 
@@ -70,7 +76,7 @@ if (isset($_POST["submit"])) {
 
         <div class="mb-3">
             <label class="form-label">Password:</label>
-            <input type="text" class="form-control" name="password" value="<?php echo $row['password'] ?>">
+            <input type="text" class="form-control" name="password" value="">
           </div>
         </div>
 
