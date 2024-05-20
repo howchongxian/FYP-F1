@@ -46,7 +46,7 @@ $fetch_profile = array(
       <span class="tooltip">Product</span>
     </li>
     <li>
-      <a href="admin_order.php">
+      <a href="admin_order_detail.php">
         <i class='bx bx-cart'></i>
         <span class="links_name">Orders</span>
       </a>

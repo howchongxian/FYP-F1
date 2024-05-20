@@ -1,3 +1,7 @@
+<?php
+include 'dataconnection.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +48,7 @@
 
       <div class="box">
          <?php
-            $select_orders = $connect->prepare("SELECT * FROM `order`");
+            $select_orders = $connect->prepare("SELECT * FROM `order_detail`");
             $select_orders->execute();
             $result_orders = $select_orders->get_result();
             $number_of_orders = $result_orders->num_rows;
@@ -56,7 +60,7 @@
       <div class="box">
          <?php
             $total_pendings = 0;
-            $select_pendings = $connect->prepare("SELECT * FROM `order` WHERE payment_status = ?");
+            $select_pendings = $connect->prepare("SELECT * FROM `order_detail` WHERE payment_status = ?");
             $status_pending = 'pending';
             $select_pendings->bind_param("s", $status_pending);
             $select_pendings->execute();
@@ -72,7 +76,7 @@
       <div class="box">
          <?php
             $total_completes = 0;
-            $select_completes = $connect->prepare("SELECT * FROM `order` WHERE payment_status = ?");
+            $select_completes = $connect->prepare("SELECT * FROM `order_detail` WHERE payment_status = ?");
             $status_completed = 'completed';
             $select_completes->bind_param("s", $status_completed);
             $select_completes->execute();

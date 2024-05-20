@@ -1,29 +1,52 @@
 <?php
-// Include database connection
 include("dataconnection.php");
 
-// Check if order ID is provided and it's a valid number
-if (isset($_GET['order_id']) && is_numeric($_GET['order_id'])) {
-    // Retrieve order ID from the URL parameter
-    $order_id = $_GET['order_id'];
+if (isset($_POST['order_id'])) {
+    $order_id = $_POST['order_id'];
 
-    // Delete the order from the database
-    $sql = "DELETE FROM `order` WHERE `OrderID` = ?";
-    $stmt = mysqli_prepare($connect, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $order_id);
+    // Start a transaction
+    mysqli_begin_transaction($connect);
 
-    if (mysqli_stmt_execute($stmt)) {
-        // Redirect back to the orders page with a success message
-        header("Location: admin_view_orders.php?msg=Order deleted successfully");
-        exit();
-    } else {
-        // Redirect back to the orders page with an error message if deletion fails
-        header("Location: admin_view_orders.php?error=Failed to delete order");
-        exit();
+    try {
+        // Delete related rows in the order_items table
+        $query_items = "DELETE FROM order_items WHERE order_id = ?";
+        $stmt_items = mysqli_prepare($connect, $query_items);
+        mysqli_stmt_bind_param($stmt_items, 'i', $order_id);
+
+        if (!mysqli_stmt_execute($stmt_items)) {
+            throw new Exception("Error deleting related order items: " . mysqli_error($connect));
+        }
+
+        mysqli_stmt_close($stmt_items);
+
+        // Delete the order in the order_detail table
+        $query_order = "DELETE FROM order_detail WHERE order_id = ?";
+        $stmt_order = mysqli_prepare($connect, $query_order);
+        mysqli_stmt_bind_param($stmt_order, 'i', $order_id);
+
+        if (!mysqli_stmt_execute($stmt_order)) {
+            throw new Exception("Error deleting order: " . mysqli_error($connect));
+        }
+
+        mysqli_stmt_close($stmt_order);
+
+        // Commit the transaction
+        mysqli_commit($connect);
+
+        echo "Order deleted successfully.";
+
+    } catch (Exception $e) {
+        // Rollback the transaction in case of error
+        mysqli_rollback($connect);
+        echo $e->getMessage();
     }
-} else {
-    // If order ID is not provided or invalid, redirect back to the orders page
-    header("Location: admin_view_orders.php");
+
+    mysqli_close($connect);
+
+    // Redirect back to the admin orders page
+    header("Location: admin_order_detail.php");
     exit();
+} else {
+    echo "Invalid request method.";
 }
 ?>
