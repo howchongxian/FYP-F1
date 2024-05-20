@@ -71,6 +71,18 @@ CREATE TABLE `order` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `order_detail`
+--
+
+CREATE TABLE `order_detail` (
+  `name` int(5) NOT NULL,
+  `address` varchar(25) NOT NULL,
+  `phone` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 

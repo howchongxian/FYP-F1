@@ -1,7 +1,6 @@
 <?php
 include("dataconnection.php"); 
 session_start();
-$userid = $_SESSION['userid'];
 
 // Check if user is not logged in
 if(!isset($_SESSION['userid'])) {
@@ -9,6 +8,7 @@ if(!isset($_SESSION['userid'])) {
   exit();
 }
 
+$userid = $_SESSION['userid'];
 ?>
 
 <!DOCTYPE HTML>
@@ -26,7 +26,7 @@ if(!isset($_SESSION['userid'])) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="js/confirmation.js"></script>
 <script>
-function increment(productCode) {
+/*function increment(productCode) {
   const quantitySpan = document.getElementById(`quantity-${productCode}`);
   let currentQuantity = parseInt(quantitySpan.textContent);
 
@@ -46,7 +46,7 @@ function decrement(productCode) {
 
     updateQuantity(productCode, currentQuantity); // Update database
   }
-}
+}*/
 
 function updateQuantity(productCode, newQuantity) {
   $.ajax({
@@ -55,7 +55,7 @@ function updateQuantity(productCode, newQuantity) {
     data: { product_code: productCode, quantity: newQuantity },
     success: function(response) {
       console.log("Quantity updated:", response);
-      document.getElementById(`quantity-${productCode}`).textContent = newQuantity;
+      document.getElementById(`quantity-${productCode}`).value = newQuantity;
     },
     error: function(xhr, status, error) {
       console.error("Error updating quantity:", status, error);
@@ -63,7 +63,7 @@ function updateQuantity(productCode, newQuantity) {
   });
 }
 
-function increment2(ticketid) {
+/*function increment2(ticketid) {
   const quantitySpan = document.getElementById(`quantity-${ticketid}`);
   let currentQuantity = parseInt(quantitySpan.textContent);
 
@@ -83,7 +83,7 @@ function decrement2(ticketid) {
 
     updateQuantity2(ticketid, currentQuantity); // Update database
   }
-}
+}*/
 
 function updateQuantity2(ticketid, newQuantity) {
   $.ajax({
@@ -92,47 +92,66 @@ function updateQuantity2(ticketid, newQuantity) {
     data: { ticketID: ticketid, quantity: newQuantity },
     success: function(response) {
       console.log("Quantity updated:", response);
-      document.getElementById(`quantity-${ticketid}`).textContent = newQuantity;
+      document.getElementById(`quantity-${ticketid}`).value = newQuantity;
     },
     error: function(xhr, status, error) {
       console.error("Error updating quantity:", status, error);
     }
   });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('input[name^="quantity["]').forEach(input => {
+    input.addEventListener('change', (event) => {
+      const productCode = event.target.id.split('-')[1]; // get product_code
+      let newQuantity = parseInt(event.target.value);
+      
+      // limit quantity between 1 to 5
+      if (newQuantity < 1) newQuantity = 1;
+      if (newQuantity > 5) newQuantity = 5;
+
+      updateQuantity(productCode, newQuantity); // update database
+    });
+  });
+
+  document.querySelectorAll('input[name^="ticket_quantity["]').forEach(input => {
+    input.addEventListener('change', (event) => {
+      const ticketID = event.target.id.split('-')[1]; // get ticketID
+      let newQuantity = parseInt(event.target.value);
+      
+      // limit quantity between 1 to 5
+      if (newQuantity < 1) newQuantity = 1;
+      if (newQuantity > 5) newQuantity = 5;
+
+      updateQuantity2(ticketID, newQuantity); // update database
+    });
+  });
+});
 </script>
 </head>
 <body>
 <!-- Main Menu -->
 <ol id="menu">
   <li class="active_menu_item"><a href="index.php" style="color:#FFF">Home</a>
-    <!-- sub menu -->
   </li>
-  <!-- end sub menu -->
   <li><a href="#">Latest</a>
-    <!-- sub menu -->
     <ol>
       <li><a href="news.php">News</a></li>
       <li><a href="videos.php">Videos</a></li>
     </ol>
   </li>
-  <!-- end sub menu -->
-  <li><a href="#">Schedule & Result</a>
-    <!-- sub menu -->
+  <li><a href="schedule_result.php">Schedule & Result</a>
     <ol>
-      <li><a href="schedule.php">Schedule</a></li>
-      <li><a href="results.php">Results</a></li>
+      <li><a href="constructor.php">Constructor Standings</a></li>
     </ol>
   </li>
   <li><a href="#">Drivers & Teams</a>
-    <!-- sub menu -->
     <ol>
       <li><a href="driver.php">Drivers</a></li>
       <li><a href="team.php">Teams</a></li>
     </ol>
   </li>
-  <!-- end sub menu -->
   <li><a href="#">Shop</a>
-    <!-- sub menu -->
     <ol>
       <li><a href="product.php">Products</a></li>
       <li><a href="ticket.php">Tickets</a></li>
@@ -146,96 +165,97 @@ function updateQuantity2(ticketid, newQuantity) {
     <li><a href="contact.php">Contact Us</a></li>
   </ol>
   </li>
+  <li><a href="#">user</a>
+  <ol>
+    <li><a href="edit_username.php">Edit Username</a></li>
+    <li><a href="change_email.php">Change Email</a></li>
+    <li><a href="logout.php">Logout</a></li>
+  </ol>
+  </li>
 </ol>
 <div id="container">
   <h1>Shopping Cart</h1>
-
-  <form method="post" action="process_size.php">
+  <form id="shoppingCartForm" method="post" action="process_cart.php">
     <table class="product-table" border="1" width="700px" height="100px">
-                <tr>
-                    <th>Product Code</th>
-                    <th>Product Image</th>
-                    <th>Product Name</th>
-                    <th>Product Size</th>
-                    <th>Quantity</th>
-                    <th>Product Price per 1</th>	
-                    <th>Action</th>		
-                </tr>
+      <tr>
+        <th>Product Code</th>
+        <th>Product Image</th>
+        <th>Product Name</th>
+        <th>Product Size</th>
+        <th>Quantity</th>
+        <th>Product Price per 1</th>  
+        <th>Action</th>     
+      </tr>
 
-                <?php
-                
-                $query = "SELECT * FROM shopping_cart WHERE id = '$userid'";
-                $result = mysqli_query($connect, $query);
-                while($row = mysqli_fetch_assoc($result))
-                    {
-                    ?>			
-    
-                    <tr>
-                        <td><?php echo $row["product_code"];?></td>
-                        <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
-                        <td><?php echo $row["product_name"];?></td>
-                        <td><input type="text" name="product_size[<?php echo $row['product_code']; ?>]"></td>
-                        <td>
-                          <div class="qty">
-                            <button class="min" onclick="decrement('<?php echo $row['product_code']; ?>')">-</button>
-                            <span id="quantity-<?php echo $row['product_code']; ?>"><?php echo $row["quantity"]; ?></span>
-                            <button class="plus" onclick="increment('<?php echo $row['product_code']; ?>')">+</button>
-                          </div>
-                        </td>
-                        <td><?php echo $row["product_price"]/**$row["quantity"]*/;?></td>
-                        <td><a class="del_btn" href="del_ShoppingCart.php?del=1&product_code=<?php echo urlencode($row['product_code']); ?>" 
-                        onclick="return confirmation();">Delete</a>
-                    </tr>
-                    <?php
-                    
-                    }		
-                
-                ?>
+      <?php
+      $query = "SELECT * FROM shopping_cart WHERE id = '$userid'";
+      $result = mysqli_query($connect, $query);
+      while($row = mysqli_fetch_assoc($result)) {
+      ?>            
+      <tr>
+        <td><?php echo $row["product_code"];?></td>
+        <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
+        <td><?php echo $row["product_name"];?></td>
+        <td>
+          <input type="text" name="product_size[<?php echo $row['product_code']; ?>]">
+        </td>
+        <td>
+          <div class="qty">
+            <!--<button type="button" class="min" onclick="decrement('<?php echo $row['product_code']; ?>')">-</button>-->
+            <input type="number" name="quantity[<?php echo $row['product_code']; ?>]" id="quantity-<?php echo $row['product_code']; ?>" value="<?php echo $row["quantity"]; ?>" min="1" max="5">
+            <!--<button type="button" class="plus" onclick="increment('<?php echo $row['product_code']; ?>')">+</button>-->
+          </div>
+        </td>
+        <td><?php echo $row["product_price"];?></td>
+        <td>
+          <a class="del_btn" href="del_ShoppingCart.php?del=1&product_code=<?php echo urlencode($row['product_code']); ?>" onclick="return confirmation();">Delete</a>
+        </td>
+      </tr>
+      <?php
+      }       
+      ?>
     </table>
     <table class="ticket-table" border="1" width="700px" height="100px">
-                <tr>
-                    <th>Ticket ID</th>
-                    <th>Race</th>
-                    <th>Quantity</th>
-                    <th>Ticket Price</th>	
-                    <th>Action</th>		
-                </tr>
+      <tr>
+        <th>Ticket ID</th>
+        <th>Race</th>
+        <th>Quantity</th>
+        <th>Ticket Price</th>  
+        <th>Action</th>     
+      </tr>
 
-                <?php
-                
-                $query = "SELECT * FROM shopping_cart2 WHERE id = '$userid'";
-                $result = mysqli_query($connect, $query);
-                while($row = mysqli_fetch_assoc($result))
-                    {
-                    ?>			
-    
-                    <tr>
-                        <td><?php echo $row["ticketID"];?></td>
-                        <td><?php echo $row["race"];?></td>
-                        <td>
-                          <div class="qty">
-                            <button class="min" onclick="decrement2('<?php echo $row['ticketID']; ?>')">-</button>
-                            <span id="quantity-<?php echo $row['ticketID']; ?>"><?php echo $row["quantity"]; ?></span>
-                            <button class="plus" onclick="increment2('<?php echo $row['ticketID']; ?>')">+</button>
-                          </div>
-                        </td>
-                        <td><?php echo $row["ticket_price"]/**$row["quantity"]*/;?></td>
-                        <td><a class="del_btn" href="del_ShoppingCart.php?del=1&ticketID=<?php echo urlencode($row['ticketID']); ?>" 
-                        onclick="return confirmation();">Delete</a></td>
-                    </tr>
-                    <?php
-                    
-                    }		
-                
-                ?>
+      <?php
+      $query = "SELECT * FROM shopping_cart2 WHERE id = '$userid'";
+      $result = mysqli_query($connect, $query);
+      while($row = mysqli_fetch_assoc($result)) {
+      ?>            
+      <tr>
+        <td><?php echo $row["ticketID"];?></td>
+        <td><?php echo $row["race"];?></td>
+        <td>
+          <div class="qty">
+            <!--<button type="button" class="min" onclick="decrement2('<?php echo $row['ticketID']; ?>')">-</button>-->
+            <input type="number" name="ticket_quantity[<?php echo $row['ticketID']; ?>]" id="ticket_quantity-<?php echo $row['ticketID']; ?>" value="<?php echo $row["quantity"]; ?>" min="1" max="5">
+            <!--<button type="button" class="plus" onclick="increment2('<?php echo $row['ticketID']; ?>')">+</button>-->
+          </div>
+        </td>
+        <td><?php echo $row["ticket_price"];?></td>
+        <td>
+          <a class="del_btn" href="del_ShoppingCart.php?del=1&ticketID=<?php echo urlencode($row['ticketID']); ?>" onclick="return confirmation();">Delete</a>
+        </td>
+      </tr>
+      <?php
+      }       
+      ?>
     </table>
 
     <div class="cart-buttons">
       <a class="sc_btn" href="product.php">Cancel</a>
-      <input class="sc_btn" type="submit" value="Check Out">
+      <button class="sc_btn" type="button" onclick="document.getElementById('shoppingCartForm').submit();">Submit</button>
     </div>
   </form>
 </div>
+
 
   <!-- END Second Column -->
   <div style="clear:both; height: 40px"></div>

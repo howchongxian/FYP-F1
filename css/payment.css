@@ -38,7 +38,7 @@ select {
   border-radius: 5px;
 }
 
-input[type="submit"] {
+.py_btn {
   width: 100%;
   background-color: #007bff;
     display: inline-block;
@@ -50,7 +50,7 @@ input[type="submit"] {
     border-radius: 5px;
 }
 
-input[type="submit"]:hover {
+.py_btn:hover {
   background-color: #0056b3;
 }
 
