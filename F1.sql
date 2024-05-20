@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2024 at 07:42 AM
+-- Generation Time: May 20, 2024 at 12:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -57,28 +57,43 @@ INSERT INTO `feedback` (`feedback_no.`, `feedback`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
---
-
-CREATE TABLE `order` (
-  `OrderID` int(11) NOT NULL,
-  `id` int(5) DEFAULT NULL,
-  `payment_method` varchar(50) NOT NULL,
-  `transactionID` int(11) DEFAULT NULL,
-  `payment_status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `order_detail`
 --
 
 CREATE TABLE `order_detail` (
-  `name` int(5) NOT NULL,
-  `address` varchar(25) NOT NULL,
-  `phone` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `payment_method` varchar(20) NOT NULL,
+  `card_number` varchar(19) DEFAULT NULL,
+  `payment_status` varchar(20) NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `oi_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `product_code` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
 
 -- --------------------------------------------------------
 
@@ -182,7 +197,7 @@ CREATE TABLE `user` (
   `id` int(5) NOT NULL,
   `username` varchar(25) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `password` varchar(20) NOT NULL,
   `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -208,11 +223,18 @@ ALTER TABLE `feedback`
   ADD PRIMARY KEY (`feedback_no.`);
 
 --
--- Indexes for table `order`
+-- Indexes for table `order_detail`
 --
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`OrderID`),
-  ADD KEY `order_ibfk_1` (`id`);
+ALTER TABLE `order_detail`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`oi_id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `product`
@@ -250,38 +272,50 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `feedback`
+-- AUTO_INCREMENT for table `order_detail`
 --
-ALTER TABLE `feedback`
-  MODIFY `feedback_no.` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `order_detail`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `oi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `shopping_cart2`
 --
 ALTER TABLE `shopping_cart2`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `order`
+-- Constraints for table `order_detail`
 --
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`);
+ALTER TABLE `order_detail`
+  ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order_detail` (`order_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

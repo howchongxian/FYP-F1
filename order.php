@@ -25,7 +25,7 @@ if(!isset($_SESSION['userid'])) {
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
 <script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
-<script src="js/confirm_delete.js"></script>
+<script src="js/confirmation.js"></script>
 </head>
 <body>
     <div id="container">

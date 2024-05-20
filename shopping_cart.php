@@ -26,28 +26,6 @@ $userid = $_SESSION['userid'];
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="js/confirmation.js"></script>
 <script>
-/*function increment(productCode) {
-  const quantitySpan = document.getElementById(`quantity-${productCode}`);
-  let currentQuantity = parseInt(quantitySpan.textContent);
-
-  if (currentQuantity < 5) {
-    currentQuantity += 1; // Increment the quantity
-
-    updateQuantity(productCode, currentQuantity); // Update database
-  }
-}
-
-function decrement(productCode) {
-  const quantitySpan = document.getElementById(`quantity-${productCode}`);
-  let currentQuantity = parseInt(quantitySpan.textContent);
-
-  if (currentQuantity > 1) {
-    currentQuantity -= 1; // Decrement the quantity
-
-    updateQuantity(productCode, currentQuantity); // Update database
-  }
-}*/
-
 function updateQuantity(productCode, newQuantity) {
   $.ajax({
     url: "update_quantity.php",
@@ -62,28 +40,6 @@ function updateQuantity(productCode, newQuantity) {
     }
   });
 }
-
-/*function increment2(ticketid) {
-  const quantitySpan = document.getElementById(`quantity-${ticketid}`);
-  let currentQuantity = parseInt(quantitySpan.textContent);
-
-  if (currentQuantity < 5) {
-    currentQuantity += 1; // Increment the quantity
-
-    updateQuantity2(ticketid, currentQuantity); // Update database
-  }
-}
-
-function decrement2(ticketid) {
-  const quantitySpan = document.getElementById(`quantity-${ticketid}`);
-  let currentQuantity = parseInt(quantitySpan.textContent);
-
-  if (currentQuantity > 1) {
-    currentQuantity -= 1; // Decrement the quantity
-
-    updateQuantity2(ticketid, currentQuantity); // Update database
-  }
-}*/
 
 function updateQuantity2(ticketid, newQuantity) {
   $.ajax({
