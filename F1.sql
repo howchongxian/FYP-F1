@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2024 at 12:20 PM
+-- Generation Time: May 21, 2024 at 02:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -72,10 +72,6 @@ CREATE TABLE `order_detail` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `order_detail`
---
-
 -- --------------------------------------------------------
 
 --
@@ -89,11 +85,6 @@ CREATE TABLE `order_items` (
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `order_items`
---
-
 
 -- --------------------------------------------------------
 
@@ -206,11 +197,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`) VALUES
-(1, 'superadmin', 'superadmin@gmail.com', 'S19h8a1w23n', 'superadmin'),
-(2, 'admin', 'admin@hotmail.com', 'Mt021-036', 'admin'),
-(3, 'user', 'user@hotmail.com', 'S19h8a1w23n', 'user'),
-(4, 'test', 'test@hotmail.com', 't20e5s19t20', 'user'),
-(5, 'Shawnkew', 'shawnkohenwee@gmail.com', 'mt=04-08+28', 'user');
+(1, 'superadmin', 'superadmin@gmail.com', '$2y$10$EjGC5loV0dhSwYdILXO1rePs.5oThlzG3dOxgBw.p.W19O4vVxMya', 'superadmin'),
+(2, 'admin', 'admin@hotmail.com', '$2y$10$2v86x6wogi1OzbvWhnhUuOJKrpBxr2ierwO2olm/6EANEB.OsMRXq', 'admin'),
+(3, 'user', 'user@hotmail.com', '$2y$10$Ew1wx0UIGCNc612bmD8mDeOIT68nl1PK9Wescc3J/eWEPmc48Xum6', 'user'),
+(4, 'test', 'test@hotmail.com', '$2y$10$wCMIpYPfjvm/H6CnB5zB9.7nwDbZeO7u7nxQoxc58BYzigzSIfHHm', 'user'),
+(5, 'Shawnkew', 'shawnkohenwee@gmail.com', '$2y$10$6x7pKoYl4yAma1qfQRe3t.fhvbodkVAMEBnruM3RwP.eefs/Gp/ui', 'user');
 
 --
 -- Indexes for dumped tables
