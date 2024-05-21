@@ -10,7 +10,7 @@ if (isset($_GET['edit']) && isset($_GET['procode'])) {
     $row = $result->fetch_assoc();
 
     if (!$row) {
-        header("Location: manage_ticket.php");
+        header("Location: admmin_manage_ticket.php");
         exit;
     }
 }
@@ -25,7 +25,7 @@ if (isset($_POST['update'])) {
     $stmt->bind_param("ssds", $race, $stand, $ticket_price, $ticketID);
     $stmt->execute();
 
-    header("Location: manage_ticket.php");
+    header("Location: admin_manage_ticket.php");
     exit;
 }
 ?>

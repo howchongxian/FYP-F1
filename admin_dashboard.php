@@ -20,7 +20,7 @@ include 'dataconnection.php';
 
    <div class="box-dashboard">
       <div class="box">
-         <h3>Welcome!</h3>
+         <h3>Welcome</h3>
          <p><?= htmlspecialchars($fetch_profile['username']); ?></p>
       </div>
 
@@ -48,6 +48,17 @@ include 'dataconnection.php';
 
       <div class="box">
          <?php
+            $select_tickets = $connect->prepare("SELECT * FROM `ticket`");
+            $select_tickets->execute();
+            $result_tickets = $select_tickets->get_result();
+            $number_of_tickets = $result_tickets->num_rows;
+         ?>
+         <h3><?= $number_of_tickets; ?></h3>
+         <p>Tickets Added</p>
+      </div>
+      
+      <div class="box">
+         <?php
             $select_orders = $connect->prepare("SELECT * FROM `order_detail`");
             $select_orders->execute();
             $result_orders = $select_orders->get_result();
@@ -59,33 +70,29 @@ include 'dataconnection.php';
 
       <div class="box">
          <?php
-            $total_pendings = 0;
-            $select_pendings = $connect->prepare("SELECT * FROM `order_detail` WHERE payment_status = ?");
+            $select_pendings = $connect->prepare("SELECT COUNT(*) as count FROM `order_detail` WHERE payment_status = ?");
             $status_pending = 'pending';
             $select_pendings->bind_param("s", $status_pending);
             $select_pendings->execute();
             $result_pendings = $select_pendings->get_result();
-            while($fetch_pendings = $result_pendings->fetch_assoc()){
-               $total_pendings += $fetch_pendings['transactionID']; // Assuming `transactionID` holds the total price
-            }
+            $fetch_pendings = $result_pendings->fetch_assoc();
+            $total_pendings = $fetch_pendings['count'];
          ?>
-         <h3><span>RM</span><?= $total_pendings; ?><span></span></h3>
+         <h3><?= $total_pendings; ?></h3>
          <p>Pending Orders</p>
       </div>
 
       <div class="box">
          <?php
-            $total_completes = 0;
-            $select_completes = $connect->prepare("SELECT * FROM `order_detail` WHERE payment_status = ?");
+            $select_completes = $connect->prepare("SELECT COUNT(*) as count FROM `order_detail` WHERE payment_status = ?");
             $status_completed = 'completed';
             $select_completes->bind_param("s", $status_completed);
             $select_completes->execute();
             $result_completes = $select_completes->get_result();
-            while($fetch_completes = $result_completes->fetch_assoc()){
-               $total_completes += $fetch_completes['transactionID']; // Assuming `transactionID` holds the total price
-            }
+            $fetch_completes = $result_completes->fetch_assoc();
+            $total_completes = $fetch_completes['count'];
          ?>
-         <h3><span>RM</span><?= $total_completes; ?><span></span></h3>
+         <h3><?= $total_completes; ?></h3>
          <p>Completed Orders</p>
       </div>
 

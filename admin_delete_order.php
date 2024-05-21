@@ -19,6 +19,17 @@ if (isset($_POST['order_id'])) {
 
         mysqli_stmt_close($stmt_items);
 
+        // Delete related rows in the order_tickets table
+        $query_tickets = "DELETE FROM order_tickets WHERE order_id = ?";
+        $stmt_tickets = mysqli_prepare($connect, $query_tickets);
+        mysqli_stmt_bind_param($stmt_tickets, 'i', $order_id);
+
+        if (!mysqli_stmt_execute($stmt_tickets)) {
+            throw new Exception("Error deleting related order tickets: " . mysqli_error($connect));
+        }
+
+        mysqli_stmt_close($stmt_tickets);
+
         // Delete the order in the order_detail table
         $query_order = "DELETE FROM order_detail WHERE order_id = ?";
         $stmt_order = mysqli_prepare($connect, $query_order);

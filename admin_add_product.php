@@ -76,7 +76,7 @@
                 // Insert into product table
                 $query = "INSERT INTO product (product_code, product_img, product_name, product_size, description, product_price) VALUES ('$product_code', '$product_img', '$product_name', '$product_size', '$description', '$product_price')";
                 if (mysqli_query($connect, $query)) {
-                    header("Location: manage_product.php");
+                    header("Location: admin_manage_product.php");
                     exit;
                 } else {
                     echo "Error: " . mysqli_error($connect);

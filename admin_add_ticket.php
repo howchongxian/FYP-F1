@@ -60,7 +60,7 @@ include("dataconnection.php");
             // Insert into ticket table
             $query = "INSERT INTO ticket (ticketID, race, stand, ticket_price) VALUES ('$ticketID', '$race', '$stand', '$ticket_price')";
             if (mysqli_query($connect, $query)) {
-                header("Location: manage_product.php");
+                header("Location: admin_manage_product.php");
                 exit;
             } else {
                 echo "Error: " . mysqli_error($connect);

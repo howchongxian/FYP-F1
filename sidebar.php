@@ -1,5 +1,5 @@
 <?php
-include'dataconnection.php';
+include 'dataconnection.php';
 // Assume $fetch_profile is defined and contains user profile data
 $fetch_profile = array(
   'username' => 'JohnDoe' // Example username
@@ -39,7 +39,7 @@ $fetch_profile = array(
       <span class="tooltip">User</span>
     </li>
     <li>
-      <a href="manage_product.php">
+      <a href="admin_manage_product.php">
         <i class='bx bx-purchase-tag-alt'></i>
         <span class="links_name">Product</span>
       </a>

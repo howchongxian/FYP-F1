@@ -1,21 +1,23 @@
-<?php include("dataconnection.php");?>
+<?php include("dataconnection.php"); ?>
 
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
-<title>Add New User</title>
-<meta charset="utf-8">
-<!-- Google Fonts -->
-<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-<!-- CSS Files -->
-<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-<link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
+    <title>Add New User</title>
+    <meta charset="utf-8">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
 </head>
+
 <body>
     <div id="container">
         <h1>Add New User</h1>
         <div class="product-list">
-            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <table>
                     <tr>
                         <td>Username:</td>
@@ -78,4 +80,5 @@
     }
     ?>
 </body>
+
 </html>

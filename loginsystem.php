@@ -57,4 +57,3 @@ if (isset($_POST['submit'])) {
     header("Location: login.php"); // Redirect to login.php
     exit();
 }
-?>
