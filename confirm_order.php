@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST['address'];
     $payment_method = $_POST['payment-method'];
     $payment_status = 'Pending'; // Hardcoded as 'Pending' for initial status
-    $card_number = isset($_POST['card-number']) ? $_POST['card-number'] : null;
+    //$card_number = isset($_POST['card-number']) ? $_POST['card-number'] : null;
     $orderDate = date('Y-m-d H:i:s'); // Assuming you want to use the current date and time
 
     // Validate required fields
@@ -24,13 +24,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die('Please fill in all required fields.');
     }
 
+    $total_price = 0;
+
+    // Retrieve the shopping cart items for the user
+    $cart_query = "SELECT * FROM shopping_cart WHERE id = ?";
+    $stmt = $connect->prepare($cart_query);
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($connect->error));
+    }
+    $stmt->bind_param("i", $userid);
+    $stmt->execute();
+    if ($stmt->error) {
+        die('Execute failed: ' . htmlspecialchars($stmt->error));
+    }
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        $total_price += $row['product_price'] * $row['quantity'];
+    }
+
+    $stmt->close();
+
+    $cart2_query = "SELECT * FROM shopping_cart2 WHERE id = ?";
+    $stmt = $connect->prepare($cart2_query);
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($connect->error));
+    }
+    $stmt->bind_param("i", $userid);
+    $stmt->execute();
+    if ($stmt->error) {
+        die('Execute failed: ' . htmlspecialchars($stmt->error));
+    }
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        $total_price += $row['ticket_price'] * $row['quantity'];
+    }
+    $stmt->close();
+
     // Insert into order_detail table
-    $order_query = "INSERT INTO `order_detail` (user_id, name, address, phone, payment_method, card_number, payment_status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $order_query = "INSERT INTO `order_detail` (user_id, name, address, phone, payment_method, total_price, payment_status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $connect->prepare($order_query);
     if ($stmt === false) {
         die('Prepare failed: ' . htmlspecialchars($connect->error));
     }
-    $stmt->bind_param("isssssss", $userid, $name, $address, $phone, $payment_method, $card_number, $payment_status, $orderDate);
+    $stmt->bind_param("issssdss", $userid, $name, $address, $phone, $payment_method, $total_price, $payment_status, $orderDate);
     $stmt->execute();
     if ($stmt->error) {
         die('Execute failed: ' . htmlspecialchars($stmt->error));
