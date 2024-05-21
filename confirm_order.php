@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     // Insert each cart2 item into the order_tickets table
-    $order_ticket_query = "INSERT INTO order_tickets (order_id, ticketID, race, quantity, ticket_price) VALUES (?, ?, ?, ?, ?)";
+    $order_ticket_query = "INSERT INTO order_tickets (order_id, ticketID, race, quantity, price) VALUES (?, ?, ?, ?, ?)";
     $ticket_stmt = $connect->prepare($order_ticket_query);
     if ($ticket_stmt === false) {
         die('Prepare failed: ' . htmlspecialchars($connect->error));
