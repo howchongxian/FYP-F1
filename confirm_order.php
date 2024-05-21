@@ -83,9 +83,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $stmt->close();
 
+     // Retrieve the shopping cart2 items for the user (tickets)
+    $cart2_query = "SELECT * FROM shopping_cart2 WHERE id = ?";
+    $stmt = $connect->prepare($cart2_query);
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($connect->error));
+    }
+    $stmt->bind_param("i", $userid);
+    $stmt->execute();
+    if ($stmt->error) {
+        die('Execute failed: ' . htmlspecialchars($stmt->error));
+    }
+    $result = $stmt->get_result();
+
+    // Insert each cart2 item into the order_tickets table
+    $order_ticket_query = "INSERT INTO order_tickets (order_id, ticketID, race, quantity, ticket_price) VALUES (?, ?, ?, ?, ?)";
+    $ticket_stmt = $connect->prepare($order_ticket_query);
+    if ($ticket_stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($connect->error));
+    }
+    while ($row = $result->fetch_assoc()) {
+        $ticketID = $row['ticketID'];
+        $race = $row['race'];
+        $quantity = $row['quantity'];
+        $ticket_price = $row['ticket_price'];
+        
+        $ticket_stmt->bind_param("issid", $orderID, $ticketID, $race, $quantity, $ticket_price);
+        $ticket_stmt->execute();
+        if ($ticket_stmt->error) {
+            die('Execute failed: ' . htmlspecialchars($ticket_stmt->error));
+        }
+    }
+    $ticket_stmt->close();
+
+    // Optionally, clear the shopping cart2 after order is placed
+    $clear_cart2_query = "DELETE FROM shopping_cart2 WHERE id = ?";
+    $stmt = $connect->prepare($clear_cart2_query);
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($connect->error));
+    }
+    $stmt->bind_param("i", $userid);
+    $stmt->execute();
+    if ($stmt->error) {
+        die('Execute failed: ' . htmlspecialchars($stmt->error));
+    }
+    $stmt->close();
+
+
     // Redirect to a confirmation page or display a success message
     echo "Order placed successfully.";
     // header("Location: order_confirmation.php?orderID=" . $orderID);
     exit();
 }
 ?>
+<!--add ticket
