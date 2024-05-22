@@ -9,16 +9,22 @@ if(isset($_POST['submit'])){
     // Check if passwords match
     if($newPassword === $confirmPassword) {
         // Check if the user exists with the provided email
-        $sql = "SELECT * FROM user WHERE email = '$email'";
-        $result = $connect->query($sql);
+        $stmt = $connect->prepare("SELECT * FROM user WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
         
         if ($result->num_rows > 0) {
+            // Hash the new password
+            $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
             // Update the user's password in the database
-            $sql_update = "UPDATE user SET password = '$newPassword' WHERE email = '$email'";
-            if ($connect->query($sql_update) === TRUE) {
+            $stmt_update = $connect->prepare("UPDATE user SET password = ? WHERE email = ?");
+            $stmt_update->bind_param("ss", $hashedPassword, $email);
+            if ($stmt_update->execute()) {
                 echo "Password updated successfully";
             } else {
-                echo "Error updating password: " . $connect->error;
+                echo "Error updating password: " . $stmt_update->error;
             }
         } else {
             echo "User with the provided email not found";
@@ -27,6 +33,7 @@ if(isset($_POST['submit'])){
         echo "Passwords do not match";
     }
 
+    $stmt->close();
     $connect->close(); // Close the database connection
 }
 ?>
