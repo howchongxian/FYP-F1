@@ -206,7 +206,8 @@ document.addEventListener('DOMContentLoaded', function() {
     </table>
 
     <div class="cart-buttons">
-      <a class="sc_btn" href="product.php">Cancel</a>
+      <a class="sc_btn" href="product.php">Back to Shop</a>
+      <a class="sc_btn" href="ticket.php">Back to Ticket</a>
       <button class="sc_btn" type="button" onclick="document.getElementById('shoppingCartForm').submit();">Submit</button>
     </div>
   </form>

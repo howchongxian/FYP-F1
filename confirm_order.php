@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $detail_stmt->close();
 
-    // Optionally, clear the shopping cart after order is placed
+    // Clear the shopping cart after order is placed
     $clear_cart_query = "DELETE FROM shopping_cart WHERE id = ?";
     $stmt = $connect->prepare($clear_cart_query);
     if ($stmt === false) {
@@ -154,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $ticket_stmt->close();
 
-    // Optionally, clear the shopping cart2 after order is placed
+    // Clear the shopping cart2 after order is placed
     $clear_cart2_query = "DELETE FROM shopping_cart2 WHERE id = ?";
     $stmt = $connect->prepare($clear_cart2_query);
     if ($stmt === false) {
@@ -169,9 +169,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Redirect to a confirmation page or display a success message
-    echo "Order placed successfully.";
-    // header("Location: order_confirmation.php?orderID=" . $orderID);
+    echo "<script>
+            alert('Order placed successfully.');
+            setTimeout(function() {
+                window.location.href = 'index.php';
+            }, 3000); // Redirects after 3 seconds
+          </script>
+          <div class=tips>
+            <p>This page will return to home page after 3 seconds.</p>
+          </div>
+          <style>
+            .tips{
+                text-align: center;
+            }
+          </style>";
     exit();
 }
 ?>
-<!--add ticket
