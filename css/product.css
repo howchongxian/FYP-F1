@@ -10,6 +10,18 @@
 	clear: both;
 }
 
+#admin_product {
+    font-size: 1em;
+	width: 1200px;
+	background: #FFF;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding: 15px 20px;
+	margin: auto;
+	position: relative;
+	clear: both;
+}
+
 .product-table {
     width: 100%;
     border-collapse: collapse;

@@ -41,7 +41,7 @@ include 'sidebar.php';
 ?>
 
 <body>
-    <div id="product_shop">
+    <div id="admin_product">
         <h1>F1 Product Shop - Orders</h1>
         <div class="product-list">
             <h2>Orders</h2>
