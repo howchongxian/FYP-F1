@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-size: cover;
-    font-family: sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .loginbox {
@@ -97,4 +97,14 @@ body {
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer;
+    color: #000;  /* Set the color of the icon to black */
+}
+
+.password-input .toggle-password:hover {
+    color: #333;  /* Change color on hover */
+}
+
+.password-input .toggle-password i {
+    font-size: 20px;  /* Adjust the icon size */
+    color: #000;  /* Ensure the icon is black */
 }

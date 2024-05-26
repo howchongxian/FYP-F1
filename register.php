@@ -53,22 +53,56 @@ if (isset($_POST["submit"])) {
     <title>Sign Up</title>
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/signup.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-    <script src="js/jquery.tools.min.js"></script>
-    <script src="js/register.js"></script>
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        $(function () {
-            $("#prod_nav ul").tabs("#panes > div", {
-                effect: 'fade',
-                fadeOutSpeed: 400
+        // Password visibility toggler function
+        function togglePasswordVisibility(fieldId) {
+            var passwordInput = document.getElementById(fieldId);
+            var toggleIcon = passwordInput.nextElementSibling.querySelector("i");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            }
+        }
+
+        // Function to validate password length
+        function validatePasswordLength(password) {
+            return password.length >= 8;
+        }
+
+        // Update password strength indicator
+        function updatePasswordStrengthIndicator(password) {
+            var strengthIndicator = document.getElementById("passwordStrengthIndicator");
+            if (validatePasswordLength(password)) {
+                strengthIndicator.textContent = "Strong";
+                strengthIndicator.style.color = "green";
+            } else if (password.length >= 6) {
+                strengthIndicator.textContent = "Medium";
+                strengthIndicator.style.color = "orange";
+            } else {
+                strengthIndicator.textContent = "Weak";
+                strengthIndicator.style.color = "red";
+            }
+        }
+
+        $(document).ready(function() {
+            $("#password").keyup(function() {
+                var password = $(this).val();
+                updatePasswordStrengthIndicator(password);
             });
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $(".pane-list li").click(function () {
-                window.location = $(this).find("a").attr("href");
-                return false;
+
+            // Password visibility toggle
+            $(".toggle-password").click(function() {
+                var fieldId = $(this).prev("input").attr("id");
+                togglePasswordVisibility(fieldId);
             });
         });
     </script>
@@ -88,16 +122,16 @@ if (isset($_POST["submit"])) {
             <p>Password</p>
             <div class="password-container">
                 <input type="password" name="password" id="password" placeholder="Enter Password" required>
-                <span class="toggle-password" onclick="togglePasswordVisibility('password')">
-                    <i class="uil uil-eye"></i>
+                <span class="toggle-password">
+                    <i class="fa fa-eye"></i>
                 </span>
             </div>
             <p>Password Strength: <span id="passwordStrengthIndicator" class="password-strength"></span></p>
             <p>Confirm Password</p>
             <div class="password-container">
                 <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" required>
-                <span class="toggle-password" onclick="togglePasswordVisibility('confirmpassword')">
-                    <i class="uil uil-eye"></i>
+                <span class="toggle-password">
+                    <i class="fa fa-eye"></i>
                 </span>
             </div>
             <input type="submit" value="Signup" name="submit">
@@ -108,34 +142,5 @@ if (isset($_POST["submit"])) {
             </div>
         </form>
     </div>
-
-    <script>
-        function togglePasswordVisibility(fieldId) {
-            var passwordInput = document.getElementById(fieldId);
-            var toggleIcon = passwordInput.nextElementSibling.querySelector("i");
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                toggleIcon.classList.remove("uil-eye");
-                toggleIcon.classList.add("uil-eye-slash");
-            } else {
-                passwordInput.type = "password";
-                toggleIcon.classList.remove("uil-eye-slash");
-                toggleIcon.classList.add("uil-eye");
-            }
-        }
-
-        // Password strength indicator (simple example)
-        document.getElementById('password').addEventListener('input', function () {
-            var strengthIndicator = document.getElementById('passwordStrengthIndicator');
-            var password = this.value;
-            if (password.length >= 8) {
-                strengthIndicator.textContent = 'Strong';
-                strengthIndicator.style.color = 'green';
-            } else {
-                strengthIndicator.textContent = 'Weak';
-                strengthIndicator.style.color = 'red';
-            }
-        });
-    </script>
 </body>
 </html>

@@ -1,31 +1,35 @@
 <!DOCTYPE HTML>
 <head>
-<title>Login</title>
-<meta charset="utf-8">
-<!-- Google Fonts -->
-<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/signin.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<!-- CSS Files -->
-<link rel="stylesheet" href="css/signin.css">
-<!-- JS Files -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-<script src="js/jquery.tools.min.js"></script>
-<script>
-$(function () {
-    $("#prod_nav ul").tabs("#panes > div", {
-        effect: 'fade',
-        fadeOutSpeed: 400
+    <!-- JS Files -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script src="js/jquery.tools.min.js"></script>
+    <script>
+    $(function () {
+        $("#prod_nav ul").tabs("#panes > div", {
+            effect: 'fade',
+            fadeOutSpeed: 400
+        });
     });
-});
-</script>
-<script>
-$(document).ready(function () {
-    $(".pane-list li").click(function () {
-        window.location = $(this).find("a").attr("href");
-        return false;
+    </script>
+    <script>
+    $(document).ready(function () {
+        $(".pane-list li").click(function () {
+            window.location = $(this).find("a").attr("href");
+            return false;
+        });
     });
-});
-</script>
+    </script>
 </head>
 <body>      
     <div class="loginbox">
@@ -41,7 +45,7 @@ $(document).ready(function () {
             <div class="password-input">
                 <input type="password" name="password" id="password" placeholder="Enter Password" required>
                 <span class="toggle-password" onclick="togglePasswordVisibility('password')">
-                    <i class="uil uil-eye"></i>
+                    <i class="fas fa-eye"></i>
                 </span>
             </div>
             <input type="submit" value="Login" name="submit">
@@ -50,22 +54,20 @@ $(document).ready(function () {
         </form>
     </div>
 
+    <script>
+        function togglePasswordVisibility(fieldId){
+            var passwordInput = document.getElementById(fieldId);
+            var toggleIcon = passwordInput.nextElementSibling.querySelector("i");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            }
+        }
+    </script>
 </body>
 </html>
-
-<script>
-    function togglePasswordVisibility(fieldId){
-    var passwordInput = document.getElementById(fieldId);
-    var toggleIcon = passwordInput.nextElementSibling.querySelector("i");
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggleIcon.classList.remove("uil-eye");
-        toggleIcon.classList.add("uil-eye-slash");
-    } else {
-        passwordInput.type = "password";
-        toggleIcon.classList.remove("uil-eye-slash");
-        toggleIcon.classList.add("uil-eye");
-    }
-}
-</script>
-</body>
