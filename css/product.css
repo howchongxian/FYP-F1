@@ -10,6 +10,7 @@
 	clear: both;
 }
 
+/*admin table*/
 #admin_product {
     font-size: 1em;
 	width: 1200px;
@@ -23,6 +24,15 @@
 }
 
 .product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 2px solid #007bff; /* border around the table */
+    border-radius: 5px;
+}
+
+/*sales report*/
+.report-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
