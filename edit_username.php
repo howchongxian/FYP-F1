@@ -39,24 +39,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Edit Username</title>
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/edit_profile.css">
-    <!-- CSS Files -->
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
+    <link rel="stylesheet" type="text/css" href="css/change_username.css">
 </head>
 <body>
-    <h2>Edit Username</h2>
-    <?php
-    if (isset($error)) {
-        echo '<div style="color: red;">' . $error . '</div>';
-    } elseif (isset($success)) {
-        echo '<div style="color: green;">' . $success . '</div>';
-    }
-    ?>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <label for="new_username">New Username:</label><br>
-        <input type="text" id="new_username" name="new_username"><br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container">
+        <h2>Edit Username</h2>
+        <?php
+        if (isset($error)) {
+            echo '<div class="message error">' . $error . '</div>';
+        } elseif (isset($success)) {
+            echo '<div class="message success">' . $success . '</div>';
+        }
+        ?>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <label for="new_username">New Username:</label><br>
+            <input type="text" id="new_username" name="new_username"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>
