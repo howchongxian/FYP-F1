@@ -57,6 +57,20 @@
   <h1>F1 Videos</h1>
   <div class="video-container">
     <div class="video-card">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/WmgJywUm_bw?si=-laOB07LsBNCsxTP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h3>Race Highlights | Formula 1 Monaco Grand Prix 2024</h3>
+    <a href="https://youtu.be/WmgJywUm_bw?si=-laOB07LsBNCsxTP" target="_blank">Watch on YouTube</a>
+  </div>
+
+    <div class="video-container">
+      <div class="video-card">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/wXuTA60mUog?si=rtK1ovXuyZe4aDQY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <h3>Qualifying Highlights | Formula 1 Monaco Grand Prix 2024</h3>
+      <a href="https://youtu.be/wXuTA60mUog?si=rtK1ovXuyZe4aDQY" target="_blank">Watch on YouTube</a>
+    </div>
+
+  <div class="video-container">
+    <div class="video-card">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/bo-c4RnUGLA?si=FRT0Whz9gZHBegqK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <h3>Race Highlights | Formula 1 Emilia-Romagna Grand Prix 2024</h3>
       <a href="https://youtu.be/bo-c4RnUGLA?si=FRT0Whz9gZHBegqK" target="_blank">Watch on YouTube</a>
