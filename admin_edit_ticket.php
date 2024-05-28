@@ -25,7 +25,7 @@ if (isset($_POST['update'])) {
     $stmt->bind_param("ssds", $race, $stand, $ticket_price, $ticketID);
     $stmt->execute();
 
-    header("Location: admin_manage_ticket.php");
+    header("Location: admin_manage_product.php");
     exit;
 }
 ?>

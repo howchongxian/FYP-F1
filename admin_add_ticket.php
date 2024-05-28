@@ -26,7 +26,7 @@ include("dataconnection.php");
                         <td><input type="text" name="ticketID" required></td>
                     </tr>
                     <tr>
-                        <td>Race ID:</td>
+                        <td>Race:</td>
                         <td><input type="text" name="race" required></td>
                     </tr>
                     <tr>
