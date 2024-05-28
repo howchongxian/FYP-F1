@@ -87,7 +87,7 @@ include 'sidebar.php'
             <div class="filter-container">
                 <!-- Search Form for Tickets -->
                 <form method="GET" action="">
-                    <input type="text" name="ticket_search" placeholder="Search by Race ID" value="<?php echo isset($_GET['ticket_search']) ? $_GET['ticket_search'] : '' ?>">
+                    <input type="text" name="ticket_search" placeholder="Search by Race" value="<?php echo isset($_GET['ticket_search']) ? $_GET['ticket_search'] : '' ?>">
                     <input type="submit" value="Search">
                 </form>
             </div>
