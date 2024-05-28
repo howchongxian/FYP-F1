@@ -58,17 +58,13 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Reset</title>
-    <link rel="stylesheet" type="text/css" href="css/forgot_password.css">
+    <link rel="stylesheet" type="text/css" href="css/forgetpassword.css">
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-    <!-- CSS Files -->
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
 </head>
 <body>
     <h1>Password Reset</h1>
     <form method="post">
         <p>
-            <label for="to">TO:</label>
             <input type="text" name="to" placeholder="Enter your email address"/>
         </p>
         <button type="submit" name="submit">Send Reset Link</button>
