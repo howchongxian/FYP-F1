@@ -33,10 +33,10 @@ function confirmation() {
 include 'sidebar.php'
 ?>
 <body>
-    <div id="container">
+    <div id="product_shop">
         <h1>F1 Product Shop</h1>
         <div class="product-list">
-            <h2>Clothes</h2>
+            <h2>Wears</h2>
             <div class="filter-container">
                 <!-- Search Form -->
                 <form method="GET" action="">
@@ -49,6 +49,7 @@ include 'sidebar.php'
                     <th>Product Code</th>
                     <th>Product Image</th>
                     <th>Product Name</th>
+                    <th>Category</th>
                     <th>Product Size</th>
                     <th>Product Description</th>
                     <th>Product Price</th>            
@@ -58,7 +59,7 @@ include 'sidebar.php'
                 $search = isset($_GET['search']) ? $_GET['search'] : '';
                 $query = "SELECT * FROM product";
                 if (!empty($search)) {
-                    $query .= " WHERE product_code LIKE '%$search%' OR product_name LIKE '%$search%'";
+                    $query .= " WHERE product_code LIKE '%$search%' OR product_name LIKE '%$search%' OR category LIKE '%$search%'";
                 }
                 $result = mysqli_query($connect, $query);
                 if (!$result) {
@@ -70,6 +71,7 @@ include 'sidebar.php'
                     <td><?php echo $row["product_code"]; ?></td>
                     <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image" width="100"></td>
                     <td><?php echo $row["product_name"]; ?></td>
+                    <td><?php echo $row["category"];?></td>
                     <td><?php echo $row["product_size"]; ?></td>
                     <td><?php echo $row["description"]; ?></td>
                     <td><?php echo $row["product_price"]; ?></td>
@@ -92,7 +94,7 @@ include 'sidebar.php'
             <table class="product-table" border="1" width="700px" height="100px">
                 <tr>
                     <th>Ticket ID</th>
-                    <th>Race ID</th>
+                    <th>Race</th>
                     <th>Stand</th>
                     <th>Ticket Price</th>
                     <th colspan="2">Action</th>

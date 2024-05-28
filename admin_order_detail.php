@@ -121,7 +121,7 @@ include 'sidebar.php';
                         echo "<td>" . $row["address"] . "</td>";
                         echo "<td>" . $row["phone"] . "</td>";
 
-                        // 商品详情
+                        // product details
                         $productDetails = [];
                         $productCodes = explode(',', $row['product_codes']);
                         $productNames = explode(',', $row['product_names']);
@@ -133,7 +133,7 @@ include 'sidebar.php';
                         }
                         echo "<td>" . implode('<br>', $productDetails) . "</td>";
 
-                        // 票据详情
+                        // ticket details
                         $ticketDetails = [];
                         $ticketIDs = explode(',', $row['ticketIDs']);
                         $ticketRaces = explode(',', $row['ticket_races']);
@@ -173,10 +173,8 @@ include 'sidebar.php';
                     echo "<tr><td colspan='12'>No orders found.</td></tr>";
                 }
 
-                // 释放结果集
                 mysqli_free_result($result);
 
-                // 关闭数据库连接
                 mysqli_close($connect);
                 ?>
             </

@@ -64,6 +64,13 @@
   <h1>F1 Product Shop</h1>
     <div class="product-list">
       <h2>Wears</h2>
+            <div class="filter-container">
+                <!-- Search Form -->
+                <form method="GET" action="">
+                    <input type="text" name="search" placeholder="Search Pro Code or Name" value="<?php echo isset($_GET['search']) ? $_GET['search'] : '' ?>">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
             <table class="product-table" border="1" width="700px" height="100px">
                 <tr>
                     <th>Product Code</th>
@@ -77,8 +84,15 @@
                 </tr>
     
                 <?php
-                
-                $result = mysqli_query($connect, "select * from product");	
+                $search = isset($_GET['search']) ? $_GET['search'] : '';
+                $query = "SELECT * FROM product";
+                if (!empty($search)) {
+                    $query .= " WHERE product_code LIKE '%$search%' OR product_name LIKE '%$search%' OR category LIKE '%$search%'";
+                }
+                $result = mysqli_query($connect, $query);
+                if (!$result) {
+                    die("Query failed: " . mysqli_error($connect));
+                }	
                 while($row = mysqli_fetch_assoc($result))
                     {
                         

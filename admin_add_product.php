@@ -32,6 +32,10 @@
                         <td><input type="text" name="product_name" required></td>
                     </tr>
                     <tr>
+                        <td>Category:</td>
+                        <td><input type="text" name="category" required></td>
+                    </tr>
+                    <tr>
                         <td>Product Size:</td>
                         <td><input type="text" name="product_size" required></td>
                     </tr>
@@ -56,6 +60,7 @@
         $product_code = $_POST['product_code'];
         $product_img = $_FILES['product_img']['name'];
         $product_name = $_POST['product_name'];
+        $category = $_POST['category'];
         $product_size = $_POST['product_size'];
         $description = $_POST['description'];
         $product_price = $_POST['product_price'];
@@ -74,7 +79,7 @@
             
             if (mysqli_num_rows($result) == 0) {
                 // Insert into product table
-                $query = "INSERT INTO product (product_code, product_img, product_name, product_size, description, product_price) VALUES ('$product_code', '$product_img', '$product_name', '$product_size', '$description', '$product_price')";
+                $query = "INSERT INTO product (product_code, product_img, product_name, category, product_size, description, product_price) VALUES ('$product_code', '$product_img', '$product_name', '$category', '$product_size', '$description', '$product_price')";
                 if (mysqli_query($connect, $query)) {
                     header("Location: admin_manage_product.php");
                     exit;

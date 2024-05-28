@@ -23,6 +23,12 @@
 	clear: both;
 }
 
+.filter-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
 .product-table {
     width: 100%;
     border-collapse: collapse;
