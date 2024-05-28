@@ -24,7 +24,7 @@ if (isset($_POST['update'])) {
     $product_img = $_FILES['product_img']['name'] ?? $row['product_img'];
 
     if (!empty($_FILES['product_img']['tmp_name'])) {
-        $target_dir = "uploads/"; // adjust the directory path as needed
+        $target_dir = "images/product/"; // adjust the directory path as needed
         $target_file = $target_dir . basename($_FILES["product_img"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
