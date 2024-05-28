@@ -153,13 +153,11 @@ document.addEventListener('DOMContentLoaded', function() {
         <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
         <td><?php echo $row["product_name"];?></td>
         <td>
-          <input type="text" name="product_size[<?php echo $row['product_code']; ?>]">
+          <input type="text" name="product_size[<?php echo $row['product_code']; ?>]" placeholder="Required" required>
         </td>
         <td>
           <div class="qty">
-            <!--<button type="button" class="min" onclick="decrement('<?php echo $row['product_code']; ?>')">-</button>-->
             <input type="number" name="quantity[<?php echo $row['product_code']; ?>]" id="quantity-<?php echo $row['product_code']; ?>" value="<?php echo $row["quantity"]; ?>" min="1" max="5">
-            <!--<button type="button" class="plus" onclick="increment('<?php echo $row['product_code']; ?>')">+</button>-->
           </div>
         </td>
         <td><?php echo $row["product_price"];?></td>
@@ -176,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <th>Ticket ID</th>
         <th>Race</th>
         <th>Quantity</th>
-        <th>Ticket Price</th>  
+        <th>Ticket Price per 1</th>  
         <th>Action</th>     
       </tr>
 
@@ -190,9 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <td><?php echo $row["race"];?></td>
         <td>
           <div class="qty">
-            <!--<button type="button" class="min" onclick="decrement2('<?php echo $row['ticketID']; ?>')">-</button>-->
             <input type="number" name="ticket_quantity[<?php echo $row['ticketID']; ?>]" id="ticket_quantity-<?php echo $row['ticketID']; ?>" value="<?php echo $row["quantity"]; ?>" min="1" max="5">
-            <!--<button type="button" class="plus" onclick="increment2('<?php echo $row['ticketID']; ?>')">+</button>-->
           </div>
         </td>
         <td><?php echo $row["ticket_price"];?></td>
@@ -208,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="cart-buttons">
       <a class="sc_btn" href="product.php">Back to Shop</a>
       <a class="sc_btn" href="ticket.php">Back to Ticket</a>
-      <button class="sc_btn" type="button" onclick="document.getElementById('shoppingCartForm').submit();">Submit</button>
+      <button class="sc_btn" type="button" onclick="document.getElementById('shoppingCartForm').submit();">Check Out</button>
     </div>
   </form>
 </div>
