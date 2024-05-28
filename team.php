@@ -100,7 +100,7 @@ $(document).ready(function () {
       <img src="drivers/Sainz.jpg" alt="Driver 4">
       <p>Charlos Sainz</p>
   </div>
-  <img src="images/teams/aston_martin.png" alt="Team 2 Car">
+  <img src="images/teams/ferarri.png" alt="Team 2 Car">
 </div>
 
 <div class="team-column" onclick="redirectToPage('https://www.formula1.com/en/teams/McLaren.html')">
