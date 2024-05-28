@@ -52,7 +52,7 @@ if(!isset($_SESSION['userid'])) {
     
                     <tr>
                         <td><?php echo $row["product_code"];?></td>
-                        <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
+                        <td><img src="<?php echo 'images/product/'.$row["product_img"]; ?>" alt="Product Image"></td>
                         <td><?php echo $row["product_name"];?></td>
                         <td><?php echo $row["product_size"];?></td>
                         <td><?php echo $row["quantity"]; ?> </td>

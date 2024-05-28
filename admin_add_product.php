@@ -45,7 +45,7 @@
                     </tr>
                     <tr>
                         <td>Product Price:</td>
-                        <td><input type="number" name="product_price" required></td>
+                        <td><input type="text" name="product_price" required></td>
                     </tr>
                     <tr>
                         <td colspan="2"><input type="submit" name="submit" value="Add Product/Ticket"></td>
@@ -66,14 +66,14 @@
         $product_price = $_POST['product_price'];
 
         // Upload product image
-        $target_dir = "images/product/";
+        $target_dir = "images/product/"; //images file path(directory)
         if (!is_dir($target_dir)) {
             mkdir($target_dir, 0777, true);
         }
 
         $product_img = basename($_FILES["product_img"]["name"]);
         $temp_file = $_FILES["product_img"]["tmp_name"];
-        $target_file = $target_dir . uniqid() . "_" . $product_img;
+        $target_file = $target_dir . $product_img; //Directory and image name
         
         if (move_uploaded_file($temp_file, $target_file)) {
             // Check for duplicate product code
@@ -82,7 +82,7 @@
             
             if (mysqli_num_rows($result) == 0) {
                 // Insert into product table
-                $query = "INSERT INTO product (product_code, product_img, product_name, category, product_size, description, product_price) VALUES ('$product_code', '$target_file', '$product_name', '$category', '$product_size', '$description', '$product_price')";
+                $query = "INSERT INTO product (product_code, product_img, product_name, category, product_size, description, product_price) VALUES ('$product_code', '$product_img', '$product_name', '$category', '$product_size', '$description', '$product_price')";
                 if (mysqli_query($connect, $query)) {
                     header("Location: admin_manage_product.php");
                     exit;

@@ -18,6 +18,7 @@ if (isset($_GET['edit']) && isset($_GET['procode'])) {
 if (isset($_POST['update'])) {
     $product_code = $_POST['product_code'];
     $product_name = $_POST['product_name'];
+    $category = $_POST['category'];
     $product_size = $_POST['product_size'];
     $description = $_POST['description'];
     $product_price = $_POST['product_price'];
@@ -61,8 +62,8 @@ if (isset($_POST['update'])) {
         }
     }
 
-    $stmt = $connect->prepare("UPDATE product SET product_name=?, product_size=?, description=?, product_price=?, product_img=? WHERE product_code=?");
-    $stmt->bind_param("ssssss", $product_name, $product_size, $description, $product_price, $product_img, $product_code);
+    $stmt = $connect->prepare("UPDATE product SET product_name=?, category=?, product_size=?, description=?, product_price=?, product_img=? WHERE product_code=?");
+    $stmt->bind_param("sssssss", $product_name, $category, $product_size, $description, $product_price, $product_img, $product_code);
     $stmt->execute();
 
     header("Location: admin_manage_product.php");
@@ -118,6 +119,10 @@ if (isset($_POST['update'])) {
                     <tr>
                         <td>Product Name:</td>
                         <td><input type="text" name="product_name" value="<?php echo $row['product_name'];?>"></td>
+                    </tr>
+                    <tr>
+                        <td>Category:</td>
+                        <td><input type="text" name="category" value="<?php echo $row['category'];?>"></td>
                     </tr>
                     <tr>
                         <td>Product Size:</td>

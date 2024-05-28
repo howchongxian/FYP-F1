@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
       ?>            
       <tr>
         <td><?php echo $row["product_code"];?></td>
-        <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image"></td>
+        <td><img src="<?php echo 'images/product/'.$row["product_img"]; ?>" alt="Product Image"></td>
         <td><?php echo $row["product_name"];?></td>
         <td>
           <input type="text" name="product_size[<?php echo $row['product_code']; ?>]" placeholder="Required" required>
