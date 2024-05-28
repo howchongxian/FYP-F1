@@ -4,13 +4,13 @@ include('dataconnection.php');
 if(isset($_POST['submit'])){
     $newPassword = $_POST['new_password'];
     $confirmPassword = $_POST['confirm_password'];
-    $email = $_POST['email'];
+    $username = $_POST['username'];
 
     // Check if passwords match
     if($newPassword === $confirmPassword) {
-        // Check if the user exists with the provided email
-        $stmt = $connect->prepare("SELECT * FROM user WHERE email = ?");
-        $stmt->bind_param("s", $email);
+        // Check if the user exists with the provided username
+        $stmt = $connect->prepare("SELECT * FROM user WHERE username = ?");
+        $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
         
@@ -19,15 +19,15 @@ if(isset($_POST['submit'])){
             $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
             // Update the user's password in the database
-            $stmt_update = $connect->prepare("UPDATE user SET password = ? WHERE email = ?");
-            $stmt_update->bind_param("ss", $hashedPassword, $email);
+            $stmt_update = $connect->prepare("UPDATE user SET password = ? WHERE username = ?");
+            $stmt_update->bind_param("ss", $hashedPassword, $username);
             if ($stmt_update->execute()) {
                 echo "Password updated successfully";
             } else {
                 echo "Error updating password: " . $stmt_update->error;
             }
         } else {
-            echo "User with the provided email not found";
+            echo "User with the provided username not found";
         }
     } else {
         echo "Passwords do not match";
@@ -44,17 +44,15 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password</title>
-    <link rel="stylesheet" type="text/css" href="css/forgot_password.css">
+    <link rel="stylesheet" type="text/css" href="css/forgetpassword.css">
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
 </head>
 <body>
-<h1>Reset Password</h1>
+    <h1>Reset Password</h1>
     <form method="post">
         <p>
-            <label for="email">Email:</label>
-            <input type="email" name="email" placeholder="Enter your email address" required>
+            <label for="username">Username:</label>
+            <input type="text" name="username" placeholder="Enter your username" required>
         </p>
         <p>
             <label for="new_password">New Password:</label>

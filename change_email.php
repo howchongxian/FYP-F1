@@ -40,25 +40,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Change Email</title>
-    <link rel="stylesheet" type="text/css" href="css/edit_profile.css">
+    <link rel="stylesheet" type="text/css" href="css/change_email.css">
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-    <!-- CSS Files -->
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
 </head>
 <body>
-    <h2>Change Email</h2>
-    <?php
-    if (isset($error)) {
-        echo '<div style="color: red;">' . $error . '</div>';
-    } elseif (isset($success)) {
-        echo '<div style="color: green;">' . $success . '</div>';
-    }
-    ?>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <label for="new_email">New Email Address:</label><br>
-        <input type="email" id="new_email" name="new_email"><br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container">
+        <h2>Change Email</h2>
+        <?php
+        if (isset($error)) {
+            echo '<div style="color: red;">' . $error . '</div>';
+        } elseif (isset($success)) {
+            echo '<div style="color: green;">' . $success . '</div>';
+        }
+        ?>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <label for="new_email">New Email Address:</label><br>
+            <input type="email" id="new_email" name="new_email"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>
