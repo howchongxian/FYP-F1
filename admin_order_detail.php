@@ -129,7 +129,7 @@ include 'sidebar.php';
                         $productPrices = explode(',', $row['product_prices']);
 
                         for ($i = 0; $i < count($productCodes); $i++) {
-                            $productDetails[] = $productCodes[$i] . " - " . $productNames[$i] . " (" . $productQuantities[$i] . " x $" . $productPrices[$i] . ")";
+                            $productDetails[] = $productCodes[$i] . " - " . $productNames[$i] . " (" . $productQuantities[$i] . " x " . $productPrices[$i] . ")";
                         }
                         echo "<td>" . implode('<br>', $productDetails) . "</td>";
 
@@ -141,7 +141,7 @@ include 'sidebar.php';
                         $ticketPrices = explode(',', $row['ticket_prices']);
 
                         for ($i = 0; $i < count($ticketIDs); $i++) {
-                            $ticketDetails[] = $ticketIDs[$i] . " - " . $ticketRaces[$i] . " (" . $ticketQuantities[$i] . " x $" . $ticketPrices[$i] . ")";
+                            $ticketDetails[] = $ticketIDs[$i] . " - " . $ticketRaces[$i] . " (" . $ticketQuantities[$i] . " x " . $ticketPrices[$i] . ")";
                         }
                         echo "<td>" . implode('<br>', $ticketDetails) . "</td>";
 

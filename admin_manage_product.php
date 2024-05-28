@@ -69,7 +69,7 @@ include 'sidebar.php'
                 ?>
                 <tr>
                     <td><?php echo $row["product_code"]; ?></td>
-                    <td><img src="<?php echo $row["product_img"]; ?>" alt="Product Image" width="100"></td>
+                    <td><img src="<?php echo 'images/product/'.$row["product_img"]; ?>" alt="Product Image" width="100"></td>
                     <td><?php echo $row["product_name"]; ?></td>
                     <td><?php echo $row["category"];?></td>
                     <td><?php echo $row["product_size"]; ?></td>

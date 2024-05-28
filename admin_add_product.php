@@ -66,20 +66,23 @@
         $product_price = $_POST['product_price'];
 
         // Upload product image
-        $target_dir = "uploads/";
+        $target_dir = "images/product/";
         if (!is_dir($target_dir)) {
             mkdir($target_dir, 0777, true);
         }
-        $target_file = $target_dir . basename($product_img);
+
+        $product_img = basename($_FILES["product_img"]["name"]);
+        $temp_file = $_FILES["product_img"]["tmp_name"];
+        $target_file = $target_dir . uniqid() . "_" . $product_img;
         
-        if (move_uploaded_file($_FILES["product_img"]["tmp_name"], $target_file)) {
+        if (move_uploaded_file($temp_file, $target_file)) {
             // Check for duplicate product code
             $query = "SELECT * FROM product WHERE product_code='$product_code'";
             $result = mysqli_query($connect, $query);
             
             if (mysqli_num_rows($result) == 0) {
                 // Insert into product table
-                $query = "INSERT INTO product (product_code, product_img, product_name, category, product_size, description, product_price) VALUES ('$product_code', '$product_img', '$product_name', '$category', '$product_size', '$description', '$product_price')";
+                $query = "INSERT INTO product (product_code, product_img, product_name, category, product_size, description, product_price) VALUES ('$product_code', '$target_file', '$product_name', '$category', '$product_size', '$description', '$product_price')";
                 if (mysqli_query($connect, $query)) {
                     header("Location: admin_manage_product.php");
                     exit;
