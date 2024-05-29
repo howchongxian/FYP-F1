@@ -59,6 +59,7 @@ $(document).ready(function () {
       <li><a href="product.php">Products</a></li>
       <li><a href="ticket.php">Tickets</a></li>
       <li><a href="shopping_cart.php">Shopping Cart</a></li>
+      <li><a href="order_history.php">Order Records</a></li>
       <li><a href="feedback.php">Feedback</a></li>
     </ol>
   </li>
