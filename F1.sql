@@ -122,8 +122,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_code`, `product_img`, `product_name`, `category`, `product_size`, `description`, `product_price`) VALUES
-(13334182, 'images/product/Red Bull clothes(1).jpg', 'Oracle Red Bull Racing 2023 Team Polo', 'Clother', '55-80', '<ul>\r\n              <li>84% polyester/16% Elastane</li>\r\n              <li>Short sleeves</li>\r\n              <li>Quarter zip neck</li>\r\n              <li>Polo collar</li>\r\n              <li>Regular fit</li>\r\n              <li>Heat-sealed team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', 48.75),
-(13368549, 'images/product/Mercedes clothes.jpg', 'Mercedes AMG Petronas F1 2023 Team Driver T-Shirt - White', 'Clother', '55-80', '<ul>\r\n                            <li>100% polyester</li>\r\n              <li>Short sleeves</li>\r\n              <li>Crew neck</li>\r\n              <li>Regular fit</li>\r\n              <li>Team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', 43.40);
+(1343541, 'Red Bull Racing cap.jpg', 'Red Bull Racing cap', 'Cap', '35-50', 'Red Bull Racing cap', 12.00),
+(13334182, 'Red Bull clothes(1).jpg', 'Oracle Red Bull Racing 2023 Team Polo', 'Clothes', '55-80', '<ul>\r\n              <li>84% polyester/16% Elastane</li>\r\n              <li>Short sleeves</li>\r\n              <li>Quarter zip neck</li>\r\n              <li>Polo collar</li>\r\n              <li>Regular fit</li>\r\n              <li>Heat-sealed team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', 48.75),
+(13368549, 'Mercedes clothes.jpg', 'Mercedes AMG Petronas F1 2023 Team Driver T-Shirt - White', 'Clothes', '55-80', '<ul>\r\n                            <li>100% polyester</li>\r\n              <li>Short sleeves</li>\r\n              <li>Crew neck</li>\r\n              <li>Regular fit</li>\r\n              <li>Team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', 43.40),
+(14325543, 'Ferrari clothes (1).jpg', 'Ferrari red clothes', 'Clothes', '50-70', 'Ferrari red clothes', 45.55);
 
 -- --------------------------------------------------------
 
