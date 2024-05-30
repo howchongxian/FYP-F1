@@ -28,6 +28,12 @@
             window.location = $(this).find("a").attr("href");
             return false;
         });
+
+        // Check for error parameter and show alert
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('error')) {
+            alert(urlParams.get('error'));
+        }
     });
     </script>
 </head>
@@ -35,12 +41,9 @@
     <div class="loginbox">
         <img src="images/avatar.png" class="avatar">
         <h1>Sign In</h1>
-        <?php if(isset($_GET['error'])){ ?>
-            <p style="color:red;" class="error"><?php echo $_GET['error'];?></p>
-        <?php } ?>
         <form id="loginForm" method="post" action="loginsystem.php">        
             <p>Username</p>
-            <input type="text" name="username" id="username" placeholder="Enter Username">
+            <input type="text" name="username" id="username" placeholder="Enter Username" required>
             <p>Password</p>
             <div class="password-input">
                 <input type="password" name="password" id="password" placeholder="Enter Password" required>
