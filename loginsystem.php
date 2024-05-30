@@ -43,17 +43,18 @@ if (isset($_POST['submit'])) {
                 exit();
             }
         } else {
-            $error = "Invalid username or password";
-            header("Location: signin.php?error=" . urlencode($error)); // Redirect to login.php with error message
+            $error = "Incorrect password";
+            header("Location: signin.php?error=" . urlencode($error)); // Redirect to signin.php with error message
             exit();
         }
     } else {
         $error = "Invalid username or password";
-        header("Location: signin.php?error=" . urlencode($error)); // Redirect to login.php with error message
+        header("Location: signin.php?error=" . urlencode($error)); // Redirect to signin.php with error message
         exit();
     }
 } else {
     // If user accessed loginsystem.php directly without submitting the form
-    header("Location: signin.php"); // Redirect to login.php
+    header("Location: signin.php"); // Redirect to signin.php
     exit();
 }
+?>
