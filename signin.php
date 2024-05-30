@@ -38,12 +38,15 @@
     </script>
 </head>
 <body>      
-    <div class="loginbox">
+<div class="loginbox">
         <img src="images/avatar.png" class="avatar">
         <h1>Sign In</h1>
+        <?php if(isset($_GET['error'])){ ?>
+            <p style="color:red;" class="error"><?php echo $_GET['error'];?></p>
+        <?php } ?>
         <form id="loginForm" method="post" action="loginsystem.php">        
             <p>Username</p>
-            <input type="text" name="username" id="username" placeholder="Enter Username" required>
+            <input type="text" name="username" id="username" placeholder="Enter Username">
             <p>Password</p>
             <div class="password-input">
                 <input type="password" name="password" id="password" placeholder="Enter Password" required>
