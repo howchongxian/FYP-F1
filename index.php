@@ -112,7 +112,7 @@ $(document).ready(function () {
   </div>
 </div>
 
-<a href="news.html">
+<a href="news.php">
   <button id="more-news-button">More News</button>
 </a>
 
@@ -136,7 +136,7 @@ $(document).ready(function () {
   </div>
 </div>
 
-<a href="videos.html">
+<a href="videos.php">
   <button id="more-videos-button">More Videos</button>
 </a>
 
