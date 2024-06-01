@@ -13,7 +13,7 @@ $row = mysqli_fetch_assoc($result);
 // Check if the user is not an admin
 if ($row['role'] !== 'admin') {
     // Display a message or redirect the user
-    header("Location: admin.php?msg=Cannot edit superadmin or user roles");
+    header("Location: superadmin.php?msg=Cannot edit user");
     exit();
 }
 
@@ -31,7 +31,7 @@ if (isset($_POST["submit"])) {
     mysqli_stmt_bind_param($stmt, "sssi", $username, $email, $hashed_password, $id);
 
     if (mysqli_stmt_execute($stmt)) {
-        header("Location: admin.php?msg=Data updated successfully");
+        header("Location: superadmin.php?msg=Data updated successfully");
         exit();
     } else {
         echo "Failed: " . mysqli_error($connect);
@@ -101,7 +101,7 @@ if (isset($_POST["submit"])) {
                 <div class="row">
                     <div class="col">
                         <button type="submit" class="btn btn-success" name="submit">Update</button>
-                        <a href="admin.php" class="btn btn-danger">Cancel</a>
+                        <a href="superadmin.php" class="btn btn-danger">Cancel</a>
                     </div>
                 </div>
             </form>

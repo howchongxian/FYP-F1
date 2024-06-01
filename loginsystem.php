@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
                 exit();
             } elseif ($user['role'] == 'superadmin') {
                 $_SESSION['superadmin_userid'] = $user['id'];
-                header("Location: superadmin.php"); // Redirect super admin to super admin panel
+                header("Location: superadmin_dashboard.php"); // Redirect super admin to super admin panel
                 exit();
             } else {
                 $_SESSION['userid'] = $user['id'];

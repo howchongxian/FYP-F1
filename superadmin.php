@@ -1,26 +1,25 @@
 <?php
+session_start();
+if (!isset($_SESSION['superadmin_userid'])) {
+    header("Location: signin.php");
+    exit();
+}
 include("dataconnection.php");
+
+// Fetch all users
+$query = "SELECT * FROM user";
+$result = mysqli_query($connect, $query);
 ?>
-
 <!DOCTYPE HTML>
-<html>
-
+<html lang="en">
 <head>
-    <title>Admin - Manage Users</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>Superadmin Dashboard</title>
     <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <!-- CSS Files -->
     <link rel="stylesheet" type="text/css" media="screen" href="./css/admin_style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/user.css">
-    <!-- FancyBox -->
-    <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
-    <script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
-    <script type="text/javascript">
-        function confirmation() {
-            return confirm("Do you want to delete this user?");
-        }
-    </script>
     <style>
         .filter-container {
             display: flex;
@@ -30,12 +29,11 @@ include("dataconnection.php");
     </style>
 </head>
 <?php
-include 'sidebar.php';
+include ('superadmin_sidebar.php')
 ?>
-
 <body>
     <div id="manage_user">
-        <h1>Admin - Manage Users</h1>
+        <h1>Superadmin Dashboard</h1>
         <div class="user-list">
             <h2>Users</h2>
             <div class="filter-container">
@@ -50,7 +48,7 @@ include 'sidebar.php';
                     <th>ID</th>
                     <th>Username</th>
                     <th>Email</th>
-                    <th>Password</th>
+                    <th>Role</th>
                     <th colspan="2">Action</th>
                 </tr>
                 <?php
@@ -64,24 +62,25 @@ include 'sidebar.php';
                     die("Query failed: " . mysqli_error($connect));
                 }
                 while ($row = mysqli_fetch_assoc($result)) {
+                    $disableEditDelete = $row['role'] == 'superadmin' ? ' disabled' : '';
                 ?>
                     <tr>
                         <td><?php echo $row["id"]; ?></td>
                         <td><?php echo $row["username"]; ?></td>
                         <td><?php echo $row["email"]; ?></td>
-                        <td><?php echo $row["password"]; ?></td>
-                        <td><a href="admin_edit_user.php?edit&id=<?php echo $row['id']; ?>">Edit</a></td>
-                        <td><a href="admin_delete_user.php?del&id=<?php echo $row['id']; ?>" onclick="return confirmation();">Delete</a></td>
+                        <td><?php echo $row["role"]; ?></td>
+                        <td><a href="superadmin_edit_user.php?edit&id=<?php echo $row['id']; ?>"<?php echo $disableEditDelete; ?>>Edit</a></td>
+                        <td><a href="superadmin_delete_user.php?del&id=<?php echo $row['id']; ?>"<?php echo $disableEditDelete; ?> onclick="return confirmation();">Delete</a></td>
                     </tr>
                 <?php
                 }
                 ?>
             </table>
             <div class="edit-buttons">
-                <a class="add_btn" href="admin_add_user.php">Add User</a>
+                <a class="add_btn" href="superadmin_add_user.php">Add User /</a>
+                <a class="add_btn" href="superadmin_add_admin.php">Add Admin</a>
             </div>
         </div>
     </div>
 </body>
-
 </html>

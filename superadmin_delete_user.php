@@ -5,7 +5,7 @@ $sql = "DELETE FROM `user` WHERE id = $id";
 $result = mysqli_query($connect, $sql);
 
 if ($result) {
-  header("Location: admin.php?msg=Data deleted successfully");
+  header("Location: superadmin.php?msg=Data deleted successfully");
 } else {
-  echo "Failed: admin.php " . mysqli_error($connect);
+  echo "Failed: superadmin.php " . mysqli_error($connect);
 }

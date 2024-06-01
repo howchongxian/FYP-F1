@@ -10,7 +10,7 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/signin.css">
     <!-- JS Files -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script src="js/jquery.tools.min.js"></script>
     <script>
         $(function () {
@@ -32,8 +32,7 @@
                 alert(urlParams.get('error'));
             }
         });
-    </script>
-    <script>
+
         function togglePasswordVisibility(fieldId){
             var passwordInput = document.getElementById(fieldId);
             var toggleIcon = passwordInput.nextElementSibling.querySelector("i");

@@ -39,47 +39,47 @@ if (isset($fetch_profile['username'])) {
   <div class="sidebar">
     <div class="logo-details">
       <i class='bx bxl-c-plus-plus icon'></i>
-      <div class="logo_name">Admin Panel</div>
+      <div class="logo_name">Super Admin Panel</div>
       <i class='bx bx-menu' id="btn"></i>
     </div>
     <ul class="nav-list">
       <li>
-        <a href="admin_dashboard.php">
+        <a href="superadmin_dashboard.php">
           <i class='bx bx-grid-alt'></i>
           <span class="links_name">Dashboard</span>
         </a>
         <span class="tooltip">Dashboard</span>
       </li>
       <li>
-        <a href="admin.php">
+        <a href="superadmin.php">
           <i class='bx bxs-user-detail'></i>
           <span class="links_name">User</span>
         </a>
         <span class="tooltip">User</span>
       </li>
       <li>
-        <a href="admin_manage_product.php">
+        <a href="superadmin_manage_product.php">
           <i class='bx bx-purchase-tag-alt'></i>
           <span class="links_name">Product</span>
         </a>
         <span class="tooltip">Product</span>
       </li>
       <li>
-        <a href="admin_order_detail.php">
+        <a href="superadmin_order_detail.php">
           <i class='bx bx-cart'></i>
           <span class="links_name">Orders</span>
         </a>
         <span class="tooltip">Orders</span>
       </li>
       <li>
-        <a href="sales_report.php">
+        <a href="superadmin_sales_report.php">
           <i class='bx bxs-report'></i>
           <span class="links_name">Sales Report</span>
         </a>
         <span class="tooltip">Sales Report</span>
       </li>
       <li>
-        <a href="admin_feedback.php">
+        <a href="superadmin_feedback.php">
           <i class='bx bx-message-dots'></i>
           <span class="links_name">Feedback</span>
         </a>
