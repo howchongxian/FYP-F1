@@ -1,9 +1,38 @@
 <?php
-include("dataconnection.php");
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['admin_userid'])) {
+    header("Location: signin.php"); // Redirect to signin page if not logged in
+    exit();
+}
+
+// Database connection
+include "dataconnection.php";
+
+// Fetch admin information from the database
+$admin_userid = $_SESSION['admin_userid'];
+$query = "SELECT * FROM user WHERE id=?";
+$stmt = $connect->prepare($query);
+$stmt->bind_param("i", $admin_userid);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows == 1) {
+    $admin = $result->fetch_assoc();
+} else {
+    // Handle error: Admin not found
+    echo "Admin not found";
+    exit();
+}
+
+// Close database connection
+$stmt->close();
+$connect->close();
 ?>
 
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 
 <head>
     <title>Admin - Manage Users</title>
@@ -70,12 +99,12 @@ include 'sidebar.php';
                         <td><?php echo $row["username"]; ?></td>
                         <td><?php echo $row["email"]; ?></td>
                         <td><?php echo $row["password"]; ?></td>
-                        <?php if ($row["role"] === 'admin') { ?>
+                        <?php if ($row["role"] === 'admin' && $admin['role'] !== 'admin') { ?>
                             <td><a href="admin_edit_user.php?edit&id=<?php echo $row['id']; ?>">Edit</a></td>
                             <td><a href="admin_delete_user.php?del&id=<?php echo $row['id']; ?>" onclick="return confirmation();">Delete</a></td>
                         <?php } elseif ($row["role"] === 'superadmin') { ?>
                             <td colspan="2">No actions available</td>
-                        <?php } else { ?>
+                        <?php } elseif ($row["role"] === 'user' || $admin['role'] === 'admin') { ?>
                             <td colspan="1"></td>
                             <td><a href="admin_delete_user.php?del&id=<?php echo $row['id']; ?>" onclick="return confirmation();">Delete</a></td>
                         <?php } ?>

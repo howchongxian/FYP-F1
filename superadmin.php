@@ -68,14 +68,14 @@ include ('superadmin_sidebar.php')
                         <td><?php echo $row["username"]; ?></td>
                         <td><?php echo $row["email"]; ?></td>
                         <td><?php echo $row["password"]; ?></td>
-                        <?php if ($row['role'] == 'admin' || ($row['role'] == 'superadmin' && $row['id'] == $_SESSION['superadmin_userid'])) { ?>
+                        <?php if ($row['role'] == 'admin') { ?>
                             <td><a href="superadmin_edit_user.php?edit&id=<?php echo $row['id']; ?>">Edit</a></td>
-                        <?php } else { ?>
+                            <td><a href="superadmin_delete_user.php?del&id=<?php echo $row['id']; ?>" onclick="return confirmation();">Delete</a></td>
+                        <?php } elseif ($row['role'] == 'user') { ?>
                             <td></td>
-                        <?php } ?>
-                        <?php if ($row['role'] != 'superadmin') { ?>
                             <td><a href="superadmin_delete_user.php?del&id=<?php echo $row['id']; ?>" onclick="return confirmation();">Delete</a></td>
                         <?php } else { ?>
+                            <td></td>
                             <td></td>
                         <?php } ?>
                     </tr>

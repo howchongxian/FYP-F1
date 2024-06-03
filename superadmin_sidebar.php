@@ -12,14 +12,14 @@ $real_username = '';
 
 // Fetch real username from the database
 if (isset($fetch_profile['username'])) {
-    $username = $fetch_profile['username'];
-    // Perform a database query to get the real username based on $username
-    $query = "SELECT * FROM `user` WHERE `username` = '$username'";
-    $result = mysqli_query($connect, $query);
-    if ($result && mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $real_username = $row['username'];
-    }
+  $username = $fetch_profile['username'];
+  // Perform a database query to get the real username based on $username
+  $query = "SELECT * FROM `user` WHERE `username` = '$username'";
+  $result = mysqli_query($connect, $query);
+  if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $real_username = $row['username'];
+  }
 }
 ?>
 
@@ -84,6 +84,13 @@ if (isset($fetch_profile['username'])) {
           <span class="links_name">Feedback</span>
         </a>
         <span class="tooltip">Feedback</span>
+      </li>
+      <li>
+        <a href="superadmin_profile.php">
+          <i class='bx bx-user-pin'></i>
+          <span class="links_name">Profile</span>
+        </a>
+        <span class="tooltip">Profile</span>
       </li>
       <li class="logout">
         <a href="logout.php">

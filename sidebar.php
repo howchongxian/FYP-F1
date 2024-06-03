@@ -85,6 +85,13 @@ if (isset($fetch_profile['username'])) {
         </a>
         <span class="tooltip">Feedback</span>
       </li>
+      <li>
+        <a href="admin_profile.php">
+        <i class='bx bx-user-pin'></i>
+          <span class="links_name">Profile</span>
+        </a>
+        <span class="tooltip">Profile</span>
+      </li>
       <li class="logout">
         <a href="logout.php">
           <i class='bx bx-log-out' id="log_out"></i>
