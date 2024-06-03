@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!-- FancyBox -->
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="js/credit-card-validation.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
@@ -66,6 +67,17 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+    function toggleCardInfo() {
+        var cardInfo = document.getElementById('credit-card-info');
+        var creditCard = document.getElementById('credit-card');
+        if (creditCard.checked) {
+            cardInfo.style.display = 'contents';
+            document.form1.text1.focus();  // Focus on the credit card input field when visible
+        } else {
+            cardInfo.style.display = 'none';
+        }
+    }
 </script>
 </head>
 <body>
@@ -73,12 +85,12 @@ document.addEventListener('DOMContentLoaded', function () {
 <div id="container">
   <h1>Payment</h1>
   
-  <form id="paymentForm" method="post" action="confirm_order.php">
+  <form id="paymentForm" method="post" action="confirm_order.php" onsubmit="return validatePayment(event)">
     <label for="name">Your Name:</label>
     <input type="text" id="name" name="name" required>
 
     <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Exp: 012-345-6789" required>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}[0-9]{4}" placeholder="Exp: 012-3456789" required>
 
     <label for="address">Address:</label>
     <input type="address" id="address" name="address" placeholder="Exp: NoXX, Jalan xxxxx, Taman xxxxxx, 83000 Batu Pahat, Johor">
@@ -106,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
 
-    <button class="py_btn" type="button" onclick="document.getElementById('paymentForm').submit();">Confirm Payment</button>
+    <button class="py_btn" type="button" onclick="validatePayment()">Confirm Payment</button>
   </form>
 
   <!-- END Second Column -->
