@@ -4,7 +4,7 @@ include 'dataconnection.php';
 
 // Assume $fetch_profile is defined and contains user profile data
 $fetch_profile = array(
-  'username' => 'Admin' // Example username
+  'username' => 'Super Admin' // Example username
 );
 
 // Initialize variable to store real username

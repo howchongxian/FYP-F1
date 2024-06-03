@@ -1,6 +1,14 @@
 <?php
+session_start();
 include "dataconnection.php";
+
+if (!isset($_SESSION['superadmin_userid'])) {
+    header("Location: signin.php");
+    exit();
+}
+
 $id = $_GET["id"];
+$superadmin_userid = $_SESSION['superadmin_userid'];
 
 // Fetch the user details including the role
 $sql = "SELECT * FROM `user` WHERE id = ?";
@@ -10,8 +18,8 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 $row = mysqli_fetch_assoc($result);
 
-// Check if the user is not an admin
-if ($row['role'] !== 'admin') {
+// Check if the user is not an admin and not the superadmin itself
+if ($row['role'] !== 'admin' && $row['id'] !== $superadmin_userid) {
     // Display a message or redirect the user
     header("Location: superadmin.php?msg=Cannot edit user");
     exit();
@@ -79,7 +87,7 @@ if (isset($_POST["submit"])) {
 
 <body>
     <div id="container">
-        <h1>Edit User Information</h1>
+        <h1>Edit Information</h1>
         <div class="product-list">
             <form action="" method="post">
                 <div class="row mb-3">

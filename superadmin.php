@@ -14,7 +14,7 @@ $result = mysqli_query($connect, $query);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Superadmin Dashboard</title>
+    <title>Superadmin - Manage Admins & Users</title>
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <!-- CSS Files -->
@@ -33,9 +33,9 @@ include ('superadmin_sidebar.php')
 ?>
 <body>
     <div id="manage_user">
-        <h1>Superadmin Dashboard</h1>
+        <h1>Superadmin - Manage Admins & Users</h1>
         <div class="user-list">
-            <h2>Users</h2>
+            <h2>Admins & Users</h2>
             <div class="filter-container">
                 <!-- Search Form -->
                 <form method="GET" action="">
@@ -48,7 +48,7 @@ include ('superadmin_sidebar.php')
                     <th>ID</th>
                     <th>Username</th>
                     <th>Email</th>
-                    <th>Role</th>
+                    <th>Password</th>
                     <th colspan="2">Action</th>
                 </tr>
                 <?php
@@ -62,15 +62,22 @@ include ('superadmin_sidebar.php')
                     die("Query failed: " . mysqli_error($connect));
                 }
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $disableEditDelete = $row['role'] == 'superadmin' ? ' disabled' : '';
                 ?>
                     <tr>
                         <td><?php echo $row["id"]; ?></td>
                         <td><?php echo $row["username"]; ?></td>
                         <td><?php echo $row["email"]; ?></td>
-                        <td><?php echo $row["role"]; ?></td>
-                        <td><a href="superadmin_edit_user.php?edit&id=<?php echo $row['id']; ?>"<?php echo $disableEditDelete; ?>>Edit</a></td>
-                        <td><a href="superadmin_delete_user.php?del&id=<?php echo $row['id']; ?>"<?php echo $disableEditDelete; ?> onclick="return confirmation();">Delete</a></td>
+                        <td><?php echo $row["password"]; ?></td>
+                        <?php if ($row['role'] == 'admin' || ($row['role'] == 'superadmin' && $row['id'] == $_SESSION['superadmin_userid'])) { ?>
+                            <td><a href="superadmin_edit_user.php?edit&id=<?php echo $row['id']; ?>">Edit</a></td>
+                        <?php } else { ?>
+                            <td></td>
+                        <?php } ?>
+                        <?php if ($row['role'] != 'superadmin') { ?>
+                            <td><a href="superadmin_delete_user.php?del&id=<?php echo $row['id']; ?>" onclick="return confirmation();">Delete</a></td>
+                        <?php } else { ?>
+                            <td></td>
+                        <?php } ?>
                     </tr>
                 <?php
                 }
@@ -84,3 +91,9 @@ include ('superadmin_sidebar.php')
     </div>
 </body>
 </html>
+
+<script type="text/javascript">
+    function confirmation() {
+        return confirm("Do you want to delete this user?");
+    }
+</script>
