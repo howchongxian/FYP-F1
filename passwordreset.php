@@ -22,15 +22,27 @@ if(isset($_POST['submit'])){
             $stmt_update = $connect->prepare("UPDATE user SET password = ? WHERE username = ?");
             $stmt_update->bind_param("ss", $hashedPassword, $username);
             if ($stmt_update->execute()) {
-                echo "Password updated successfully";
+                echo "<script>
+                        alert('Password updated successfully');
+                        window.location.href = 'signin.php';
+                      </script>";
             } else {
-                echo "Error updating password: " . $stmt_update->error;
+                echo "<script>
+                        alert('Error updating password: " . $stmt_update->error . "');
+                        window.location.href = 'passwordreset.php';
+                      </script>";
             }
         } else {
-            echo "User with the provided username not found";
+            echo "<script>
+                    alert('User with the provided username not found');
+                    window.location.href = 'passwordreset.php';
+                  </script>";
         }
     } else {
-        echo "Passwords do not match";
+        echo "<script>
+                alert('Passwords do not match');
+                window.location.href = 'passwordreset.php';
+              </script>";
     }
 
     $stmt->close();

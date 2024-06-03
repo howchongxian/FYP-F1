@@ -4,6 +4,10 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 include('dataconnection.php');
+
+// Initialize a variable to store the status message
+$statusMessage = "";
+
 // 处理邮件发送逻辑
 if(isset($_POST['submit'])){
     $to = $_POST['to'];
@@ -39,13 +43,13 @@ if(isset($_POST['submit'])){
             $mail->Body = $message;
 
             $mail->send();
-            echo 'Email sent successfully';
+            $statusMessage = "Email sent successfully";
         } catch (Exception $e) {
-            echo "Failed to send email. Error: {$mail->ErrorInfo}";
+            $statusMessage = "Failed to send email. Error: {$mail->ErrorInfo}";
         }
     } else {
         // 如果数据库中不存在匹配的记录，显示消息给用户
-        echo "Email address not found in database";
+        $statusMessage = "Email address not found in database";
     }
 
     $connect->close(); // 关闭数据库连接
@@ -60,6 +64,12 @@ if(isset($_POST['submit'])){
     <title>Password Reset</title>
     <link rel="stylesheet" type="text/css" href="css/forgetpassword.css">
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <script>
+        // Function to display popup message
+        function showAlert(message) {
+            alert(message);
+        }
+    </script>
 </head>
 <body>
     <h1>Password Reset</h1>
@@ -69,5 +79,10 @@ if(isset($_POST['submit'])){
         </p>
         <button type="submit" name="submit">Send Reset Link</button>
     </form>
+    <?php
+    if ($statusMessage) {
+        echo "<script type='text/javascript'>showAlert('$statusMessage');</script>";
+    }
+    ?>
 </body>
 </html>
