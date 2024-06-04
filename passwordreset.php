@@ -61,7 +61,7 @@ if(isset($_POST['submit'])){
 </head>
 <body>
     <h1>Reset Password</h1>
-    <form method="post">
+    <form method="post" onsubmit="return validateForm()">
         <p>
             <label for="username">Username:</label>
             <input type="text" name="username" placeholder="Enter your username" required>
@@ -91,6 +91,15 @@ if(isset($_POST['submit'])){
             } else {
                 x.type = "password";
             }
+        }
+
+        function validateForm() {
+            var newPassword = document.getElementById('new_password').value;
+            if (newPassword.length < 8) {
+                alert('Password must be at least 8 characters long');
+                return false;
+            }
+            return true;
         }
     </script>
 </body>
