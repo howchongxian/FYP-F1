@@ -80,7 +80,7 @@ include 'sidebar.php';
                     <th>Username</th>
                     <th>Email</th>
                     <th>Password</th>
-                    <th colspan="2">Action</th>
+                    <th>Action</th>
                 </tr>
                 <?php
                 $search = isset($_GET['search']) ? $_GET['search'] : '';
@@ -99,13 +99,9 @@ include 'sidebar.php';
                         <td><?php echo $row["username"]; ?></td>
                         <td><?php echo $row["email"]; ?></td>
                         <td><?php echo $row["password"]; ?></td>
-                        <?php if ($row["role"] === 'admin' && $admin['role'] !== 'admin') { ?>
-                            <td><a href="admin_edit_user.php?edit&id=<?php echo $row['id']; ?>">Edit</a></td>
-                            <td><a href="admin_delete_user.php?del&id=<?php echo $row['id']; ?>" onclick="return confirmation();">Delete</a></td>
-                        <?php } elseif ($row["role"] === 'superadmin') { ?>
-                            <td colspan="2">No actions available</td>
-                        <?php } elseif ($row["role"] === 'user' || $admin['role'] === 'admin') { ?>
-                            <td colspan="1"></td>
+                        <?php if ($row["role"] === 'superadmin' || $row["role"] === 'admin') { ?>
+                            <td>No actions available</td>
+                        <?php } else { ?>
                             <td><a href="admin_delete_user.php?del&id=<?php echo $row['id']; ?>" onclick="return confirmation();">Delete</a></td>
                         <?php } ?>
                     </tr>

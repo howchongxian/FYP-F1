@@ -3,9 +3,9 @@ include("dataconnection.php");
 session_start();
 
 // Check if user is not logged in
-if(!isset($_SESSION['userid'])) {
-  header("Location: signin.php"); // Redirect to login page if not logged in
-  exit();
+if (!isset($_SESSION['userid'])) {
+    header("Location: signin.php"); // Redirect to login page if not logged in
+    exit();
 }
 
 $userid = $_SESSION['userid'];
@@ -99,19 +99,9 @@ $userid = $_SESSION['userid'];
                      LEFT JOIN `product` p ON oi.product_code = p.product_code
                      LEFT JOIN `order_tickets` ot ON o.order_id = ot.order_id
                      LEFT JOIN `ticket` t ON ot.ticketID = t.ticketID
-                     WHERE o.user_id = '$userid'";
+                     WHERE o.user_id = '$userid'
+                     GROUP BY o.order_id";
 
-                    if (!empty($start_date)) {
-                        $query .= " AND o.created_at >= '$start_date'";
-                    }
-                    if (!empty($end_date)) {
-                        $query .= " AND o.created_at <= '$end_date'";
-                    }
-                    if (!empty($search_payment)) {
-                        $query .= " AND (o.payment_method LIKE '%$search_payment%' OR o.payment_status LIKE '%$search_payment%')";
-                    }
-
-                    $query .= " GROUP BY o.order_id";
                     $result = mysqli_query($connect, $query);
                     if (!$result) {
                         die("Query failed: " . mysqli_error($connect));
@@ -130,7 +120,13 @@ $userid = $_SESSION['userid'];
                             $productPrices = explode(',', $row['product_prices']);
     
                             for ($i = 0; $i < count($productCodes); $i++) {
-                                $productDetails[] = $productCodes[$i] . " - " . $productNames[$i] . " (" . $productQuantities[$i] . " x " . $productPrices[$i] . ")";
+                                // Check if indexes exist before accessing them
+                                $productCode = $productCodes[$i] ?? '';
+                                $productName = $productNames[$i] ?? '';
+                                $productQuantity = $productQuantities[$i] ?? '';
+                                $productPrice = $productPrices[$i] ?? '';
+                                
+                                $productDetails[] = $productCode . " - " . $productName . " (" . $productQuantity . " x " . $productPrice . ")";
                             }
                             echo "<td>" . implode('<br>', $productDetails) . "</td>";
     
@@ -142,7 +138,13 @@ $userid = $_SESSION['userid'];
                             $ticketPrices = explode(',', $row['ticket_prices']);
     
                             for ($i = 0; $i < count($ticketIDs); $i++) {
-                                $ticketDetails[] = $ticketIDs[$i] . " - " . $ticketRaces[$i] . " (" . $ticketQuantities[$i] . " x " . $ticketPrices[$i] . ")";
+                                // Check if indexes exist before accessing them
+                                $ticketID = $ticketIDs[$i] ?? '';
+                                $ticketRace = $ticketRaces[$i] ?? '';
+                                $ticketQuantity = $ticketQuantities[$i] ?? '';
+                                $ticketPrice = $ticketPrices[$i] ?? '';
+                                
+                                $ticketDetails[] = $ticketID . " - " . $ticketRace . " (" . $ticketQuantity . " x " . $ticketPrice . ")";
                             }
                             echo "<td>" . implode('<br>', $ticketDetails) . "</td>";
     
@@ -152,9 +154,14 @@ $userid = $_SESSION['userid'];
                             echo "<td>" . $row["payment_method"] . "</td>";
                             echo "<td>" . $row["payment_status"] . "</td>";
                             echo "<td>" . $row["created_at"] . "</td>";
+                            echo "</tr>"; // Close the table row properly
+                        }
+                    } else {
+                        echo "<tr><td colspan='7'>No order records found.</td></tr>";
                     }
-                }
-                
+    
+                    mysqli_free_result($result);
+                    mysqli_close($connect);
                 ?>
                 </table>
                 <!--<div class="total">

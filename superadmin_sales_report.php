@@ -70,7 +70,7 @@ include("dataconnection.php");
                 </form>
                 <!-- Search Form -->
                 <form method="GET" action="" class="search-box">
-                    <input type="text" name="search" placeholder="Searchs" value="<?php echo isset($_GET['search']) ? $_GET['search'] : '' ?>">
+                    <input type="text" name="search" placeholder="Search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : '' ?>">
                     <input type="submit" value="Search">
                 </form>
             </div>
@@ -108,11 +108,7 @@ include("dataconnection.php");
                     $query .= " WHERE " . implode(' AND ', $conditions);
                 }
 
-                if ($group_by == 'month') {
-                    $query .= " GROUP BY YEAR(o.created_at), MONTH(o.created_at)";
-                } else {
-                    $query .= " GROUP BY DATE(o.created_at)";
-                }
+                $query .= " ORDER BY o.order_id ASC";
 
                 $result = mysqli_query($connect, $query);
 

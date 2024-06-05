@@ -129,7 +129,9 @@ include 'superadmin_sidebar.php';
                         $productPrices = explode(',', $row['product_prices']);
 
                         for ($i = 0; $i < count($productCodes); $i++) {
-                            $productDetails[] = $productCodes[$i] . " - " . $productNames[$i] . " (" . $productQuantities[$i] . " x " . $productPrices[$i] . ")";
+                            if (isset($productCodes[$i]) && isset($productNames[$i]) && isset($productQuantities[$i]) && isset($productPrices[$i])) {
+                                $productDetails[] = $productCodes[$i] . " - " . $productNames[$i] . " (" . $productQuantities[$i] . " x " . $productPrices[$i] . ")";
+                            }
                         }
                         echo "<td>" . implode('<br>', $productDetails) . "</td>";
 
@@ -141,7 +143,9 @@ include 'superadmin_sidebar.php';
                         $ticketPrices = explode(',', $row['ticket_prices']);
 
                         for ($i = 0; $i < count($ticketIDs); $i++) {
-                            $ticketDetails[] = $ticketIDs[$i] . " - " . $ticketRaces[$i] . " (" . $ticketQuantities[$i] . " x " . $ticketPrices[$i] . ")";
+                            if (isset($ticketIDs[$i]) && isset($ticketRaces[$i]) && isset($ticketQuantities[$i]) && isset($ticketPrices[$i])) {
+                                $ticketDetails[] = $ticketIDs[$i] . " - " . $ticketRaces[$i] . " (" . $ticketQuantities[$i] . " x " . $ticketPrices[$i] . ")";
+                            }
                         }
                         echo "<td>" . implode('<br>', $ticketDetails) . "</td>";
 
@@ -177,4 +181,9 @@ include 'superadmin_sidebar.php';
 
                 mysqli_close($connect);
                 ?>
-            </
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
