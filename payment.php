@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <label for="credit-card">Credit Card/Debit Card</label>
         <div id="credit-card-info" style="display:none;">
           <label for="card-number">Card Number:</label>
-          <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" pattern="\d{4}\s?\d{4}\s?\d{4}\s?\d{4}">
+          <input type="text" id="card-number" name="card-number" placeholder="1234567890123456" pattern="\d{4}\s?\d{4}\s?\d{4}\s?\d{4}">
         </div>
       </div>
     </div>
