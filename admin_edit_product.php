@@ -22,48 +22,9 @@ if (isset($_POST['update'])) {
     $product_size = $_POST['product_size'];
     $description = $_POST['description'];
     $product_price = $_POST['product_price'];
-    $product_img = $_FILES['product_img']['name'] ?? $row['product_img'];
 
-    if (!empty($_FILES['product_img']['tmp_name'])) {
-        $target_dir = "images/product/"; // adjust the directory path as needed
-        $target_file = $target_dir . basename($_FILES["product_img"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-        // Check if image file is a actual image or fake image
-        $check = getimagesize($_FILES["product_img"]["tmp_name"]);
-        if ($check === false) {
-            $uploadOk = 0;
-        }
-
-        // Check if file already exists
-        if (file_exists($target_file)) {
-            $uploadOk = 0;
-        }
-
-        // Check file size
-        if ($_FILES["product_img"]["size"] > 500000) {
-            $uploadOk = 0;
-        }
-
-        // Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-            $uploadOk = 0;
-        }
-
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
-        } else {
-            if (move_uploaded_file($_FILES["product_img"]["tmp_name"], $target_file)) {
-                $product_img = $target_file;
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-        }
-    }
-
-    $stmt = $connect->prepare("UPDATE product SET product_name=?, category=?, product_size=?, description=?, product_price=?, product_img=? WHERE product_code=?");
-    $stmt->bind_param("sssssss", $product_name, $category, $product_size, $description, $product_price, $product_img, $product_code);
+    $stmt = $connect->prepare("UPDATE product SET product_name=?, category=?, product_size=?, description=?, product_price=? WHERE product_code=?");
+    $stmt->bind_param("ssssss", $product_name, $category, $product_size, $description, $product_price, $product_code);
     $stmt->execute();
 
     header("Location: admin_manage_product.php");
@@ -85,8 +46,7 @@ if (isset($_POST['update'])) {
     <!-- Add the following CSS rules here or in the style.css file -->
     <style>
         input[type="text"],
-        textarea,
-        input[type="file"] {
+        textarea {
             border: 1px solid #ccc;
             padding: 5px;
             width: calc(100% - 12px); /* Adjust width to match other inputs */
@@ -110,7 +70,7 @@ if (isset($_POST['update'])) {
         <h1>F1 Product</h1>
         <div class="product-list">
             <h2>Edit Product</h2>
-            <form action="admin_edit_product.php?edit&procode=<?php echo $product_code; ?>" method="post" enctype="multipart/form-data">
+            <form action="admin_edit_product.php?edit&procode=<?php echo $product_code; ?>" method="post">
                 <table>
                     <tr>
                         <td>Product Code:</td>
@@ -135,10 +95,6 @@ if (isset($_POST['update'])) {
                     <tr>
                         <td>Product Price:</td>
                         <td><input type="text" name="product_price" value="<?php echo $row['product_price'];?>"></td>
-                    </tr>
-                    <tr>
-                        <td>Product Image:</td>
-                        <td><input type="file" name="product_img"></td>
                     </tr>
                     <tr>
                         <td colspan="2"><input type="submit" name="update" value="Update Product"></td>

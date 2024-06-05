@@ -117,7 +117,7 @@ include 'sidebar.php'
                     <td><?php echo $row["stand"]; ?></td>
                     <td><?php echo $row["ticket_price"]; ?></td>
                     <td><a href="admin_edit_ticket.php?edit&procode=<?php echo $row['ticketID']; ?>">Edit</a></td>
-                    <td><a href="admin_delete_ticket.php?del&procode=<?php echo $row['ticketID']; ?>" onclick="return confirmation();">Delete</a></td>
+                    <td><a href="admin_delete_ticket.php?del&ticket_search=<?php echo $row['ticketID']; ?>" onclick="return confirmation();">Delete</a></td>
                 </tr>
                 <?php
                 }
