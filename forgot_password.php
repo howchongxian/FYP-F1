@@ -8,22 +8,33 @@ include('dataconnection.php');
 // Initialize a variable to store the status message
 $statusMessage = "";
 
-// 处理邮件发送逻辑
 if(isset($_POST['submit'])){
     $to = $_POST['to'];
 
-    $sql = "SELECT * FROM user WHERE email = '$to'";
-    $result = $connect->query($sql);
-    
+    $sql = "SELECT * FROM user WHERE email = ?";
+    $stmt = $connect->prepare($sql);
+    $stmt->bind_param("s", $to);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
     if ($result->num_rows > 0) {
-        // 如果存在匹配的记录，发送邮件
+        // If user exists, generate a unique token
+        $token = bin2hex(random_bytes(50));
+        $expiry = date("Y-m-d H:i:s", strtotime('+1 hour'));
+
+        // Store the token in the database
+        $stmt_update = $connect->prepare("UPDATE user SET reset_token = ?, token_expiry = ? WHERE email = ?");
+        $stmt_update->bind_param("sss", $token, $expiry, $to);
+        $stmt_update->execute();
+
+        // Send the token via email
         $subject = "Password Reset";
         $message = '<html><body>';
         $message .= '<h1>Password Reset</h1>';
         $message .= '<p>To reset your password, click the link below:</p>';
-        $message .= '<p><a href="http://localhost/FYP-F1/passwordreset.php">Reset Password</a></p>';
+        $message .= '<p><a href="http://localhost/FYP-F1/passwordreset.php?token=' . $token . '">Reset Password</a></p>';
         $message .= '</body></html>';
-        
+
         $mail = new PHPMailer(true);
 
         try {
@@ -48,11 +59,10 @@ if(isset($_POST['submit'])){
             $statusMessage = "Failed to send email. Error: {$mail->ErrorInfo}";
         }
     } else {
-        // 如果数据库中不存在匹配的记录，显示消息给用户
         $statusMessage = "Email address not found in database";
     }
 
-    $connect->close(); // 关闭数据库连接
+    $connect->close(); // Close the database connection
 }
 ?>
 
@@ -65,7 +75,6 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" type="text/css" href="css/forgetpassword.css">
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <script>
-        // Function to display popup message
         function showAlert(message) {
             alert(message);
         }
