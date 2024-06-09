@@ -65,6 +65,13 @@
   <h1>F1 Product Shop</h1>
     <div class="product-list">
             <h2>Tickets</h2>
+            <div class="filter-container">
+                <!-- Search Form -->
+                <form method="GET" action="">
+                    <input type="text" name="search" placeholder="Search Ticket Name or Stand" value="<?php echo isset($_GET['search']) ? $_GET['search'] : '' ?>">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
             <table class="ticket-table" border="1" width="700px" height="100px">
                 <tr>
                     <th>Ticket ID</th>
@@ -75,8 +82,15 @@
                 </tr>
     
                 <?php
-                
-                $result = mysqli_query($connect, "select * from ticket");	
+                $search = isset($_GET['search']) ? $_GET['search'] : '';
+                $query = "SELECT * FROM ticket";
+                if (!empty($search)) {
+                    $query .= " WHERE ticketID LIKE '%$search%' OR race LIKE '%$search%' OR stand LIKE '%$search%'";
+                }
+                $result = mysqli_query($connect, $query);
+                if (!$result) {
+                    die("Query failed: " . mysqli_error($connect));
+                }	
                 while($row = mysqli_fetch_assoc($result))
                     {
                         
