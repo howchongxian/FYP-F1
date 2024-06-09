@@ -89,11 +89,11 @@ $(document).ready(function () {
     </table>
     <script>
         const standings = [
-            { pos: 1, team: 'RED BULL RACING HONDA RBPT', pts: 276, url: 'https://www.formula1.com/en/results.html/2024/team/red_bull_racing_honda_rbpt.html' },
+            { pos: 1, team: 'RED BULL RACING HONDA RBPT', pts: 301, url: 'https://www.formula1.com/en/results.html/2024/team/red_bull_racing_honda_rbpt.html' },
             { pos: 2, team: 'FERRARI', pts: 252, url: 'https://www.formula1.com/en/results.html/2024/team/ferrari.html' },
-            { pos: 3, team: 'MCLAREN MERCEDES', pts: 184, url: 'https://www.formula1.com/en/results.html/2024/team/mclaren_mercedes.html' },
-            { pos: 4, team: 'MERCEDES', pts: 96, url: 'https://www.formula1.com/en/results.html/2024/team/mercedes.html' },
-            { pos: 5, team: 'ASTON MARTIN ARAMCO MERCEDES', pts: 44, url: 'https://www.formula1.com/en/results.html/2024/team/aston_martin_aramco_mercedes.html' },
+            { pos: 3, team: 'MCLAREN MERCEDES', pts: 212, url: 'https://www.formula1.com/en/results.html/2024/team/mclaren_mercedes.html' },
+            { pos: 4, team: 'MERCEDES', pts: 124, url: 'https://www.formula1.com/en/results.html/2024/team/mercedes.html' },
+            { pos: 5, team: 'ASTON MARTIN ARAMCO MERCEDES', pts: 58, url: 'https://www.formula1.com/en/results.html/2024/team/aston_martin_aramco_mercedes.html' },
         ];
 
         function populateStandings() {

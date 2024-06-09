@@ -78,7 +78,7 @@ $(document).ready(function () {
 <div class="container">
   <div class="team-column" onclick="redirectToPage('https://www.formula1.com/en/teams/Red-Bull-Racing.html')">
     <h2>Red Bull Racing</h2>
-    <p>276 PTS</p>
+    <p>301 PTS</p>
     <div class="driver">
         <img src="drivers/MaxVers.jpg" alt="Driver 1">
         <p>Max Verstappen</p>
@@ -106,7 +106,7 @@ $(document).ready(function () {
 
 <div class="team-column" onclick="redirectToPage('https://www.formula1.com/en/teams/McLaren.html')">
   <h2>McLaren</h2>
-  <p>184 PTS</p>
+  <p>212 PTS</p>
   <div class="driver">
       <img src="drivers/Norris.jpg" alt="Driver 5">
       <p>Lando Norris</p>
@@ -120,7 +120,7 @@ $(document).ready(function () {
 
 <div class="team-column" onclick="redirectToPage('https://www.formula1.com/en/teams/Mercedes.html')">
   <h2>Mercedes</h2>
-  <p>96 PTS</p>
+  <p>124 PTS</p>
   <div class="driver">
       <img src="drivers/Hamilton.jpg" alt="Driver 7">
       <p>Lewis Hamilton</p>
@@ -134,7 +134,7 @@ $(document).ready(function () {
 
 <div class="team-column" onclick="redirectToPage('https://www.formula1.com/en/teams/Aston-Martin.html')">
   <h2>Aston Martin</h2>
-  <p>44 PTS</p>
+  <p>58 PTS</p>
   <div class="driver">
       <img src="drivers/Alonso.jpg" alt="Driver 9">
       <p>Fernando Alonso</p>
