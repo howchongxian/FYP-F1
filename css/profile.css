@@ -1,3 +1,10 @@
+.input-group{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
 .btn.cancel-btn {
     background-color: #f44336; /* Red background */
     color: white; /* White text */

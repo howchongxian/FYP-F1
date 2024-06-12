@@ -16,13 +16,14 @@ include 'dataconnection.php';
 <?php include 'sidebar.php'; ?>
 
 <section class="dashboard">
-   <h1 class="dashboard">Dashboard</h1>
+   <h1 class="dashboard">Welcome, <?= htmlspecialchars($fetch_profile['username']); ?></h1>
+   <h2 class="dashboard">Dashboard</h2>
 
    <div class="box-dashboard">
-      <div class="box">
+      <!--<div class="box">
          <h3>Welcome</h3>
          <p><?= htmlspecialchars($fetch_profile['username']); ?></p>
-      </div>
+      </div>-->
 
       <div class="box">
          <?php
