@@ -23,14 +23,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Sanitize the input to prevent SQL injection
         $newEmail = mysqli_real_escape_string($connect, $newEmail);
 
-        // Update the email in the database
+        // Check if the email is already registered by another user
         $userid = $_SESSION['userid'];
-        $updateQuery = "UPDATE user SET email = '$newEmail' WHERE id = $userid";
+        $checkQuery = "SELECT id FROM user WHERE email = '$newEmail' AND id != $userid";
+        $result = mysqli_query($connect, $checkQuery);
 
-        if (mysqli_query($connect, $updateQuery)) {
-            $success = "Email address updated successfully";
+        if (mysqli_num_rows($result) > 0) {
+            $error = "This email address is already registered by another user.";
         } else {
-            $error = "Error updating email address: " . mysqli_error($connect);
+            // Update the email in the database
+            $updateQuery = "UPDATE user SET email = '$newEmail' WHERE id = $userid";
+
+            if (mysqli_query($connect, $updateQuery)) {
+                $success = "Email address updated successfully";
+            } else {
+                $error = "Error updating email address: " . mysqli_error($connect);
+            }
         }
     }
 }
@@ -55,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ?>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <label for="new_email">New Email Address:</label><br>
-            <input type="email" id="new_email" name="new_email"><br><br>
+            <input type="email" id="new_email" name="new_email" required><br><br>
             <input type="submit" value="Submit">
         </form>
     </div>

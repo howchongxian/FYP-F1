@@ -21,14 +21,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Sanitize the input to prevent SQL injection
         $newUsername = mysqli_real_escape_string($connect, $newUsername);
 
-        // Update the username in the database
-        $userid = $_SESSION['userid'];
-        $updateQuery = "UPDATE user SET username = '$newUsername' WHERE id = $userid";
+        // Check if the new username already exists
+        $checkQuery = "SELECT id FROM user WHERE username = '$newUsername'";
+        $result = mysqli_query($connect, $checkQuery);
 
-        if (mysqli_query($connect, $updateQuery)) {
-            $success = "Username updated successfully";
+        if (mysqli_num_rows($result) > 0) {
+            // Username already exists
+            $error = "Username already taken. Please choose another one.";
         } else {
-            $error = "Error updating username: " . mysqli_error($connect);
+            // Update the username in the database
+            $userid = $_SESSION['userid'];
+            $updateQuery = "UPDATE user SET username = '$newUsername' WHERE id = $userid";
+
+            if (mysqli_query($connect, $updateQuery)) {
+                $success = "Username updated successfully";
+            } else {
+                $error = "Error updating username: " . mysqli_error($connect);
+            }
         }
     }
 }
