@@ -72,7 +72,7 @@ if (isset($fetch_profile['username'])) {
         <span class="tooltip">Orders</span>
       </li>
       <li>
-        <a href="sales_report.php">
+        <a href="admin_sales_report.php">
           <i class='bx bxs-report'></i>
           <span class="links_name">Sales Report</span>
         </a>
