@@ -36,14 +36,16 @@ function cardnumber(inputtxt) {
   }
 }
 
-var today, someday;
-var exMonth=document.getElementById("exMonth");
-var exYear=document.getElementById("exYear");
-today = new Date();
-someday = new Date();
-someday.setFullYear(exYear, exMonth, 1);
+/*function validateExpiryDate(month, year) {
+  var today, someday;
+  var exMonth=document.getElementById("exMonth");
+  var exYear=document.getElementById("exYear");
+  today = new Date();
+  someday = new Date();
+  someday.setFullYear(exYear, exMonth, 1);
 
-if (someday < today) {
-   alert("The expiry date is before today's date. Please select a valid expiry date");
-   return false;
-}
+  if (someday < today) {
+    alert("The expiry date is before today's date. Please select a valid expiry date");
+    return false;
+  }
+}*/
