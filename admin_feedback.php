@@ -12,7 +12,7 @@ include("dataconnection.php");
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" media="screen" href="css/admin_feedback.css">
 </head>
-<?php include 'sidebar.php'; ?>
+<?php include 'admin_sidebar.php'; ?>
 
 <body>
     <div id="container">

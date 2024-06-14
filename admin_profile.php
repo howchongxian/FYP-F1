@@ -44,7 +44,7 @@ $connect->close();
     <link rel="stylesheet" type="text/css" media="screen" href="css/profile.css">
 </head>
 
-<?php include 'sidebar.php'; ?>
+<?php include 'admin_sidebar.php'; ?>
 
 <body>
     <div id="container">

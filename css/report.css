@@ -1,0 +1,41 @@
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-container .search-box {
+    margin-left: auto;
+}
+
+.filter-container .date-filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.filter-container .date-filters input,
+.filter-container .date-filters select {
+    margin-right: 10px;
+}
+
+.filter-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 1rem;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

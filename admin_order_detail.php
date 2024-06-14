@@ -37,7 +37,7 @@ include("dataconnection.php");
     </style>
 </head>
 <?php
-include 'sidebar.php';
+include 'admin_sidebar.php';
 ?>
 
 <body>

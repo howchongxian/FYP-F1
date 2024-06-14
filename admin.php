@@ -59,7 +59,7 @@ $connect->close();
     </style>
 </head>
 <?php
-include 'sidebar.php';
+include 'admin_sidebar.php';
 ?>
 
 <body>

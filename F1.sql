@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 12:36 PM
+-- Generation Time: Jun 14, 2024 at 01:33 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,7 +31,7 @@ CREATE TABLE `contact` (
   `contact_code` int(3) NOT NULL,
   `contact_name` varchar(100) NOT NULL,
   `contact_email` varchar(100) NOT NULL,
-  `contact_tel` int(11) NOT NULL,
+  `contact_tel` varchar(15) NOT NULL,
   `contact_message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -183,21 +183,6 @@ INSERT INTO `ticket` (`ticketID`, `race`, `stand`, `ticket_price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaction`
---
-
-CREATE TABLE `transaction` (
-  `transactionID` int(11) NOT NULL,
-  `OrderID` int(11) DEFAULT NULL,
-  `amount` decimal(10,2) NOT NULL,
-  `payment_method` varchar(50) NOT NULL,
-  `transaction_date` datetime NOT NULL,
-  `status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
@@ -223,6 +208,12 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`contact_code`);
 
 --
 -- Indexes for table `feedback`
@@ -287,6 +278,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `contact_code` int(3) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
@@ -326,7 +323,7 @@ ALTER TABLE `shopping_cart2`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
