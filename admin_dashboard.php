@@ -13,7 +13,7 @@ include 'dataconnection.php';
    <link rel="stylesheet" href="css/admin_dashboard.css">
 </head>
 <body>
-<?php include 'sidebar.php'; ?>
+<?php include 'admin_sidebar.php'; ?>
 
 <section class="dashboard">
    <h1 class="dashboard">Welcome, <?= htmlspecialchars($fetch_profile['username']); ?></h1>

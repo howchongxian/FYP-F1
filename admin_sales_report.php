@@ -22,7 +22,7 @@ include("dataconnection.php");
 
 <body>
     <?php
-    include 'sidebar.php';
+    include 'admin_sidebar.php';
     ?>
     <div id="container">
         <h1>F1 Product Shop - Sales Report</h1>

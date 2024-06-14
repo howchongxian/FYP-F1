@@ -141,7 +141,7 @@ $connect->close();
     </script>
 </head>
 
-<?php include 'sidebar.php'; ?>
+<?php include 'admin_sidebar.php'; ?>
 
 <body>
     <div id="container">

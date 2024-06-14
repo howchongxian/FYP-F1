@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2024 at 01:10 PM
+-- Generation Time: Jun 14, 2024 at 01:33 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,7 +31,7 @@ CREATE TABLE `contact` (
   `contact_code` int(3) NOT NULL,
   `contact_name` varchar(100) NOT NULL,
   `contact_email` varchar(100) NOT NULL,
-  `contact_tel` int(11) NOT NULL,
+  `contact_tel` varchar(15) NOT NULL,
   `contact_message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

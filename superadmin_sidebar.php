@@ -86,6 +86,13 @@ if (isset($fetch_profile['username'])) {
         <span class="tooltip">Feedback</span>
       </li>
       <li>
+      <a href="superadmin_view_contact.php">
+        <i class='bx bxs-folder'></i>
+        <span class="links_name">Contact</span>
+      </a>
+      <span class="tooltip">Contact</span>
+      </li>
+      <li>
         <a href="superadmin_profile.php">
           <i class='bx bx-user-pin'></i>
           <span class="links_name">Profile</span>
