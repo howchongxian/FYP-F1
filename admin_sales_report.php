@@ -33,10 +33,6 @@ include("dataconnection.php");
                 <form method="GET" action="" class="date-filters">
                     <input type="date" name="start_date" value="<?php echo isset($_GET['start_date']) ? $_GET['start_date'] : '' ?>">
                     <input type="date" name="end_date" value="<?php echo isset($_GET['end_date']) ? $_GET['end_date'] : '' ?>">
-                    <select name="group_by">
-                        <option value="day" <?php echo (isset($_GET['group_by']) && $_GET['group_by'] == 'day') ? 'selected' : '' ?>>Day</option>
-                        <option value="month" <?php echo (isset($_GET['group_by']) && $_GET['group_by'] == 'month') ? 'selected' : '' ?>>Month</option>
-                    </select>
                     <input type="submit" value="Filter">
                 </form>
                 <form method="POST" action="export_pdf.php" target="_blank">
