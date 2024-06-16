@@ -69,9 +69,15 @@ include("dataconnection.php");
                 $end_date = isset($_GET['end_date']) ? $_GET['end_date'] : '';
                 $group_by = isset($_GET['group_by']) ? $_GET['group_by'] : 'day';
 
-                $query = "SELECT o.order_id, o.user_id, o.payment_method, 
-                          (SELECT SUM(quantity) FROM order_items WHERE order_id = o.order_id) AS total_products, 
-                          o.total_price, o.payment_status, o.created_at 
+                $query = "SELECT 
+                            o.order_id, 
+                            o.user_id, 
+                            o.payment_method, 
+                            (SELECT SUM(quantity) FROM order_items WHERE order_id = o.order_id) AS total_product_quantity, 
+                            (SELECT SUM(quantity) FROM order_tickets WHERE order_id = o.order_id) AS total_ticket_quantity, 
+                            o.total_price, 
+                            o.payment_status, 
+                            o.created_at 
                           FROM `order_detail` o
                           WHERE o.payment_status = 'completed'";
 
@@ -100,11 +106,12 @@ include("dataconnection.php");
 
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
+                        $totalProducts = $row["total_product_quantity"] + $row["total_ticket_quantity"];
                         echo "<tr>";
                         echo "<td>" . $row["order_id"] . "</td>";
                         echo "<td>" . $row["user_id"] . "</td>";
                         echo "<td>" . $row["payment_method"] . "</td>";
-                        echo "<td>" . $row["total_products"] . "</td>";
+                        echo "<td>" . $totalProducts . "</td>";
                         echo "<td>RM" . number_format($row["total_price"], 2) . "</td>"; // Changed to RM for currency format
                         echo "<td>" . $row["payment_status"] . "</td>";
                         echo "<td>" . $row["created_at"] . "</td>";
