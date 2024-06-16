@@ -130,10 +130,12 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_code`, `product_img`, `product_name`, `category`, `product_size`, `description`, `product_price`) VALUES
-(1343541, 'Red Bull Racing cap.jpg', 'Red Bull Racing cap', 'Cap', '35-50', 'Red Bull Racing cap', 12.00),
-(13334182, 'Red Bull clothes(1).jpg', 'Oracle Red Bull Racing 2023 Team Polo', 'Clothes', '55-80', '<ul>\r\n              <li>84% polyester/16% Elastane</li>\r\n              <li>Short sleeves</li>\r\n              <li>Quarter zip neck</li>\r\n              <li>Polo collar</li>\r\n              <li>Regular fit</li>\r\n              <li>Heat-sealed team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', 48.75),
-(13368549, 'Mercedes clothes.jpg', 'Mercedes AMG Petronas F1 2023 Team Driver T-Shirt - White', 'Clothes', '55-80', '<ul>\r\n                            <li>100% polyester</li>\r\n              <li>Short sleeves</li>\r\n              <li>Crew neck</li>\r\n              <li>Regular fit</li>\r\n              <li>Team and sponsor graphics</li>\r\n              <li>Officially licensed</li>\r\n            </ul>', 43.40),
-(14325543, 'Ferrari clothes (1).jpg', 'Ferrari red clothes', 'Clothes', '50-70', 'Ferrari red clothes', 45.55);
+(200838293, 'Aston Martin Aramco F1 2024 Fernando Alonso Team Cap - Green.jpg', 'Aston Martin Aramco F1 2024 Fernando Alonso Team Cap - Green', 'Cap', 'One Size Only', 'Wear your support for the Aston Martin Formula One team right through the 2024 F1 season with the official range of replica team apparel. Pay homage to Fernando Alonso with this team cap featuring his personal emblem and car number \'14\' on the brim. The Aston Martin logo features on the front crown, with embroidered sponsor logos on the back and sides and crosshatch stitching adding extra texture reminiscent of classic car interior upholstery. AMF-1 text repeats along the edge of the brim and an', 200.04),
+(200838295, 'Aston Martin Aramco F1 2024 Fernando Alonso Team Driver T-Shirt.jpg', 'Aston Martin Aramco F1 2024 Fernando Alonso Team Driver T-Shirt', 'Clothes', '2XS, XS, S, M', 'Wear your support for the Aston Martin Formula One team right through the 2024 F1 season with the official range of replica team apparel. Show your support for Fernando Alonso and his Aston Martin team through the 2024 with this driver tee. Featuring the iconic team and sponsor branding on the chest, back and sleeves and Alonso\'s name and car number on the back there\'s no better way to show who you\'re cheering for at the circuit.', 313.28),
+(201084097, 'Red Bull Racing 2024 Team Polo.jpg', 'Red Bull Racing 2024 Team Polo', 'Clothes', 'S, M, L, XL, 2XL, 3XL', 'An all-time favourite that works whatever the situation. Get the look of a real pro with this branded team polo and make sure you\'re ready for anything.', 343.47),
+(201084325, 'McLaren 2024 Team Hooded Sweat - Unisex.jpg', 'McLaren 2024 Team Hooded Sweat - Unisex', 'Clothes', 'XS, S, M, L, XL, 2XL, 3XL, 4XL', 'Show your dedicated support for the McLaren F1 team right through the 2024 season with the official replica apparel collection from Castore. The unisex official McLaren F1 Team hoodie is built with a simple overhead design. We\'ve fine-tuned every detail to ensure supreme comfort – with a bungee cord to tailor the fit and concealed side pockets to store essentials.', 585.03),
+(201131541, 'Scuderia Ferrari 2024 Team Hooded Sweat.jpg', 'Scuderia Ferrari 2024 Team Hooded Sweat', 'Clothes', 'XS, S, M, L, XL, 2XL, 3XL', 'Wear your pride and support for the Ferrari F1 team right through the 2024 season with the official replica apparel collection. The classic hoodie gets a Ferrari team makeover with the iconic team badge and colours combined with trackside-style sponsor branding. Elastic at the cuffs and hem and a comfortable hood give the classic hoodie silhouette that looks great anywhere.', 669.96),
+(201163842, 'Mercedes AMG Petronas F1 2024 Team Cap - Black.jpg', 'Mercedes AMG Petronas F1 2024 Team Cap - Black', 'Cap', 'One Size Only', 'Take your passion for Formula 1 and the Mercedes AMG Petronas team from the track to the street and back with the official 2024 Replica apparel collection. This classic cap is ideal for adding some Mercedes F1 style to your look, constructed with team colours and featuring the iconic team badge embroidered on the front crown. A classic six-panel crown construction with a curved brim and adjustable backstrap make it an essential classic for any fan of the team.', 177.40);
 
 -- --------------------------------------------------------
 
@@ -185,8 +187,10 @@ CREATE TABLE `ticket` (
 --
 
 INSERT INTO `ticket` (`ticketID`, `race`, `stand`, `ticket_price`) VALUES
-(1, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024', 'HOSPITALITY - FORMULA ONE PADDOCK CLUB', 10000.00),
-(2, 'FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2024', 'Marina Central Grandstand', 850.00);
+(1, 'FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2024', 'Fusion Lounge(Fri-Sun)', 24038.68),
+(2, 'FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2024', 'The Racing Green(Saturday)', 3199.18),
+(3, 'FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2024', 'Green Room(Fri-Sun)', 20341.74),
+(4, 'FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2024', 'Padang(Fri-Sun)', 2510.04);
 
 -- --------------------------------------------------------
 
