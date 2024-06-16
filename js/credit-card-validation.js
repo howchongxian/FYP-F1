@@ -6,7 +6,7 @@ function validateCard() {
   var isValidExpiry = validateExpiryDate(exMonth.value, exYear.value);
 
   if (isValidCard && isValidExpiry) {
-    alert('Validation Success');
+    alert('Validation Success!');
     return true;
   } else {
     if (!isValidCard) {
@@ -51,7 +51,6 @@ function validateExpiryDate(month, year) {
   someday.setFullYear(year, month - 1, 1);
 
   if (someday < today) {
-    alert("The expiry date is before today's date. Please select a valid expiry date");
     return false;
   }
   return true;

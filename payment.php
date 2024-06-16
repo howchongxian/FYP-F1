@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
 
-    <button class="py_btn" type="button" onclick="validatePayment(event);">Confirm Payment</button>
+    <button class="py_btn" type="submit">Confirm Payment</button>
   </form>
 
   <!-- END Second Column -->

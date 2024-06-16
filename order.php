@@ -106,7 +106,7 @@ if(!isset($_SESSION['userid'])) {
                 ?>
                 </table>
                 <div class="total">
-                    <h2>Total Price: <?php echo $totalPrice;?></h2>
+                    <h2>Total Price: RM <?php echo $totalPrice;?></h2>
                 </div>
             </div>
             <div class="order-buttons">
