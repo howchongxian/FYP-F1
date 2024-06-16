@@ -45,7 +45,7 @@ include("dataconnection.php");
 
                 <!-- Search Form -->
                 <form method="GET" action="" class="search-box">
-                    <input type="text" name="search" placeholder="Search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : '' ?>">
+                    <input type="text" name="search_payment_method" placeholder="Search by Payment Method" value="<?php echo isset($_GET['search_payment_method']) ? $_GET['search_payment_method'] : '' ?>">
                     <input type="submit" value="Search">
                 </form>
             </div>
@@ -60,10 +60,9 @@ include("dataconnection.php");
                     <th>Order Date</th>
                 </tr>
                 <?php
-                $search = isset($_GET['search']) ? $_GET['search'] : '';
+                $search_payment_method = isset($_GET['search_payment_method']) ? $_GET['search_payment_method'] : '';
                 $start_date = isset($_GET['start_date']) ? $_GET['start_date'] : '';
                 $end_date = isset($_GET['end_date']) ? $_GET['end_date'] : '';
-                $group_by = isset($_GET['group_by']) ? $_GET['group_by'] : 'day';
 
                 $query = "SELECT 
                             o.order_id, 
@@ -79,8 +78,8 @@ include("dataconnection.php");
 
                 $conditions = [];
 
-                if (!empty($search)) {
-                    $conditions[] = "o.payment_status LIKE '%$search%'";
+                if (!empty($search_payment_method)) {
+                    $conditions[] = "o.payment_method LIKE '%$search_payment_method%'";
                 }
                 if (!empty($start_date) && !empty($end_date)) {
                     $conditions[] = "o.created_at BETWEEN '$start_date' AND '$end_date'";
