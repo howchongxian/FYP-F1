@@ -114,11 +114,15 @@ document.addEventListener('DOMContentLoaded', function () {
         <div id="credit-card-info" style="display:none;">
           <label for="card-number">Card Number:</label>
           <input type="text" id="card-number" name="card-number" placeholder="1234567890123456" pattern="\d{4}\s?\d{4}\s?\d{4}\s?\d{4}">
+          <label for="exMonth">Expiry Month:</label>
+          <input type="number" id="exMonth" name="exMonth" min="1" max="12" placeholder="MM">
+          <label for="exYear">Expiry Year:</label>
+          <input type="number" id="exYear" name="exYear" placeholder="YYYY">
         </div>
       </div>
     </div>
 
-    <button class="py_btn" type="button" onclick="validatePayment()">Confirm Payment</button>
+    <button class="py_btn" type="button" onclick="validatePayment(event);">Confirm Payment</button>
   </form>
 
   <!-- END Second Column -->

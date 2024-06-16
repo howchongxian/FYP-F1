@@ -86,7 +86,31 @@ label[for="card-number"]{
 }
 
 input[name="card-number"]{
-  width: 40%;
+  width: 30%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label[for="exMonth"]{
+  margin-left: 15px;
+}
+
+input[name="exMonth"]{
+  width: 10%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label[for="exYear"]{
+  margin-left: 15px;
+}
+
+input[name="exYear"]{
+  width: 10%;
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ccc;

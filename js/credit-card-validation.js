@@ -1,12 +1,20 @@
 function validateCard() {
   var cardInput = document.getElementById('card-number');
-  var isValid = cardnumber(cardInput); 
+  var isValidCard = cardnumber(cardInput); 
+  var exMonth = document.getElementById("exMonth");
+  var exYear = document.getElementById("exYear");
+  var isValidExpiry = validateExpiryDate(exMonth.value, exYear.value);
 
-  if (isValid) {
+  if (isValidCard && isValidExpiry) {
     alert('Validation Success');
     return true;
   } else {
-    alert('Invalid card number. Please try again.');
+    if (!isValidCard) {
+      alert('Invalid card number. Please try again.');
+    }
+    if (!isValidExpiry) {
+        alert("The expiry date is before today's date. Please select a valid expiry date");
+    }
     return false;
   }
 }
@@ -36,16 +44,15 @@ function cardnumber(inputtxt) {
   }
 }
 
-/*function validateExpiryDate(month, year) {
+function validateExpiryDate(month, year) {
   var today, someday;
-  var exMonth=document.getElementById("exMonth");
-  var exYear=document.getElementById("exYear");
   today = new Date();
   someday = new Date();
-  someday.setFullYear(exYear, exMonth, 1);
+  someday.setFullYear(year, month - 1, 1);
 
   if (someday < today) {
     alert("The expiry date is before today's date. Please select a valid expiry date");
     return false;
   }
-}*/
+  return true;
+}

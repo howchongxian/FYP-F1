@@ -35,7 +35,7 @@ include("dataconnection.php");
                     </tr>
                     <tr>
                         <td>Ticket Price:</td>
-                        <td><input type="number" name="ticket_price" required></td>
+                        <td><input type="text" name="ticket_price" required></td>
                     </tr>
                     <tr>
                         <td colspan="2"><input type="submit" name="submit" value="Add Ticket"></td>

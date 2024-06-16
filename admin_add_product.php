@@ -82,12 +82,14 @@
             
             if (mysqli_num_rows($result) == 0) {
                 // Insert into product table
-                $query = "INSERT INTO product (product_code, product_img, product_name, category, product_size, description, product_price) VALUES ('$product_code', '$product_img', '$product_name', '$category', '$product_size', '$description', '$product_price')";
-                if (mysqli_query($connect, $query)) {
+                $query = "INSERT INTO product (product_code, product_img, product_name, category, product_size, description, product_price) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                $stmt = $connect->prepare($query);
+                $stmt->bind_param("sssssss", $product_code, $product_img, $product_name, $category, $product_size, $description, $product_price);
+                if ($stmt->execute()) {
                     header("Location: admin_manage_product.php");
                     exit;
                 } else {
-                    echo "Error: " . mysqli_error($connect);
+                    echo "Error: " . $stmt->error;
                 }
             } else {
                 echo "Error: Duplicate product code.";

@@ -112,9 +112,9 @@ CREATE TABLE `product` (
   `product_img` text DEFAULT NULL,
   `product_name` varchar(100) NOT NULL,
   `category` varchar(200) DEFAULT NULL,
-  `product_size` varchar(5) NOT NULL,
+  `product_size` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `product_price` decimal(5,2) NOT NULL
+  `product_price` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
