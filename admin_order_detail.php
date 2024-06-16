@@ -1,4 +1,4 @@
-<?php
+<?
 include("dataconnection.php");
 ?>
 
@@ -34,6 +34,18 @@ include("dataconnection.php");
             gap: 10px;
             align-items: center;
         }
+
+        .filter-container form .date-filter {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-container form .search-filter {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
     </style>
 </head>
 <?php
@@ -48,13 +60,18 @@ include 'admin_sidebar.php';
             <div class="filter-container">
                 <!-- Date Filter Form -->
                 <form method="GET" action="">
-                    <label for="start_date">Start Date:</label>
-                    <input type="date" name="start_date" id="start_date" value="<?php echo isset($_GET['start_date']) ? $_GET['start_date'] : '' ?>">
-                    <label for="end_date">End Date:</label>
-                    <input type="date" name="end_date" id="end_date" value="<?php echo isset($_GET['end_date']) ? $_GET['end_date'] : '' ?>">
-                    <label for="search_payment">Payment Method/Status:</label>
-                    <input type="text" name="search_payment" id="search_payment" placeholder="Search Payment Method/Status" value="<?php echo isset($_GET['search_payment']) ? $_GET['search_payment'] : '' ?>">
-                    <input type="submit" value="Filter">
+                    <div class="date-filter">
+                        <label for="start_date">Start Date:</label>
+                        <input type="date" name="start_date" id="start_date" value="<?php echo isset($_GET['start_date']) ? $_GET['start_date'] : '' ?>">
+                        <label for="end_date">End Date:</label>
+                        <input type="date" name="end_date" id="end_date" value="<?php echo isset($_GET['end_date']) ? $_GET['end_date'] : '' ?>">
+                        <input type="submit" value="Filter">
+                    </div>
+                    <div class="search-filter">
+                        <label for="search_payment">Payment Method/Status:</label>
+                        <input type="text" name="search_payment" id="search_payment" placeholder="Search Payment Method/Status" value="<?php echo isset($_GET['search_payment']) ? $_GET['search_payment'] : '' ?>">
+                        <input type="submit" value="Search">
+                    </div>
                 </form>
             </div>
             <table class="product-table" border="1" width="1000px" height="100px">
