@@ -22,16 +22,35 @@ if (isset($_POST['update'])) {
     $product_size = $_POST['product_size'];
     $description = $_POST['description'];
     $product_price = $_POST['product_price'];
+    $product_img = $_FILES['product_img']['name'];
 
-    $stmt = $connect->prepare("UPDATE product SET product_name=?, category=?, product_size=?, description=?, product_price=? WHERE product_code=?");
-    $stmt->bind_param("ssssss", $product_name, $category, $product_size, $description, $product_price, $product_code);
+    if ($product_img) {
+        // Upload product image
+        $target_dir = "images/product/";
+        if (!is_dir($target_dir)) {
+            mkdir($target_dir, 0777, true);
+        }
+
+        $target_file = $target_dir . basename($_FILES["product_img"]["name"]);
+        $temp_file = $_FILES["product_img"]["tmp_name"];
+
+        if (move_uploaded_file($temp_file, $target_file)) {
+            $stmt = $connect->prepare("UPDATE product SET product_name=?, category=?, product_size=?, description=?, product_price=?, product_img=? WHERE product_code=?");
+            $stmt->bind_param("sssssss", $product_name, $category, $product_size, $description, $product_price, $product_img, $product_code);
+        } else {
+            echo "Error: There was an error uploading the file.";
+            exit;
+        }
+    } else {
+        $stmt = $connect->prepare("UPDATE product SET product_name=?, category=?, product_size=?, description=?, product_price=? WHERE product_code=?");
+        $stmt->bind_param("ssssss", $product_name, $category, $product_size, $description, $product_price, $product_code);
+    }
+
     $stmt->execute();
-
     header("Location: admin_manage_product.php");
     exit;
 }
 ?>
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -70,7 +89,7 @@ if (isset($_POST['update'])) {
         <h1>F1 Product</h1>
         <div class="product-list">
             <h2>Edit Product</h2>
-            <form action="admin_edit_product.php?edit&procode=<?php echo $product_code; ?>" method="post">
+            <form action="admin_edit_product.php?edit&procode=<?php echo $product_code; ?>" method="post" enctype="multipart/form-data">
                 <table>
                     <tr>
                         <td>Product Code:</td>
@@ -95,6 +114,10 @@ if (isset($_POST['update'])) {
                     <tr>
                         <td>Product Price:</td>
                         <td><input type="text" name="product_price" value="<?php echo $row['product_price'];?>"></td>
+                    </tr>
+                    <tr>
+                        <td>Product Image:</td>
+                        <td><input type="file" name="product_img"></td>
                     </tr>
                     <tr>
                         <td colspan="2"><input type="submit" name="update" value="Update Product"></td>
