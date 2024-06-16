@@ -10,9 +10,23 @@ class MYPDF extends TCPDF
     {
         // Read file lines
         include 'dataconnection.php';
-        $select = "SELECT * FROM order_detail WHERE payment_status = 'completed'";
+        $select = "SELECT 
+                        o.order_id, 
+                        o.user_id, 
+                        o.payment_method, 
+                        (SELECT SUM(quantity) FROM order_items WHERE order_id = o.order_id) AS total_product_quantity, 
+                        (SELECT SUM(quantity) FROM order_tickets WHERE order_id = o.order_id) AS total_ticket_quantity, 
+                        o.total_price, 
+                        o.created_at 
+                   FROM order_detail o 
+                   WHERE o.payment_status = 'completed'";
         $query = mysqli_query($connect, $select);
-        return $query;
+        $data = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            $row['total_products'] = $row['total_product_quantity'] + $row['total_ticket_quantity'];
+            $data[] = $row;
+        }
+        return $data;
     }
 
     // Colored table
@@ -47,7 +61,7 @@ class MYPDF extends TCPDF
             $this->Cell($w[1], 6, $row["user_id"], 'LR', 0, 'L', $fill);
             $this->Cell($w[2], 6, $row["payment_method"], 'LR', 0, 'L', $fill);
             $this->Cell($w[3], 6, $row["total_products"], 'LR', 0, 'L', $fill);
-            $this->Cell($w[4], 6, $row["total_price"], 'LR', 0, 'L', $fill);
+            $this->Cell($w[4], 6, 'RM' . number_format($row["total_price"], 2), 'LR', 0, 'L', $fill); // Added currency format
             $this->Cell($w[5], 6, $row["created_at"], 'LR', 0, 'L', $fill);
             $this->Ln();
             $fill = !$fill;
@@ -121,4 +135,4 @@ $pdf->ColoredTable($header, $data);
 // ---------------------------------------------------------
 
 // close and output PDF document
-$pdf->Output('sales report.pdf', 'I');
+$pdf->Output('admin_sales report.pdf', 'I');

@@ -10,7 +10,8 @@ if (isset($_POST['export_excel'])) {
 
     // Fetch data from database
     $query = "SELECT o.order_id, o.user_id, o.payment_method, 
-              (SELECT SUM(quantity) FROM order_items WHERE order_id = o.order_id) AS total_products, 
+              (SELECT SUM(quantity) FROM order_items WHERE order_id = o.order_id) AS total_product_quantity, 
+              (SELECT SUM(quantity) FROM order_tickets WHERE order_id = o.order_id) AS total_ticket_quantity, 
               o.total_price, o.created_at, o.payment_status 
               FROM `order_detail` o
               WHERE o.payment_status = 'completed'";
@@ -23,11 +24,12 @@ if (isset($_POST['export_excel'])) {
 
     // Output data rows
     while ($row = mysqli_fetch_assoc($result)) {
+        $total_products = $row['total_product_quantity'] + $row['total_ticket_quantity']; // Calculate total products
         echo "<tr>";
         echo "<td>" . $row["order_id"] . "</td>";
         echo "<td>" . $row["user_id"] . "</td>";
         echo "<td>" . $row["payment_method"] . "</td>";
-        echo "<td>" . $row["total_products"] . "</td>";
+        echo "<td>" . $total_products . "</td>"; // Output total products
         echo "<td>" . $row["total_price"] . "</td>";
         echo "<td>" . $row["created_at"] . "</td>";
         echo "<td>" . $row["payment_status"] . "</td>";
