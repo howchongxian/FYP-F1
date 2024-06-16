@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2024 at 01:33 PM
+-- Generation Time: Jun 15, 2024 at 07:27 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,8 +51,16 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`feedback_no.`, `feedback`) VALUES
-(1, 'Nice product'),
-(2, 'Good service bro!');
+(1, 'Nice Website !!!'),
+(2, 'I enjoy the site\'s coverage of F1 heritage races and special events.'),
+(3, 'The site layout is clean and easy to navigate, making it simple to find the latest news and race information.'),
+(4, 'I\'m impressed by the timely updates on driver transfers, team developments, and other F1 news.'),
+(5, 'I\'m impressed by the timely updates on driver transfers, team developments, and other F1 news.'),
+(6, 'The race calendar and event schedule are always up-to-date and easy to access.'),
+(7, 'The site provides a good balance of news, features, and multimedia content.'),
+(8, 'The team and driver profiles are comprehensive and informative.'),
+(9, 'The video highlights of races and qualifying sessions are comprehensive and easy to access.'),
+(10, 'I appreciate the detailed profiles of F1 legends and their contributions to the sport.');
 
 -- --------------------------------------------------------
 
@@ -201,9 +209,14 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`) VALUES
 (1, 'superadmin', 'superadmin@gmail.com', '$2y$10$EjGC5loV0dhSwYdILXO1rePs.5oThlzG3dOxgBw.p.W19O4vVxMya', 'superadmin'),
 (2, 'admin', 'admin@hotmail.com', '$2y$10$2v86x6wogi1OzbvWhnhUuOJKrpBxr2ierwO2olm/6EANEB.OsMRXq', 'admin'),
-(3, 'user', 'user@hotmail.com', '$2y$10$Ew1wx0UIGCNc612bmD8mDeOIT68nl1PK9Wescc3J/eWEPmc48Xum6', 'user'),
-(4, 'test', 'test@hotmail.com', '$2y$10$wCMIpYPfjvm/H6CnB5zB9.7nwDbZeO7u7nxQoxc58BYzigzSIfHHm', 'user'),
-(5, 'Shawnkew', 'shawnkohenwee@gmail.com', '$2y$10$6x7pKoYl4yAma1qfQRe3t.fhvbodkVAMEBnruM3RwP.eefs/Gp/ui', 'user');
+(3, 'William Teoh', 'williamth06@gmail.com', '$2y$10$Ew1wx0UIGCNc612bmD8mDeOIT68nl1PK9Wescc3J/eWEPmc48Xum6', 'user'),
+(4, 'Charlie Liu', 'charlieliu@hotmail.com', '$2y$10$wCMIpYPfjvm/H6CnB5zB9.7nwDbZeO7u7nxQoxc58BYzigzSIfHHm', 'user'),
+(5, 'James Zhang', 'jameszg05@gmail.com', '$2y$10$6x7pKoYl4yAma1qfQRe3t.fhvbodkVAMEBnruM3RwP.eefs/Gp/ui', 'user'),
+(6, 'Kevin Lim ', 'kevinlim0201@gmail.com', '$2y$10$67j9cM8/tVreokhcvV0KZOwLDEsCRCNfFzbRQ0jJ9lgeAmf7K9Una', 'user'),
+(7, 'Lucas Tan', 'lucast08@hotmail.com', '$2y$10$Wu1.cYH28o89l9IBeq1rNOgb/08BgY/TN5R8WDbsv8BnSCWNsPKrW', 'user'),
+(8, 'Jacob Li', 'jacobli1@gmail.com', '$2y$10$RTBfTVW/xKbXvCmS1m7Uyu4Wz5v2fUIZPiSzzb3y.npnppU9UenOm', 'user'),
+(9, 'Jack Wang', 'jackwg@hotmail.com', '$2y$10$.swwolLVcPWbf/Fg7dmB8.3F/ZkVPi5LS1xmK4wziNNt7ZCbOLMAG', 'user'),
+(10, 'Daniel Yang', 'danielyg07@gmail.com', '$2y$10$dWrohq17BeuPluWohikBE.RIr7kGGtfp3erJisQpwxpzLi8czvlVm', 'user');
 
 --
 -- Indexes for dumped tables
@@ -287,7 +300,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_no.` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `feedback_no.` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
@@ -323,7 +336,7 @@ ALTER TABLE `shopping_cart2`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

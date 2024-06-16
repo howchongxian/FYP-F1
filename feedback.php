@@ -72,7 +72,7 @@
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $feedback = $_POST['feedback'];
+        $feedback = mysqli_real_escape_string($connect, $_POST['feedback']);
 
         // insert data
         $sql = "INSERT INTO feedback (feedback) VALUES ('$feedback')";
@@ -94,20 +94,16 @@
     
                 <?php
                 
-                $result = mysqli_query($connect, "select * from feedback");	
-                while($row = mysqli_fetch_assoc($result))
-                    {
-                        
-                    ?>			
+                $result = mysqli_query($connect, "SELECT * FROM feedback");	
+                while($row = mysqli_fetch_assoc($result)) {
+                ?>			
     
                     <tr>
                         <td><?php echo $row["feedback_no."];?></td>
                         <td><?php echo $row["feedback"]; ?></td>
                     </tr>
-                    <?php
-                    
-                    }		
-                
+                <?php
+                }		
                 ?>
     
                 
