@@ -55,7 +55,7 @@ INSERT INTO `feedback` (`feedback_no.`, `feedback`) VALUES
 (2, 'I enjoy the site\'s coverage of F1 heritage races and special events.'),
 (3, 'The site layout is clean and easy to navigate, making it simple to find the latest news and race information.'),
 (4, 'I\'m impressed by the timely updates on driver transfers, team developments, and other F1 news.'),
-(5, 'I\'m impressed by the timely updates on driver transfers, team developments, and other F1 news.'),
+(5, 'The feature articles exploring the cultural impact of F1 in different countries add a global perspective to the sport.'),
 (6, 'The race calendar and event schedule are always up-to-date and easy to access.'),
 (7, 'The site provides a good balance of news, features, and multimedia content.'),
 (8, 'The team and driver profiles are comprehensive and informative.'),
