@@ -83,6 +83,38 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+function checkCart() {
+    let hasProducts = false;
+    let hasTickets = false;
+
+    document.querySelectorAll('input[name^="quantity["]').forEach(input => {
+        if (input.value > 0) {
+            hasProducts = true;
+        }
+    });
+
+    document.querySelectorAll('input[name^="ticket_quantity["]').forEach(input => {
+        if (input.value > 0) {
+            hasTickets = true;
+        }
+    });
+
+    let allRequiredFieldsFilled = true;
+    document.querySelectorAll('input[required]').forEach(input => {
+        if (input.value.trim() === '') {
+            allRequiredFieldsFilled = false;
+        }
+    });
+
+    if (!hasProducts && !hasTickets) {
+        alert("Your shopping cart is empty. Please add items before checking out.");
+    } else if (!allRequiredFieldsFilled) {
+        alert("Please fill in all required fields before checking out.");
+    } else {
+        document.getElementById('shoppingCartForm').submit();
+    }
+}
 </script>
 </head>
 <body>
@@ -145,6 +177,9 @@ document.addEventListener('DOMContentLoaded', function() {
       </tr>
 
       <?php
+      $has_products = false;
+      $has_tickets = false;
+
       $query = "SELECT * FROM shopping_cart WHERE id = '$userid'";
       $result = mysqli_query($connect, $query);
       while($row = mysqli_fetch_assoc($result)) {
@@ -167,7 +202,10 @@ document.addEventListener('DOMContentLoaded', function() {
         </td>
       </tr>
       <?php
-      }       
+      }   
+      if (mysqli_num_rows($result) > 0) {
+        $has_products = true;
+      }    
       ?>
     </table>
     <table class="ticket-table" border="1" width="700px" height="100px">
@@ -198,14 +236,22 @@ document.addEventListener('DOMContentLoaded', function() {
         </td>
       </tr>
       <?php
-      }       
+      }
+      if (mysqli_num_rows($result) > 0) {
+        $has_tickets = true;
+      }
       ?>
     </table>
 
     <div class="cart-buttons">
+      <?php
+      if (!$has_products && !$has_tickets) {
+        echo "<p style='text-align: center;'>Your shopping cart is empty.</p>";
+      }
+      ?>
       <a class="sc_btn" href="product.php">Back to Shop</a>
       <a class="sc_btn" href="ticket.php">Back to Ticket</a>
-      <button class="sc_btn" type="button" onclick="document.getElementById('shoppingCartForm').submit();">Check Out</button>
+      <button class="sc_btn" type="button" onclick="checkCart()">Check Out</button>
     </div>
   </form>
 </div>

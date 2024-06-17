@@ -27,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if ($stmt->execute()) {
       echo "New record created successfully";
-      header("Location: order_success.php");
       exit();
   } else {
       echo "Error: " . $stmt->error;

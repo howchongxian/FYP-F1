@@ -10,6 +10,8 @@ if (!isset($userid)) {
     exit();
 }
 
+date_default_timezone_set('Asia/Kuala_Lumpur');
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $phone = $_POST['phone'];
