@@ -54,7 +54,7 @@ if (isset($_POST["submit"])) {
 <html lang="en">
 
 <head>
-    <title>Edit User</title>
+    <title>Edit Admin</title>
     <meta charset="utf-8">
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
@@ -87,7 +87,7 @@ if (isset($_POST["submit"])) {
 
 <body>
     <div id="container">
-        <h1>Edit Information</h1>
+        <h1>Edit Admin Information</h1>
         <div class="product-list">
             <form action="" method="post">
                 <div class="row mb-3">
