@@ -28,18 +28,20 @@ include("dataconnection.php");
                 </tr>
                 <?php
                 $result = mysqli_query($connect, "SELECT * FROM contact");
-                while ($row = mysqli_fetch_assoc($result)) {
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
                 ?>
-                    <tr>
-                        <td><?php echo $row["contact_code"]; ?></td>
-                        <td><?php echo $row["contact_name"]; ?></td>
-                        <td><?php echo $row["contact_email"]; ?></td>
-                        <td><?php echo $row["contact_tel"]; ?></td>
-                        <td><?php echo $row["contact_message"]; ?></td>
-                    </tr>
+                        <tr>
+                            <td><?php echo $row["contact_code"]; ?></td>
+                            <td><?php echo $row["contact_name"]; ?></td>
+                            <td><?php echo $row["contact_email"]; ?></td>
+                            <td><?php echo $row["contact_tel"]; ?></td>
+                            <td><?php echo $row["contact_message"]; ?></td>
+                        </tr>
                 <?php
-                } {
-                    echo "<tr><td colspan='12'>No messages found.</td></tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='5'>No messages found.</td></tr>";
                 }
                 ?>
             </table>
