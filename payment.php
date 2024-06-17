@@ -97,16 +97,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <label for="payment-method"><br>Payment Method:</label>
     <div class="payment-methods">
-      <div class="payment-method">
+      <!--<div class="payment-method">
         <input type="radio" name="payment-method" id="paypal" value="paypal" required>
         <img src="images/payment/paypal.png" alt="PayPal">
         <label for="paypal">PayPal</label>
-      </div>
-      <div class="payment-method">
+      </div>-->
+      <!--<div class="payment-method">
         <input type="radio" name="payment-method" id="Touch'n Go" value="Touch'n Go" required>
         <img src="images/payment/tng.jpg" alt="Touch'n Go">
         <label for="paypal">Touch'n Go</label>
-      </div>
+      </div>-->
       <div class="payment-method">
         <input type="radio" name="payment-method" id="credit-card" value="credit-card" required>
         <img src="images/payment/CreditCard.jpg" alt="Credit Card">
