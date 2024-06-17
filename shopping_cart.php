@@ -251,7 +251,7 @@ function checkCart() {
       ?>
       <a class="sc_btn" href="product.php">Back to Shop</a>
       <a class="sc_btn" href="ticket.php">Back to Ticket</a>
-      <button class="sc_btn" type="button" onclick="checkCart()">Check Out</button>
+      <button class="sc_btn" type="button" onclick="checkCart()">Order</button>
     </div>
   </form>
 </div>
