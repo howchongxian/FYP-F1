@@ -12,9 +12,9 @@ include("dataconnection.php");
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <!-- CSS Files -->
     <link rel="stylesheet" type="text/css" media="screen" href="./css/style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/product.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/report.css">
+    
     <!-- FancyBox -->
     <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox.css" media="all">
     <script src="js/fancybox/jquery.fancybox-1.2.1.js"></script>
@@ -41,12 +41,6 @@ include("dataconnection.php");
                 <form method="POST" action="export_excel.php">
                     <input type="hidden" name="export_excel" value="1">
                     <input type="submit" value="Export to Excel">
-                </form>
-
-                <!-- Search Form -->
-                <form method="GET" action="" class="search-box">
-                    <input type="text" name="search_payment_method" placeholder="Search by Payment Method" value="<?php echo isset($_GET['search_payment_method']) ? $_GET['search_payment_method'] : '' ?>">
-                    <input type="submit" value="Search">
                 </form>
             </div>
             <table class="report-table" border="1" width="1000px" height="100px">

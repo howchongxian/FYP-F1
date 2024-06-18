@@ -34,6 +34,18 @@ include("dataconnection.php");
             gap: 10px;
             align-items: center;
         }
+
+        .filter-container form .date-filter {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-container form .search-filter {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
     </style>
 </head>
 <?php
@@ -48,13 +60,13 @@ include 'superadmin_sidebar.php';
             <div class="filter-container">
                 <!-- Date Filter Form -->
                 <form method="GET" action="">
-                    <label for="start_date">Start Date:</label>
-                    <input type="date" name="start_date" id="start_date" value="<?php echo isset($_GET['start_date']) ? $_GET['start_date'] : '' ?>">
-                    <label for="end_date">End Date:</label>
-                    <input type="date" name="end_date" id="end_date" value="<?php echo isset($_GET['end_date']) ? $_GET['end_date'] : '' ?>">
-                    <label for="search_payment">Payment Method/Status:</label>
-                    <input type="text" name="search_payment" id="search_payment" placeholder="Search Payment Method/Status" value="<?php echo isset($_GET['search_payment']) ? $_GET['search_payment'] : '' ?>">
-                    <input type="submit" value="Filter">
+                    <div class="date-filter">
+                        <label for="start_date">Start Date:</label>
+                        <input type="date" name="start_date" id="start_date" value="<?php echo isset($_GET['start_date']) ? $_GET['start_date'] : '' ?>">
+                        <label for="end_date">End Date:</label>
+                        <input type="date" name="end_date" id="end_date" value="<?php echo isset($_GET['end_date']) ? $_GET['end_date'] : '' ?>">
+                        <input type="submit" value="Filter">
+                    </div>
                 </form>
             </div>
             <table class="product-table" border="1" width="1000px" height="100px">
@@ -70,7 +82,7 @@ include 'superadmin_sidebar.php';
                     <th>Payment Method</th>
                     <th>Payment Status</th>
                     <th>Order Date</th>
-                    <th colspan="2">Action</th>
+                    <th>Action</th>
                 </tr>
                 <?php
 
@@ -129,7 +141,7 @@ include 'superadmin_sidebar.php';
                         $productPrices = explode(',', $row['product_prices']);
 
                         for ($i = 0; $i < count($productCodes); $i++) {
-                            if (isset($productCodes[$i]) && isset($productNames[$i]) && isset($productQuantities[$i]) && isset($productPrices[$i])) {
+                            if (isset($productCodes[$i], $productNames[$i], $productQuantities[$i], $productPrices[$i])) {
                                 $productDetails[] = $productCodes[$i] . " - " . $productNames[$i] . " (" . $productQuantities[$i] . " x " . $productPrices[$i] . ")";
                             }
                         }
@@ -143,7 +155,7 @@ include 'superadmin_sidebar.php';
                         $ticketPrices = explode(',', $row['ticket_prices']);
 
                         for ($i = 0; $i < count($ticketIDs); $i++) {
-                            if (isset($ticketIDs[$i]) && isset($ticketRaces[$i]) && isset($ticketQuantities[$i]) && isset($ticketPrices[$i])) {
+                            if (isset($ticketIDs[$i], $ticketRaces[$i], $ticketQuantities[$i], $ticketPrices[$i])) {
                                 $ticketDetails[] = $ticketIDs[$i] . " - " . $ticketRaces[$i] . " (" . $ticketQuantities[$i] . " x " . $ticketPrices[$i] . ")";
                             }
                         }
@@ -156,17 +168,9 @@ include 'superadmin_sidebar.php';
                         echo "<td>" . $row["payment_status"] . "</td>";
                         echo "<td>" . $row["created_at"] . "</td>";
 
-                        // Action buttons with options above them
+                        // Delete button
                         echo "<td>";
-                        echo "<form method='post' action='update_payment_status.php' style='display:inline-block;'>";
-                        echo "<input type='hidden' name='order_id' value='" . $row["order_id"] . "'>";
-                        echo "<select name='payment_status'>";
-                        echo "<option value='Pending'" . ($row["payment_status"] == "Pending" ? " selected" : "") . ">Pending</option>";
-                        echo "<option value='Completed'" . ($row["payment_status"] == "Completed" ? " selected" : "") . ">Completed</option>";
-                        echo "</select><br>";
-                        echo "<button type='submit'>Update</button>";
-                        echo "</form>";
-                        echo "<form method='post' action='superadmin_delete_order.php' style='display:inline-block;'>";
+                        echo "<form method='post' action='admin_delete_order.php' style='display:inline-block;'>";
                         echo "<input type='hidden' name='order_id' value='" . $row["order_id"] . "'>";
                         echo "<button type='submit' onclick='return confirmation();'>Delete</button>";
                         echo "</form>";

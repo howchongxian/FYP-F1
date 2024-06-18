@@ -1,4 +1,4 @@
-<?
+<?php
 include("dataconnection.php");
 ?>
 
@@ -67,11 +67,6 @@ include 'admin_sidebar.php';
                         <input type="date" name="end_date" id="end_date" value="<?php echo isset($_GET['end_date']) ? $_GET['end_date'] : '' ?>">
                         <input type="submit" value="Filter">
                     </div>
-                    <div class="search-filter">
-                        <label for="search_payment">Payment Method/Status:</label>
-                        <input type="text" name="search_payment" id="search_payment" placeholder="Search Payment Method/Status" value="<?php echo isset($_GET['search_payment']) ? $_GET['search_payment'] : '' ?>">
-                        <input type="submit" value="Search">
-                    </div>
                 </form>
             </div>
             <table class="product-table" border="1" width="1000px" height="100px">
@@ -87,7 +82,7 @@ include 'admin_sidebar.php';
                     <th>Payment Method</th>
                     <th>Payment Status</th>
                     <th>Order Date</th>
-                    <th colspan="2">Action</th>
+                    <th>Action</th>
                 </tr>
                 <?php
 
@@ -173,16 +168,8 @@ include 'admin_sidebar.php';
                         echo "<td>" . $row["payment_status"] . "</td>";
                         echo "<td>" . $row["created_at"] . "</td>";
 
-                        // Action buttons with options above them
+                        // Delete button
                         echo "<td>";
-                        echo "<form method='post' action='update_payment_status.php' style='display:inline-block;'>";
-                        echo "<input type='hidden' name='order_id' value='" . $row["order_id"] . "'>";
-                        echo "<select name='payment_status'>";
-                        echo "<option value='Pending'" . ($row["payment_status"] == "Pending" ? " selected" : "") . ">Pending</option>";
-                        echo "<option value='Completed'" . ($row["payment_status"] == "Completed" ? " selected" : "") . ">Completed</option>";
-                        echo "</select><br>";
-                        echo "<button type='submit'>Update</button>";
-                        echo "</form>";
                         echo "<form method='post' action='admin_delete_order.php' style='display:inline-block;'>";
                         echo "<input type='hidden' name='order_id' value='" . $row["order_id"] . "'>";
                         echo "<button type='submit' onclick='return confirmation();'>Delete</button>";

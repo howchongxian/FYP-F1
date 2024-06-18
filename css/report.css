@@ -5,10 +5,6 @@
     margin-bottom: 20px;
 }
 
-.filter-container .search-box {
-    margin-left: auto;
-}
-
 .filter-container .date-filters {
     display: flex;
     justify-content: center;
