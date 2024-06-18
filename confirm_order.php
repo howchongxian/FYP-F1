@@ -78,6 +78,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $orderID = $stmt->insert_id; // Get the generated OrderID
     $stmt->close();
 
+    // Update payment status to 'Completed'
+    $update_query = "UPDATE order_detail SET payment_status = 'Completed' WHERE order_id = ?";
+    $stmt = $connect->prepare($update_query);
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($connect->error));
+    }
+    $stmt->bind_param("i", $orderID);
+    $stmt->execute();
+    if ($stmt->error) {
+        die('Execute failed: ' . htmlspecialchars($stmt->error));
+    }
+    $stmt->close();
+
     // Retrieve the shopping cart items for the user
     $cart_query = "SELECT * FROM shopping_cart WHERE id = ?";
     $stmt = $connect->prepare($cart_query);
