@@ -40,7 +40,7 @@ class MYPDF extends TCPDF
         $this->SetFont('', 'B');
 
         // Header
-        $w = array(20, 20, 36, 31, 23, 42);
+        $w = array(20, 20, 36, 31, 30, 42);
         $num_headers = count($header);
         for ($i = 0; $i < $num_headers; ++$i) {
             $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', 1);

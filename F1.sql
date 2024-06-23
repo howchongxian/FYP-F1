@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2024 at 07:27 PM
+-- Generation Time: Jun 19, 2024 at 10:17 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,6 +34,20 @@ CREATE TABLE `contact` (
   `contact_tel` varchar(15) NOT NULL,
   `contact_message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`contact_code`, `contact_name`, `contact_email`, `contact_tel`, `contact_message`) VALUES
+(1, 'William Teoh', 'williamth06@gmail.com', '018-9576234', 'Hello, I\'m interested in sponsorship opportunities within F1. Who should I contact to discuss this further?'),
+(2, 'Jack Wang', 'jackwg@hotmail.com', '019-3578429', 'Hello, I\'m a student researching the environmental impact of F1 racing. Can you provide data or studies on this topic?'),
+(3, 'Kevin Lim', 'kevinlim0201@gmail.com', '011-2574368', 'Hi there, I\'m interested in volunteering at an F1 event. How can I apply to become a volunteer?'),
+(4, 'Charlie Liu', 'charlieliu@hotmail.com', '011-8527496', 'Hey, I\'m a photographer looking to get accredited for an upcoming F1 race. What are the requirements and application process?'),
+(5, 'Daniel Yang', 'danielyg07@gmail.com', '013-9634578', 'Hi, I\'m a journalist interested in attending F1 pre-season testing. How can I obtain media credentials for these events?'),
+(6, 'James Zhang', 'jameszg05@gmail.com', '015-8749130', 'Hi, I\'m a charity organizer interested in partnering with F1 teams or sponsors for fundraising events. How can I get in touch?'),
+(7, 'Jacob Li', 'jacobli1@gmail.com', '016-7489325', 'Hello, I\'m a data analyst interested in F1 race strategies. Can you provide information on typical pit stop timings and strategies?'),
+(8, 'Lucas Tan', 'lucast08@hotmail.com', '012-8574956', 'Hi, I\'m a podcaster specializing in sports psychology. Can you suggest resources on the mental preparation of F1 drivers?');
 
 -- --------------------------------------------------------
 
@@ -80,6 +94,22 @@ CREATE TABLE `order_detail` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`order_id`, `user_id`, `name`, `address`, `phone`, `payment_method`, `total_price`, `payment_status`, `created_at`) VALUES
+(1, 4, 'Charlie Liu', 'No 25, Jalan Melaka Baru 3/2, Kampung Tengah, 75350 Batu Berendam, Melaka', '011-8527496', 'credit-card', 3023.36, 'Completed', '2024-04-15 22:42:42'),
+(2, 7, 'Lucas Tan', 'No 5, Jalan Indah 18/6, 84000 Muar, Johor', '012-8574956', 'credit-card', 24382.15, 'Completed', '2024-04-19 16:26:24'),
+(3, 3, 'William Teoh', 'No 8, Jalan Cenderawasih 8, Kampung Abdullah, 85000 Segamat, Johor', '018-9576234', 'credit-card', 1170.06, 'Completed', '2024-04-25 00:20:50'),
+(4, 8, 'Jacob Li', 'No 27, Jalan Setia Jaya 16, Taman Setia Jaya, 83000 Batu Pahat, Johor', '016-7489325', 'credit-card', 669.96, 'Completed', '2024-05-01 02:56:25'),
+(5, 5, 'James Zhang', 'No 40, Jalan Puteri 10/9, Bandar Puteri, 47100 Puchong, Selangor', '015-8749130', 'credit-card', 26671.33, 'Completed', '2024-05-05 23:02:37'),
+(6, 9, 'Jack Wang', 'No 8, Jalan PU 9/5, Taman Puchong Utama, 47100 Puchong, Selangor', '019-3578429', 'credit-card', 41374.20, 'Completed', '2024-05-12 01:10:55'),
+(7, 6, 'Kevin Lim', 'No 6, Jalan Berkok, Taman Million, 51100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur', '011-2574368', 'credit-card', 15993.64, 'Completed', '2024-05-16 21:12:26'),
+(8, 10, 'Daniel Yang', 'No 15, Jalan TU 28, 75350 Ayer Keroh, Melaka', '013-9634578', 'credit-card', 12550.20, 'Completed', '2024-05-27 17:15:14'),
+(9, 7, 'Lucas Tan', 'No 5, Jalan Indah 18/6, 84000 Muar, Johor', '012-8574956', 'credit-card', 52378.82, 'Completed', '2024-06-05 19:20:49'),
+(10, 5, 'James Zhang', 'No 40, Jalan Puteri 10/9, Bandar Puteri, 47100 Puchong, Selangor', '015-8749130', 'credit-card', 81366.96, 'Completed', '2024-06-15 00:10:48');
+
 -- --------------------------------------------------------
 
 --
@@ -93,6 +123,35 @@ CREATE TABLE `order_items` (
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`oi_id`, `order_id`, `product_code`, `quantity`, `price`) VALUES
+(1, 1, '200838293', 1, 200.04),
+(2, 1, '200838295', 1, 313.28),
+(3, 2, '201084097', 1, 343.47),
+(4, 3, '201084325', 2, 585.03),
+(5, 4, '201131541', 1, 669.96),
+(6, 5, '200838293', 1, 200.04),
+(7, 5, '200838295', 1, 313.28),
+(8, 5, '201084097', 2, 343.47),
+(9, 5, '201084325', 1, 585.03),
+(10, 5, '201131541', 1, 669.96),
+(11, 5, '201163842', 1, 177.40),
+(12, 6, '200838293', 1, 200.04),
+(13, 6, '201163842', 1, 177.40),
+(14, 6, '200838295', 1, 313.28),
+(15, 7, '201084325', 2, 585.03),
+(16, 7, '201131541', 2, 669.96),
+(17, 7, '201084097', 2, 343.47),
+(18, 9, '200838293', 1, 200.04),
+(19, 9, '200838295', 1, 313.28),
+(20, 9, '201084097', 1, 343.47),
+(21, 9, '201084325', 1, 585.03),
+(22, 9, '201131541', 1, 669.96),
+(23, 9, '201163842', 1, 177.40);
 
 -- --------------------------------------------------------
 
@@ -108,6 +167,23 @@ CREATE TABLE `order_tickets` (
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_tickets`
+--
+
+INSERT INTO `order_tickets` (`ot_id`, `order_id`, `ticketID`, `race`, `quantity`, `price`) VALUES
+(1, 1, '4', 'FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2024                          ', 1, 2510.04),
+(2, 2, '1', 'FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2024                          ', 1, 24038.68),
+(3, 5, '1', 'FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2024                          ', 1, 24038.68),
+(4, 6, '3', 'FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2024                          ', 2, 20341.74),
+(5, 7, '2', 'FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2024                          ', 4, 3199.18),
+(6, 8, '4', 'FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2024                          ', 5, 2510.04),
+(7, 9, '1', 'FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2024                          ', 1, 24038.68),
+(8, 9, '2', 'FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2024                          ', 1, 3199.18),
+(9, 9, '3', 'FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2024                          ', 1, 20341.74),
+(10, 9, '4', 'FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2024                          ', 1, 2510.04),
+(11, 10, '3', 'FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2024                          ', 4, 20341.74);
 
 -- --------------------------------------------------------
 
@@ -298,7 +374,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `contact_code` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `contact_code` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -310,19 +386,19 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `oi_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `oi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `order_tickets`
 --
 ALTER TABLE `order_tickets`
-  MODIFY `ot_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ot_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `shopping_cart`
