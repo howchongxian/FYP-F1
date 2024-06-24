@@ -10,8 +10,7 @@ $db_name = "f1";
 $connect = mysqli_connect($sname, $uname, $password, $db_name);
 
 if (!$connect) {
-    echo "Connection failed";
-    exit(); // Exit if connection fails
+    die("Connection failed: " . mysqli_connect_error());
 }
 
 if (isset($_POST['submit'])) {
@@ -21,6 +20,9 @@ if (isset($_POST['submit'])) {
     // Perform query to check if username exists
     $query = "SELECT * FROM user WHERE username=?";
     $stmt = $connect->prepare($query);
+    if (!$stmt) {
+        die("Prepare failed: " . $connect->error);
+    }
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -31,30 +33,30 @@ if (isset($_POST['submit'])) {
         if (password_verify($password, $user['password'])) {
             if ($user['role'] == 'admin') {
                 $_SESSION['admin_userid'] = $user['id'];
-                header("Location: admin_dashboard.php"); // Redirect admin to admin panel
+                header("Location: admin_dashboard.php");
                 exit();
             } elseif ($user['role'] == 'superadmin') {
                 $_SESSION['superadmin_userid'] = $user['id'];
-                header("Location: superadmin_dashboard.php"); // Redirect super admin to super admin panel
+                header("Location: superadmin_dashboard.php");
                 exit();
             } else {
                 $_SESSION['userid'] = $user['id'];
-                header("Location: index.php"); // Redirect regular user to index.php
+                header("Location: index.php");
                 exit();
             }
         } else {
             $error = "Incorrect password";
-            header("Location: signin.php?error=" . urlencode($error)); // Redirect to signin.php with error message
+            echo "<script>alert('Incorrect password'); window.location.href='signin.php';</script>";
             exit();
         }
     } else {
         $error = "Invalid username or password";
-        header("Location: signin.php?error=" . urlencode($error)); // Redirect to signin.php with error message
+        echo "<script>alert('Invalid username or password'); window.location.href='signin.php';</script>";
         exit();
     }
 } else {
     // If user accessed loginsystem.php directly without submitting the form
-    header("Location: signin.php"); // Redirect to signin.php
+    header("Location: signin.php");
     exit();
 }
 ?>
