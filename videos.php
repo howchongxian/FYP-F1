@@ -58,7 +58,13 @@
   <h1>F1 Videos</h1>
   <div class="video-container">
   <div class="video-card">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/hYBIhCJ0vzU?si=EZd10-5CQRx8rXmM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/NQF5QkiraIE?si=gsuSV8XndeXxDTnS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h3>Sprint Race Highlights | Formula 1 Austrian Grand Prix 2024</h3>
+    <a href="https://youtu.be/NQF5QkiraIE?si=gsuSV8XndeXxDTnS" target="_blank">Watch on YouTube</a>
+  </div>
+
+  <div class="video-card">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/hYBIhCJ0vzU?si=EZd10-5CQRx8rXmM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <h3>Race Highlights | Formula 1 Spanish Grand Prix 2024</h3>
     <a href="https://youtu.be/hYBIhCJ0vzU?si=EZd10-5CQRx8rXmM" target="_blank">Watch on YouTube</a>
   </div>
