@@ -42,27 +42,36 @@ if (isset($_POST["submit"])) {
         // Hash the password for security
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // Using prepared statements for security
-        $sql = "UPDATE `user` SET `username`=?, `email`=?, `password`=? WHERE id = ?";
-        $stmt = mysqli_prepare($connect, $sql);
-        mysqli_stmt_bind_param($stmt, "sssi", $username, $email, $hashed_password, $id);
+        // Check for duplicate username or email
+        $check_sql = "SELECT * FROM user WHERE (username=? OR email=?) AND id != ?";
+        $stmt = mysqli_prepare($connect, $check_sql);
+        mysqli_stmt_bind_param($stmt, "ssi", $username, $email, $id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
-        if (mysqli_stmt_execute($stmt)) {
-            header("Location: superadmin.php?msg=Data updated successfully");
-            exit();
+        if (mysqli_num_rows($result) > 0) {
+            $error = "Username or Email has already been registered.";
         } else {
-            $error = "Failed: " . mysqli_error($connect);
-        }
+            // Using prepared statements for security
+            $sql = "UPDATE `user` SET `username`=?, `email`=?, `password`=? WHERE id = ?";
+            $stmt = mysqli_prepare($connect, $sql);
+            mysqli_stmt_bind_param($stmt, "sssi", $username, $email, $hashed_password, $id);
 
-        mysqli_stmt_close($stmt);
+            if (mysqli_stmt_execute($stmt)) {
+                header("Location: superadmin.php?msg=Data updated successfully");
+                exit();
+            } else {
+                $error = "Failed: " . mysqli_error($connect);
+            }
+
+            mysqli_stmt_close($stmt);
+        }
     }
 }
-
 ?>
 
 <!DOCTYPE HTML>
 <html lang="en">
-
 <head>
     <title>Edit Admin</title>
     <meta charset="utf-8">

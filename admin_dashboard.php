@@ -71,20 +71,6 @@ include 'dataconnection.php';
 
       <div class="box">
          <?php
-            $select_pendings = $connect->prepare("SELECT COUNT(*) as count FROM `order_detail` WHERE payment_status = ?");
-            $status_pending = 'pending';
-            $select_pendings->bind_param("s", $status_pending);
-            $select_pendings->execute();
-            $result_pendings = $select_pendings->get_result();
-            $fetch_pendings = $result_pendings->fetch_assoc();
-            $total_pendings = $fetch_pendings['count'];
-         ?>
-         <h3><?= $total_pendings; ?></h3>
-         <p>Pending Orders</p>
-      </div>
-
-      <div class="box">
-         <?php
             $select_completes = $connect->prepare("SELECT COUNT(*) as count FROM `order_detail` WHERE payment_status = ?");
             $status_completed = 'completed';
             $select_completes->bind_param("s", $status_completed);

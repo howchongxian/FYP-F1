@@ -18,16 +18,27 @@ if (isset($_POST['submit'])) {
         // Hash the password for security
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // Insert new admin into the database
-        $sql = "INSERT INTO user (username, email, password, role) VALUES (?, ?, ?, 'admin')";
-        $stmt = mysqli_prepare($connect, $sql);
-        mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashed_password);
+        // Check for duplicate username or email
+        $check_sql = "SELECT * FROM user WHERE username=? OR email=?";
+        $stmt = mysqli_prepare($connect, $check_sql);
+        mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
-        if (mysqli_stmt_execute($stmt)) {
-            header("Location: superadmin.php?msg=Admin added successfully");
-            exit();
+        if (mysqli_num_rows($result) > 0) {
+            echo "<script>alert('Username or Email has already been registered.');</script>";
         } else {
-            echo "Failed: " . mysqli_error($connect);
+            // Insert new admin into the database
+            $sql = "INSERT INTO user (username, email, password, role) VALUES (?, ?, ?, 'admin')";
+            $stmt = mysqli_prepare($connect, $sql);
+            mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashed_password);
+
+            if (mysqli_stmt_execute($stmt)) {
+                header("Location: superadmin.php?msg=Admin added successfully");
+                exit();
+            } else {
+                echo "Failed: " . mysqli_error($connect);
+            }
         }
 
         mysqli_stmt_close($stmt);
