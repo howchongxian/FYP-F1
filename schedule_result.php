@@ -98,7 +98,7 @@ $(document).ready(function () {
     { grandPrix: 'FORMULA 1 GRAND PRIX DE MONACO 2024', date: '24-26 May 2024', winner: 'Charles Leclerc', points: '25', detailsURL: 'https://www.formula1.com/en/results.html/2024/races/1236/monaco/race-result.html' },
     { grandPrix: 'FORMULA 1 GRAND PRIX DU CANADA 2024', date: '8-10 Jun 2024', winner: 'Max Verstappen', points: '25', detailsURL: 'https://www.formula1.com/en/results.html/2024/races/1237/canada/race-result.html' },
     { grandPrix: 'FORMULA 1 ARAMCO GRAN PREMIO DE ESPAÑA 2024', date: '21-23 Jun 2024', winner: 'Max Verstappen', points: '25', detailsURL: 'https://www.formula1.com/en/results.html/2024/races/1238/spain/race-result.html' },
-    { grandPrix: 'FORMULA 1 QATAR AIRWAYS AUSTRIAN GRAND PRIX 2024', date: '28-30 Jun 2024', winner: 'Upcoming', points: '', detailsURL: 'https://www.formula1.com/en/racing/2024/Austria.html' },
+    { grandPrix: 'FORMULA 1 QATAR AIRWAYS AUSTRIAN GRAND PRIX 2024', date: '28-30 Jun 2024', winner: 'George Russell', points: '25', detailsURL: 'https://www.formula1.com/en/results.html/2024/races/1239/austria/race-result.html' },
     { grandPrix: 'FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2024', date: '5-7 Jul 2024', winner: 'Upcoming', points: '', detailsURL: 'https://www.formula1.com/en/racing/2024/great-britain' },
     { grandPrix: 'FORMULA 1 HUNGARIAN GRAND PRIX 2024', date: '19-21 Jul 2024', winner: 'Upcoming', points: '', detailsURL: 'https://www.formula1.com/en/racing/2024/hungary' },
     { grandPrix: 'FORMULA 1 ROLEX BELGIAN GRAND PRIX 2024', date: '26-28 Jul 2024', winner: 'Upcoming', points: '', detailsURL: 'https://www.formula1.com/en/racing/2024/belgium' },
