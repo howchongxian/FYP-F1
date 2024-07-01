@@ -4,6 +4,10 @@ session_start();
 // Database connection
 include "dataconnection.php";
 
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Check if user is logged in as admin
 if (!isset($_SESSION['admin_userid'])) {
     header("Location: signin.php"); // Redirect to signin page if not logged in
@@ -29,46 +33,51 @@ if ($result->num_rows == 1) {
 }
 
 // Handle form submission for updating admin profile
+$message = "";
 if (isset($_POST['submit'])) {
     // Retrieve form data
     $new_username = $_POST['username'];
     $new_email = $_POST['email'];
-    $new_password = $_POST['password']; // Assuming you also allow changing password
+    $new_password = $_POST['password'];
 
     // Validate password length
     function validatePasswordLength($password) {
         return strlen($password) >= 8;
     }
 
-    if ($new_password != "") {
-        if (!validatePasswordLength($new_password)) {
-            // Redirect to profile page with error message
-            header("Location: admin_profile.php?error=Password must be at least 8 characters long");
-            exit();
+    // Check for duplicate username or email
+    $check_sql = "SELECT * FROM user WHERE (username=? OR email=?) AND id!=?";
+    $stmt = $connect->prepare($check_sql);
+    $stmt->bind_param("ssi", $new_username, $new_email, $admin_userid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $message = "Username or Email has already been registered";
+    } else {
+        if ($new_password != "") {
+            if (!validatePasswordLength($new_password)) {
+                $message = "Password must be at least 8 characters long";
+            } else {
+                // Hash the new password for security
+                $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+
+                // Update admin's profile in the database with password
+                $update_query = "UPDATE user SET username=?, email=?, password=? WHERE id=?";
+                $update_stmt = $connect->prepare($update_query);
+                $update_stmt->bind_param("sssi", $new_username, $new_email, $hashed_password, $admin_userid);
+            }
+        } else {
+            // Update admin's profile in the database without password
+            $update_query = "UPDATE user SET username=?, email=? WHERE id=?";
+            $update_stmt->bind_param("ssi", $new_username, $new_email, $admin_userid);
         }
-        
-        // Hash the new password for security
-        $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
-        // Update admin's profile in the database with password
-        $update_query = "UPDATE user SET username=?, email=?, password=? WHERE id=?";
-        $update_stmt = $connect->prepare($update_query);
-        $update_stmt->bind_param("sssi", $new_username, $new_email, $hashed_password, $admin_userid);
-    } else {
-        // Update admin's profile in the database without password
-        $update_query = "UPDATE user SET username=?, email=? WHERE id=?";
-        $update_stmt = $connect->prepare($update_query);
-        $update_stmt->bind_param("ssi", $new_username, $new_email, $admin_userid);
-    }
-
-    if ($update_stmt->execute()) {
-        // Redirect to profile page with success message
-        header("Location: admin_profile.php?msg=Profile updated successfully");
-        exit();
-    } else {
-        // Redirect to profile page with error message
-        header("Location: admin_profile.php?error=Failed to update profile");
-        exit();
+        if (empty($message) && $update_stmt->execute()) {
+            $message = "Profile updated successfully";
+        } else {
+            $message = "Failed to update profile";
+        }
     }
 }
 
@@ -146,6 +155,11 @@ $connect->close();
 <body>
     <div id="container">
         <h1>Edit Admin Profile</h1>
+        <?php
+        if (!empty($message)) {
+            echo '<p style="color:red;">' . $message . '</p>';
+        }
+        ?>
         <form action="" method="post">
             <div class="input-group">
                 <label for="username">Username:</label>
