@@ -72,6 +72,7 @@
                     <input type="submit" value="Search">
                 </form>
             </div>
+            <a class="product-btn" href="size.html">Size Chart</a>
             <table class="product-table" border="1" width="700px" height="100px">
                 <tr>
                     <th>Product Code</th>
@@ -122,6 +123,7 @@
                 
             </table>
             
+            <a class="product-btn" href="size.html">Size Chart</a>
     </div>	
   <!-- END Second Column -->
   <div style="clear:both; height: 40px"></div>
