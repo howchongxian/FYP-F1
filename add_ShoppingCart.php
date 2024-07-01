@@ -26,7 +26,7 @@ if (isset($_SESSION['userid'])) {
             mysqli_query($connect, $insert);
         }
 
-        header("Location: shopping_cart.php"); // Redirect to shopping cart
+        header("Location: product.php"); // Redirect to shopping cart
     } else {
         echo "Missing required parameters.";
     }
@@ -51,7 +51,7 @@ if (isset($_SESSION['userid'])) {
             mysqli_query($connect, $insert);
         }
 
-        header("Location: shopping_cart.php"); 
+        header("Location: ticket.php"); 
     } else {
         echo "Missing required parameters.";
     }
