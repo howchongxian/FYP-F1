@@ -138,7 +138,7 @@ $(document).ready(function () {
   <button id="more-videos-button">More Videos</button>
 </a>
 
-<a href="schedule_result.html">
+<a href="schedule_result.php">
   <section>
       <h2>Upcoming Races</h2>
       <ul>
