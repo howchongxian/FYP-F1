@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2024 at 10:17 AM
+-- Generation Time: Jul 01, 2024 at 04:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -230,6 +230,13 @@ CREATE TABLE `shopping_cart` (
   `product_price` decimal(7,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `shopping_cart`
+--
+
+INSERT INTO `shopping_cart` (`cart_id`, `id`, `product_code`, `product_name`, `product_img`, `product_size`, `quantity`, `product_price`) VALUES
+(18, 11, 201084325, 'McLaren 2024 Team Hooded Sweat - Unisex                          ', 'McLaren 2024 Team Hooded Sweat - Unisex.jpg                          ', 'l', 1, 585.03);
+
 -- --------------------------------------------------------
 
 --
@@ -279,24 +286,27 @@ CREATE TABLE `user` (
   `username` varchar(25) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL
+  `role` varchar(255) NOT NULL,
+  `reset_token` varchar(100) DEFAULT NULL,
+  `token_expiry` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`) VALUES
-(1, 'superadmin', 'superadmin@gmail.com', '$2y$10$EjGC5loV0dhSwYdILXO1rePs.5oThlzG3dOxgBw.p.W19O4vVxMya', 'superadmin'),
-(2, 'admin', 'admin@hotmail.com', '$2y$10$2v86x6wogi1OzbvWhnhUuOJKrpBxr2ierwO2olm/6EANEB.OsMRXq', 'admin'),
-(3, 'William Teoh', 'williamth06@gmail.com', '$2y$10$Ew1wx0UIGCNc612bmD8mDeOIT68nl1PK9Wescc3J/eWEPmc48Xum6', 'user'),
-(4, 'Charlie Liu', 'charlieliu@hotmail.com', '$2y$10$wCMIpYPfjvm/H6CnB5zB9.7nwDbZeO7u7nxQoxc58BYzigzSIfHHm', 'user'),
-(5, 'James Zhang', 'jameszg05@gmail.com', '$2y$10$6x7pKoYl4yAma1qfQRe3t.fhvbodkVAMEBnruM3RwP.eefs/Gp/ui', 'user'),
-(6, 'Kevin Lim ', 'kevinlim0201@gmail.com', '$2y$10$67j9cM8/tVreokhcvV0KZOwLDEsCRCNfFzbRQ0jJ9lgeAmf7K9Una', 'user'),
-(7, 'Lucas Tan', 'lucast08@hotmail.com', '$2y$10$Wu1.cYH28o89l9IBeq1rNOgb/08BgY/TN5R8WDbsv8BnSCWNsPKrW', 'user'),
-(8, 'Jacob Li', 'jacobli1@gmail.com', '$2y$10$RTBfTVW/xKbXvCmS1m7Uyu4Wz5v2fUIZPiSzzb3y.npnppU9UenOm', 'user'),
-(9, 'Jack Wang', 'jackwg@hotmail.com', '$2y$10$.swwolLVcPWbf/Fg7dmB8.3F/ZkVPi5LS1xmK4wziNNt7ZCbOLMAG', 'user'),
-(10, 'Daniel Yang', 'danielyg07@gmail.com', '$2y$10$dWrohq17BeuPluWohikBE.RIr7kGGtfp3erJisQpwxpzLi8czvlVm', 'user');
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`, `reset_token`, `token_expiry`) VALUES
+(1, 'superadmin', 'superadmin@gmail.com', '$2y$10$EjGC5loV0dhSwYdILXO1rePs.5oThlzG3dOxgBw.p.W19O4vVxMya', 'superadmin', NULL, NULL),
+(2, 'admin', 'admin@hotmail.com', '$2y$10$2v86x6wogi1OzbvWhnhUuOJKrpBxr2ierwO2olm/6EANEB.OsMRXq', 'admin', NULL, NULL),
+(3, 'William Teoh', 'williamth06@gmail.com', '$2y$10$Ew1wx0UIGCNc612bmD8mDeOIT68nl1PK9Wescc3J/eWEPmc48Xum6', 'user', NULL, NULL),
+(4, 'Charlie Liu', 'charlieliu@hotmail.com', '$2y$10$wCMIpYPfjvm/H6CnB5zB9.7nwDbZeO7u7nxQoxc58BYzigzSIfHHm', 'user', NULL, NULL),
+(5, 'James Zhang', 'jameszg05@gmail.com', '$2y$10$6x7pKoYl4yAma1qfQRe3t.fhvbodkVAMEBnruM3RwP.eefs/Gp/ui', 'user', NULL, NULL),
+(6, 'Kevin Lim ', 'kevinlim0201@gmail.com', '$2y$10$67j9cM8/tVreokhcvV0KZOwLDEsCRCNfFzbRQ0jJ9lgeAmf7K9Una', 'user', NULL, NULL),
+(7, 'Lucas Tan', 'lucast08@hotmail.com', '$2y$10$Wu1.cYH28o89l9IBeq1rNOgb/08BgY/TN5R8WDbsv8BnSCWNsPKrW', 'user', NULL, NULL),
+(8, 'Jacob Li', 'jacobli1@gmail.com', '$2y$10$RTBfTVW/xKbXvCmS1m7Uyu4Wz5v2fUIZPiSzzb3y.npnppU9UenOm', 'user', NULL, NULL),
+(9, 'Jack Wang', 'jackwg@hotmail.com', '$2y$10$.swwolLVcPWbf/Fg7dmB8.3F/ZkVPi5LS1xmK4wziNNt7ZCbOLMAG', 'user', NULL, NULL),
+(10, 'Daniel Yang', 'danielyg07@gmail.com', '$2y$10$dWrohq17BeuPluWohikBE.RIr7kGGtfp3erJisQpwxpzLi8czvlVm', 'user', NULL, NULL),
+(11, 'chongxian', 'howchongxian@gmail.com', '$2y$10$EZX.mJdceqFqGTShZ3TYgu4HEIf4colLUyAY9NM2yR9hLw1NC8/6S', 'user', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -404,7 +414,7 @@ ALTER TABLE `order_tickets`
 -- AUTO_INCREMENT for table `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `shopping_cart2`
@@ -416,7 +426,7 @@ ALTER TABLE `shopping_cart2`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
