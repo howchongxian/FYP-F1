@@ -81,36 +81,36 @@ $(document).ready(function () {
   </ol>
   </li>
 </ol>
+<div class="news-container">
+  <div class="news-card">
+      <img src="images/Ver&Norris.jpg" alt="F1 News 1" width="100%">
+      <h3>‘I feel let down’ – Norris says Verstappen ‘in the wrong’ as both drivers give their take on Austria clash</h3>
+      <p>Lando Norris and Max Verstappen have each had their say on their dramatic late-race collision while battling for the lead of the Austrian Grand Prix, with an unhappy Norris suggesting that it is down to Verstappen to approach him in terms of discussing the incident.</p>
+      <a href="https://www.formula1.com/en/latest/article/i-feel-let-down-norris-says-verstappen-in-the-wrong-as-both-drivers-give.3YMA6QdZk5Ih4dKRK2nelR" target="_blank">Read More</a>
+  </div>
+
+  <div class="news-container">
+  <div class="news-card">
+    <img src="images/sainz.jpg" alt="F1 News 2" width="100%">
+    <h3>Sainz happy with ‘bonus’ podium in Austria while Leclerc reflects on first-lap clash with Piastri and Perez</h3>
+    <p>Ferrari endured mixed fortunes in the Austrian Grand Prix, with Carlos Sainz benefiting from the drama up ahead to claim a surprise podium while Charles Leclerc faced a difficult Sunday, having been caught up in a first-lap incident that damaged his front wing.</p>
+    <a href="https://www.formula1.com/en/latest/article/sainz-happy-with-bonus-podium-in-austria-while-leclerc-reflects-on-first-lap.5ZTTeOIGnAgKLnfsx6bziR" target="_blank">Read More</a>
+  </div>
 
 <div class="news-container">
   <div class="news-card">
-      <img src="images/Power_Rankings_2024.jpg" alt="F1 News 1" width="100%">
-      <h3>POWER RANKINGS: Which drivers stood out and impressed our judges at the Japanese Grand Prix weekend?</h3>
-      <p>Max Verstappen bounced back in exemplary fashion in Japan, storming to victory as Red Bull secured their third 1-2 result of the 2024 season. But who else on the grid impressed over the weekend in Suzuka? Scroll down to check out the latest Power Rankings leaderboard.</p>
-      <a href="https://formula1.com/en/latest/article/power-rankings-which-drivers-stood-out-and-impressed-our-judges-at-the.4GJjSIQDyWjnlPKiP9YU5N" target="_blank">Read More</a>
+    <img src="images/Power_Rankings_2024.jpg" alt="F1 News 3" width="100%">
+    <h3>POWER RANKINGS: Which drivers stood out and impressed our judges at the Japanese Grand Prix weekend?</h3>
+    <p>Max Verstappen bounced back in exemplary fashion in Japan, storming to victory as Red Bull secured their third 1-2 result of the 2024 season. But who else on the grid impressed over the weekend in Suzuka? Scroll down to check out the latest Power Rankings leaderboard.</p>
+    <a href="https://formula1.com/en/latest/article/power-rankings-which-drivers-stood-out-and-impressed-our-judges-at-the.4GJjSIQDyWjnlPKiP9YU5N" target="_blank">Read More</a>
   </div>
 
   <div class="news-card">
-      <img src="images/Bottas.jpg" alt="F1 News 2" width="100%">
-      <h3>Bottas pleased with Kick Sauber’s pace progress as Zhou rues ‘disappointing start of the year’ after Japan DNF</h3>
-      <p>There were mixed emotions for the Kick Sauber team at the Japanese Grand Prix, with Valtteri Bottas taking the positives from the squad’s improvement in pace while Zhou Guanyu was left disappointed after having to retire with a mechanical problem.</p>
-      <a href="https://www.formula1.com/en/latest/article/bottas-pleased-with-kick-saubers-pace-progress-as-zhou-rues-disappointing.7lCT8c3LGHO72EEvyDwXr6" target="_blank">Read More</a>
-  </div>
-
-  <div class="news-card">
-    <img src="images/perez.jpg" alt="F1 News 2" width="100%">
+    <img src="images/perez.jpg" alt="F1 News 4" width="100%">
     <h3>Perez expects decision on Red Bull future to be made 'within next month'</h3>
     <p>Sergio Perez expects his Red Bull and F1 future to be clarified within the next month, with the Mexican out of contract next year.</p>
     <a href="https://www.formula1.com/en/latest/article/perez-expects-decision-on-red-bull-future-to-be-made-within-next-month.4f3CISx1VFIFMzF4qnm5Yy" target="_blank">Read More</a>
   </div>
-
-  <div class="news-card">
-    <img src="images/Palmer-Ricciardo.jpg" alt="F1 News 2" width="100%">
-    <h3>PALMER: This season was meant to be an audition for a Red Bull return, but is Ricciardo now under pressure at RB?</h3>
-    <p>Four races into the year and it hasn’t been the start of the season Daniel Ricciardo hoped for, or indeed the season the Red Bull bosses had expected from the Aussie.</p>
-    <a href="https://www.formula1.com/en/latest/article/palmer-this-season-was-meant-to-be-an-audition-for-a-red-bull-return-but-is.6jprLk73kxbHzklagZ8eMM" target="_blank">Read More</a>
-  </div>
-</div>
 
 <a href="news.php">
   <button id="more-news-button">More News</button>
