@@ -3,7 +3,7 @@ session_start();
 
 // Check if user is not logged in
 if (!isset($_SESSION['userid'])) {
-    header("Location: login.php"); // Redirect to login page if not logged in
+    header("Location: signin.php"); // Redirect to login page if not logged in
     exit();
 }
 
@@ -35,6 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (mysqli_query($connect, $updateQuery)) {
                 $success = "Username updated successfully";
+                // Set a short delay before redirecting
+                header("refresh:3;url=signin.php");
             } else {
                 $error = "Error updating username: " . mysqli_error($connect);
             }
