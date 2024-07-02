@@ -36,6 +36,17 @@ $(document).ready(function () {
     });
 });
 </script>
+<script type="text/javascript">
+    window.onload = function() {
+        <?php
+        if (isset($_SESSION['success_message'])) {
+            echo 'alert("'. $_SESSION['success_message'] .'");';
+            // Unset the success message so it doesn't show again
+            unset($_SESSION['success_message']);
+        }
+        ?>
+    };
+</script>
 </head>
 <body>
 <ol id="menu">

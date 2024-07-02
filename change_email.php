@@ -23,22 +23,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Sanitize the input to prevent SQL injection
         $newEmail = mysqli_real_escape_string($connect, $newEmail);
 
-        // Check if the email is already registered by another user
+        // Fetch the current email address
         $userid = $_SESSION['userid'];
-        $checkQuery = "SELECT id FROM user WHERE email = '$newEmail' AND id != $userid";
-        $result = mysqli_query($connect, $checkQuery);
+        $currentEmailQuery = "SELECT email FROM user WHERE id = $userid";
+        $currentEmailResult = mysqli_query($connect, $currentEmailQuery);
+        
+        if ($currentEmailResult && mysqli_num_rows($currentEmailResult) == 1) {
+            $currentEmailRow = mysqli_fetch_assoc($currentEmailResult);
+            $currentEmail = $currentEmailRow['email'];
 
-        if (mysqli_num_rows($result) > 0) {
-            $error = "This email address is already registered by another user.";
-        } else {
-            // Update the email in the database
-            $updateQuery = "UPDATE user SET email = '$newEmail' WHERE id = $userid";
-
-            if (mysqli_query($connect, $updateQuery)) {
-                $success = "Email address updated successfully";
+            // Check if the new email is the same as the current email
+            if ($newEmail == $currentEmail) {
+                $error = "The new email address cannot be the same as the old email address.";
             } else {
-                $error = "Error updating email address: " . mysqli_error($connect);
+                // Check if the email is already registered by another user
+                $checkQuery = "SELECT id FROM user WHERE email = '$newEmail' AND id != $userid";
+                $result = mysqli_query($connect, $checkQuery);
+
+                if (mysqli_num_rows($result) > 0) {
+                    $error = "This email address is already registered by another user.";
+                } else {
+                    // Update the email in the database
+                    $updateQuery = "UPDATE user SET email = '$newEmail' WHERE id = $userid";
+
+                    if (mysqli_query($connect, $updateQuery)) {
+                        // Set the success message in session and redirect to index.php
+                        $_SESSION['success_message'] = "Email address updated successfully";
+                        header("Location: index.php");
+                        exit();
+                    } else {
+                        $error = "Error updating email address: " . mysqli_error($connect);
+                    }
+                }
             }
+        } else {
+            $error = "Error fetching current email address.";
         }
     }
 }
@@ -57,8 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php
         if (isset($error)) {
             echo '<div style="color: red;">' . $error . '</div>';
-        } elseif (isset($success)) {
-            echo '<div style="color: green;">' . $success . '</div>';
         }
         ?>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
