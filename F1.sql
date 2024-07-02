@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2024 at 04:02 PM
+-- Generation Time: Jul 02, 2024 at 07:27 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -305,8 +305,7 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`, `reset_token`
 (7, 'Lucas Tan', 'lucast08@hotmail.com', '$2y$10$Wu1.cYH28o89l9IBeq1rNOgb/08BgY/TN5R8WDbsv8BnSCWNsPKrW', 'user', NULL, NULL),
 (8, 'Jacob Li', 'jacobli1@gmail.com', '$2y$10$RTBfTVW/xKbXvCmS1m7Uyu4Wz5v2fUIZPiSzzb3y.npnppU9UenOm', 'user', NULL, NULL),
 (9, 'Jack Wang', 'jackwg@hotmail.com', '$2y$10$.swwolLVcPWbf/Fg7dmB8.3F/ZkVPi5LS1xmK4wziNNt7ZCbOLMAG', 'user', NULL, NULL),
-(10, 'Daniel Yang', 'danielyg07@gmail.com', '$2y$10$dWrohq17BeuPluWohikBE.RIr7kGGtfp3erJisQpwxpzLi8czvlVm', 'user', NULL, NULL),
-(11, 'chongxian', 'howchongxian@gmail.com', '$2y$10$EZX.mJdceqFqGTShZ3TYgu4HEIf4colLUyAY9NM2yR9hLw1NC8/6S', 'user', NULL, NULL);
+(10, 'Daniel Yang', 'danielyg07@gmail.com', '$2y$10$dWrohq17BeuPluWohikBE.RIr7kGGtfp3erJisQpwxpzLi8czvlVm', 'user', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -426,7 +425,7 @@ ALTER TABLE `shopping_cart2`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
