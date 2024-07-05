@@ -164,7 +164,8 @@ function checkCart() {
 </ol>
 <div id="container">
   <h1>Shopping Cart</h1>
-  <p>Products with the <b>"One Size Only"</b> size option can have a "-" filled in the size field in the shopping cart. Please make sure that the size you fill in for all products is an <b>available size</b> for the product.</p>
+  <p>Products with the <b>"One Size Only"</b> size option can have a "-" filled in the size field in the shopping cart.</p>
+  <p>Please make sure that the size you fill in for all products is an <b>available size</b> for the product.</p>
   <form id="shoppingCartForm" method="post" action="process_cart.php">
     <table class="product-table" border="1" width="700px" height="100px">
       <tr>
